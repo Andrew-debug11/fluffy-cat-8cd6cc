@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools for Plumbing Companies in Michigan | Peninsulas AI</title>
+  <meta name="description" content="AI systems built for plumbing companies in Metro Detroit. Emergency call handling, estimate follow-ups, Google reviews, local SEO." />
+  <meta name="keywords" content="AI for plumbing Michigan, plumbing automation Metro Detroit, plumbing AI tools, plumber marketing Michigan" />
+  <meta property="og:title" content="AI Tools for Plumbing Companies in Michigan | Peninsulas AI" />
+  <meta property="og:description" content="AI automation for Metro Detroit plumbing contractors. Built for the trade." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://peninsulasai.com/ai-for-plumbing-companies-michigan" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "AI Tools for Plumbing Companies in Michigan",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Peninsulas AI",
+      "image": "https://peninsulasai.com/logo.png",
+      "telephone": "+1-313-549-9136",
+      "email": "info@peninsulasai.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Wyandotte",
+        "addressRegion": "MI",
+        "addressCountry": "US"
+      },
+      "areaServed": "Metro Detroit, MI"
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface2: #141425;
+      --border: rgba(255,255,255,0.06);
+      --sky: #0EA5E9;
+      --teal: #14B8A6;
+      --pink: #F472B6;
+      --text: #F0EDE8;
+      --muted: #8899AA;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NOISE */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.3;
+    }
+
+    /* PARTICLE CANVAS */
+    #particles {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text);
+    }
+
+    .nav-logo-text span { color: var(--sky); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    nav a.nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 10px 22px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav a.nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+    }
+
+    /* ARTICLE LAYOUT */
+    .article-wrapper {
+      position: relative; z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 5% 80px;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      color: var(--sky); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover { color: var(--teal); }
+
+    .breadcrumb span { margin: 0 8px; color: var(--border); }
+
+    /* ARTICLE CONTENT */
+    .article-wrapper h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.05;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .article-meta {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-wrapper h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; line-height: 1.1;
+      text-transform: uppercase; letter-spacing: 0.01em;
+      margin-top: 56px; margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .article-wrapper h2::before {
+      content: '';
+      display: block;
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+      margin-bottom: 16px;
+    }
+
+    .article-wrapper p {
+      font-size: 1.02rem; line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .article-wrapper p strong { color: var(--text); }
+
+    .article-wrapper ul {
+      list-style: none;
+      margin-bottom: 24px;
+      padding-left: 0;
+    }
+
+    .article-wrapper ul li {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.6;
+      padding: 8px 0 8px 24px;
+      position: relative;
+    }
+
+    .article-wrapper ul li::before {
+      content: '\2192';
+      color: var(--sky); font-weight: 700;
+      position: absolute; left: 0; top: 8px;
+    }
+
+    .article-wrapper ul li strong { color: var(--text); }
+
+    .article-wrapper a {
+      color: var(--sky); text-decoration: none;
+      border-bottom: 1px solid rgba(14,165,233,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .article-wrapper a:hover { border-color: var(--sky); }
+
+    /* CITY GRID */
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2px;
+      margin: 24px 0 32px;
+    }
+
+    .city-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      font-family: var(--font-display);
+      font-size: 0.95rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .city-item:hover { border-color: rgba(14,165,233,0.3); }
+
+    .city-item a {
+      color: var(--text); text-decoration: none;
+      border: none;
+    }
+
+    .city-item a:hover { color: var(--sky); }
+
+    /* PROCESS STEPS */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2px;
+      margin: 24px 0 32px;
+    }
+
+    .process-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 20px;
+    }
+
+    .process-step-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(20,184,166,0.1));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin-bottom: 10px;
+    }
+
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .process-step p {
+      font-size: 0.82rem; color: var(--muted);
+      line-height: 1.5; margin-bottom: 0;
+    }
+
+    /* PRICING MENTION */
+    .pricing-mention {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin: 24px 0;
+    }
+
+    .pricing-mention .tiers {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .pricing-mention .tier {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .pricing-mention .tier .price {
+      color: var(--sky);
+      font-size: 1.4rem; font-weight: 800;
+    }
+
+    .pricing-mention .tier .name {
+      color: var(--muted);
+      font-size: 0.8rem; letter-spacing: 0.15em;
+      display: block; margin-top: 2px;
+    }
+
+    /* SERVICE CARDS (new for hub pages) */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      margin: 24px 0 32px;
+    }
+
+    .service-card-hub {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      transition: border-color 0.3s;
+    }
+
+    .service-card-hub:hover { border-color: rgba(14,165,233,0.3); }
+
+    .service-card-hub h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+
+    .service-card-hub p {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 0;
+    }
+
+    /* RELATED LINKS */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      margin: 24px 0 32px;
+    }
+
+    .related-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px 22px;
+      transition: border-color 0.2s;
+    }
+
+    .related-item:hover { border-color: rgba(14,165,233,0.3); }
+
+    .related-item a {
+      border: none;
+    }
+
+    .related-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .related-item h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem; font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .related-item h4 a {
+      color: var(--text);
+      border: none;
+    }
+
+    .related-item h4 a:hover { color: var(--sky); }
+
+    .related-item p {
+      font-size: 0.8rem; color: var(--muted);
+      line-height: 1.5; margin-bottom: 0;
+    }
+
+    /* CTA BLOCK */
+    .article-cta {
+      margin-top: 64px;
+      padding: 48px 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal), var(--pink));
+    }
+
+    .article-cta h2 {
+      margin-top: 0;
+    }
+
+    .article-cta h2::before { display: none; }
+
+    .article-cta p {
+      max-width: 480px; margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 16px 36px; text-decoration: none;
+      border: none; cursor: pointer; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14,165,233,0.35);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 40px;
+      position: relative; z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+
+    .footer-brand .footer-logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-logo-link img { height: 32px; width: auto; }
+    .footer-brand .nav-logo-text { font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+      border: none;
+    }
+    .footer-col ul li a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 14px 5%; }
+      .nav-links { display: none; }
+      .article-wrapper { padding: 110px 5% 60px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .pricing-mention .tiers { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="Peninsulas AI" />
+      <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#how">How It Works</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Free Consult</a>
+  </nav>
+
+  <!-- ARTICLE -->
+  <article class="article-wrapper">
+
+    <div class="breadcrumb reveal">
+      <a href="/">Home</a><span>/</span>Services<span>/</span>Plumbing
+    </div>
+
+    <h1 class="reveal">AI Systems Built for Plumbing Companies in Michigan</h1>
+
+    <div class="article-meta reveal">
+      Peninsulas AI &bull; Plumbing Trade Hub &bull; Serving Metro Detroit
+    </div>
+
+    <p class="reveal">A homeowner needs a water heater replaced. You send the quote by noon. By day five, they've already called two more companies and picked the one who followed up.</p>
+
+    <p class="reveal">Peninsulas AI builds <strong>AI systems specifically for plumbing contractors</strong> in Metro Detroit. Emergency response automation, quote follow-ups tuned for plumbing sales cycles, Google review management, and local SEO that targets the suburbs you actually serve.</p>
+
+    <p class="reveal">No tech background needed. No contracts. Systems that run while you're under someone's house.</p>
+
+    <h2 class="reveal">What You Get</h2>
+
+    <div class="service-grid">
+      <div class="service-card-hub reveal">
+        <h3>Emergency Response Automation</h3>
+        <p>After-hours form submissions get instant AI-drafted replies. Stop losing emergency work to whoever picks up first.</p>
+      </div>
+      <div class="service-card-hub reveal">
+        <h3>Estimate Follow-Up Sequences</h3>
+        <p>Multi-touch sequences tuned for plumbing: water heaters, repipes, sewer line work. Longer decision cycles need patient follow-up.</p>
+      </div>
+      <div class="service-card-hub reveal">
+        <h3>Google Review Management</h3>
+        <p>Every review drafted and posted. Positive responses that sound genuine. Negative responses that de-escalate.</p>
+      </div>
+      <div class="service-card-hub reveal">
+        <h3>Local SEO Service Pages</h3>
+        <p>Dedicated pages for drain cleaning, water heater repair, sewer service, emergency plumbing. Targeted to every suburb you work.</p>
+      </div>
+      <div class="service-card-hub reveal">
+        <h3>Membership Program Content</h3>
+        <p>Maintenance plan emails, retention sequences, renewal reminders. The recurring revenue stream most plumbers never properly market.</p>
+      </div>
+      <div class="service-card-hub reveal">
+        <h3>Seasonal Campaigns</h3>
+        <p>Frozen pipe prep in fall. Sewer line issues in spring. Water heater campaigns year-round. Content ready before the season hits.</p>
+      </div>
+    </div>
+
+    <h2 class="reveal">Communities We Serve</h2>
+
+    <p class="reveal">Based in Wyandotte. Serving businesses across all of Downriver and Metro Detroit.</p>
+
+    <div class="city-grid">
+      <div class="city-item reveal">Wyandotte</div>
+      <div class="city-item reveal">Lincoln Park</div>
+      <div class="city-item reveal">Southgate</div>
+      <div class="city-item reveal">Taylor</div>
+      <div class="city-item reveal">Trenton</div>
+      <div class="city-item reveal">Allen Park</div>
+      <div class="city-item reveal">Riverview</div>
+      <div class="city-item reveal">Brownstown</div>
+      <div class="city-item reveal">Grosse Ile</div>
+      <div class="city-item reveal">Woodhaven</div>
+      <div class="city-item reveal">Flat Rock</div>
+      <div class="city-item reveal">Romulus</div>
+    </div>
+
+    <h2 class="reveal">How It Works</h2>
+
+    <p class="reveal">Four steps. No committees. No "discovery phases."</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-step-num">01</div>
+        <h3>Free Consult</h3>
+        <p>15 to 20 minutes. Tell me what's eating your time. I'll tell you what AI can do about it.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">02</div>
+        <h3>Custom Setup</h3>
+        <p>I build your AI systems and content calendar. First deliverables within a week.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">03</div>
+        <h3>Monthly Delivery</h3>
+        <p>Content, responses, and automations show up in your inbox. Ready to go.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-num">04</div>
+        <h3>You Scale</h3>
+        <p>Online presence grows. Leads increase. Evenings free up.</p>
+      </div>
+    </div>
+
+    <h2 class="reveal">Pricing</h2>
+
+    <p class="reveal">Three tiers. No setup fees. No long-term contracts. Cancel anytime.</p>
+
+    <div class="pricing-mention reveal">
+      <div class="tiers">
+        <div class="tier">
+          <div class="price">$297<span style="font-size:0.6em;color:var(--muted);">/mo</span></div>
+          <span class="name">Starter</span>
+        </div>
+        <div class="tier">
+          <div class="price">$597<span style="font-size:0.6em;color:var(--muted);">/mo</span></div>
+          <span class="name">Growth</span>
+        </div>
+        <div class="tier">
+          <div class="price">$997<span style="font-size:0.6em;color:var(--muted);">/mo</span></div>
+          <span class="name">Pro</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal"><a href="/#pricing">See full package details on the main site.</a></p>
+
+    <h2 class="reveal">Related</h2>
+
+    <div class="related-grid">
+      <div class="related-item reveal">
+        <span class="related-label">Blog</span>
+        <h4><a href="/blog/ai-for-plumbing-companies-michigan/">AI for Plumbing Companies in Michigan</a></h4>
+        <p>Tools that handle the office while you're on the job.</p>
+      </div>
+      <div class="related-item reveal">
+        <span class="related-label">Service</span>
+        <h4><a href="/estimate-follow-up-system/">Estimate Follow-Up System</a></h4>
+        <p>The 3-touch sequence for quotes.</p>
+      </div>
+      <div class="related-item reveal">
+        <span class="related-label">Trade Hub</span>
+        <h4><a href="/ai-for-hvac-companies-michigan/">HVAC</a></h4>
+        <p>Same systems, HVAC-specific.</p>
+      </div>
+    </div>
+
+    <div class="article-cta reveal">
+      <h2>Stop Losing Water Heater Jobs to Silence.</h2>
+      <p>Book a free 20-minute call. I'll tell you what's worth automating for your plumbing business. No pitch.</p>
+      <a href="/#contact" class="btn-primary">Book Your Free Consult</a>
+    </div>
+
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+        </a>
+        <p>AI consulting for Metro Detroit trade and service businesses. Simple systems. Real results. No tech degree required.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#how">How It Works</a></li>
+          <li><a href="/#contact">Free Consult</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a></li>
+          <li><a href="tel:3135499136">313-549-9136</a></li>
+          <li><a href="#">Wyandotte, MI</a></li>
+          <li><a href="#">Serving All of Metro Detroit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Peninsulas AI</p>
+      <p>Downriver Metro Detroit\'s AI Consulting Company</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle system
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const colors = [
+        'rgba(14,165,233,',
+        'rgba(20,184,166,',
+        'rgba(244,114,182,',
+        'rgba(249,168,212,',
+      ];
+      function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      function createParticle() {
+        return {
+          x: Math.random() * w, y: Math.random() * h,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: Math.random() * -0.4 - 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.5 + 0.1,
+          fadeDir: Math.random() > 0.5 ? 1 : -1,
+        };
+      }
+      function init() {
+        resize();
+        particles = [];
+        const count = Math.min(Math.floor(w * h / 12000), 80);
+        for (let i = 0; i < count; i++) particles.push(createParticle());
+      }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.speedX; p.y += p.speedY;
+          p.opacity += p.fadeDir * 0.003;
+          if (p.opacity <= 0.05 || p.opacity >= 0.55) p.fadeDir *= -1;
+          if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+          if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.opacity + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+      init(); animate();
+    })();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

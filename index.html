@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peninsulas AI — AI Consulting for Metro Detroit Small Businesses</title>
+  <meta name="description" content="Peninsulas AI helps Metro Detroit trade and service businesses use AI to save time, look sharper, and grow faster. Affordable AI consulting for HVAC, plumbing, electrical, and local service companies." />
+  <meta name="keywords" content="AI consulting Metro Detroit, AI for small business Michigan, AI automation Downriver Detroit, HVAC AI tools, plumbing business AI, local business AI consulting" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Peninsulas AI — AI for Metro Detroit Small Businesses" />
+  <meta property="og:description" content="Stop doing everything manually. Peninsulas AI builds simple AI systems for trade and service businesses in Metro Detroit." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://peninsulasai.com/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Peninsulas AI",
+    "description": "AI consulting for Metro Detroit trade and service businesses",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wyandotte",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": "Metro Detroit",
+    "telephone": "313-549-9136",
+    "email": "info@peninsulasai.com",
+    "url": "https://peninsulasai.com"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface2: #141425;
+      --border: rgba(255,255,255,0.06);
+      --navy: #1E3A5F;
+      --sky: #0EA5E9;
+      --teal: #14B8A6;
+      --pink: #F472B6;
+      --soft-pink: #F9A8D4;
+      --accent: var(--sky);
+      --accent2: var(--teal);
+      --text: #F0EDE8;
+      --muted: #8899AA;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NOISE */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.3;
+    }
+
+    /* PARTICLE CANVAS */
+    #particles {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text);
+    }
+
+    .nav-logo-text span { color: var(--sky); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    nav a.nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 10px 22px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav a.nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+      top: -100px; right: -150px;
+      animation: pulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute; width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,114,182,0.07) 0%, transparent 70%);
+      bottom: 50px; left: -80px;
+      animation: pulse 8s ease-in-out infinite 2s;
+      pointer-events: none;
+    }
+
+    .hero-glow3 {
+      position: absolute; width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 70%);
+      top: 40%; left: 30%;
+      animation: pulse 10s ease-in-out infinite 4s;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.6; }
+    }
+
+    .hero-tag {
+      font-family: var(--font-display);
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      font-weight: 800; line-height: 0.95;
+      letter-spacing: -0.01em; text-transform: uppercase;
+      max-width: 900px;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--sky), var(--teal), var(--pink));
+      background-size: 200% 200%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-sub {
+      margin-top: 28px; max-width: 520px;
+      font-size: 1.05rem; color: var(--muted); line-height: 1.7;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.6s;
+    }
+
+    .hero-sub strong { color: var(--text); }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.8s;
+    }
+
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 16px 36px; text-decoration: none;
+      border: none; cursor: pointer; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14,165,233,0.35);
+    }
+
+    .btn-ghost {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text); background: transparent;
+      padding: 16px 36px; text-decoration: none;
+      border: 1px solid var(--border); cursor: pointer;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--sky); color: var(--sky); }
+
+    .hero-scroll {
+      margin-top: 80px;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp 0.8s forwards 1s;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-display);
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .scroll-line { width: 40px; height: 1px; background: var(--muted); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface); padding: 14px 0;
+    }
+
+    .marquee-track {
+      display: flex; gap: 60px;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track span {
+      font-family: var(--font-display);
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); white-space: nowrap;
+    }
+
+    .marquee-track span.dot { color: var(--sky); }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section { padding: 100px 5%; position: relative; z-index: 1; }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 800; line-height: 1.0;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      max-width: 700px;
+    }
+
+    .section-sub {
+      margin-top: 16px; max-width: 540px;
+      color: var(--muted); font-size: 1rem; line-height: 1.7;
+    }
+
+    /* SERVICES */
+    .services { background: var(--bg); }
+
+    .services-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--surface); padding: 36px 32px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .service-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--surface2); border-color: rgba(14,165,233,0.2); }
+
+    .service-icon { font-size: 1.8rem; margin-bottom: 16px; }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* HIDDEN GEMS */
+    .hidden-gems { background: var(--surface); }
+
+    .gems-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start; margin-bottom: 60px;
+    }
+
+    .gems-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .gem-item {
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .gem-item:hover { border-color: rgba(14,165,233,0.3); }
+
+    .gem-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      margin-top: 6px; flex-shrink: 0;
+    }
+
+    .gem-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+    .gem-item p strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+    /* PRICING */
+    .pricing { background: var(--bg); }
+
+    /* A La Carte */
+    .alacarte-section { margin-top: 60px; margin-bottom: 60px; }
+
+    .alacarte-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+
+    .alacarte-sub {
+      color: var(--muted); font-size: 0.95rem;
+      margin-bottom: 28px; max-width: 500px;
+    }
+
+    .alacarte-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .alacarte-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .alacarte-card:hover { border-color: rgba(14,165,233,0.3); }
+
+    .alacarte-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 700;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+
+    .alacarte-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    .alacarte-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 800;
+      color: var(--sky); white-space: nowrap;
+    }
+
+    .monthly-label {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 8px; color: var(--text);
+    }
+
+    .monthly-sub {
+      color: var(--muted); font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 44px 36px; position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .pricing-card.featured {
+      background: var(--surface2);
+      border-color: var(--sky);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute; top: -1px; left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; padding: 5px 16px;
+    }
+
+    .pricing-card:hover { border-color: rgba(14,165,233,0.4); }
+    .pricing-card.featured:hover { border-color: var(--teal); }
+
+    .pricing-tier {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 8px;
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .pricing-card .tagline {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 28px; line-height: 1.5;
+    }
+
+    .price { margin-bottom: 8px; }
+
+    .price .amount {
+      font-family: var(--font-display);
+      font-size: 3.2rem; font-weight: 800;
+      line-height: 1; color: var(--text);
+    }
+
+    .price .period { font-size: 0.85rem; color: var(--muted); margin-left: 4px; }
+
+    .price-note { font-size: 0.8rem; color: var(--muted); margin-bottom: 32px; }
+
+    .pricing-divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+    .pricing-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .pricing-features li {
+      font-size: 0.9rem; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.4;
+    }
+
+    .pricing-features li::before {
+      content: '→'; color: var(--sky);
+      font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .pricing-features li strong { color: var(--text); }
+
+    .pricing-cta {
+      display: block; text-align: center;
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 15px; text-decoration: none;
+      border: 1px solid var(--border); color: var(--text);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .pricing-cta:hover {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      color: var(--bg); border-color: var(--sky);
+    }
+
+    .pricing-card.featured .pricing-cta {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      color: var(--bg); border-color: var(--sky);
+    }
+
+    .pricing-card.featured .pricing-cta:hover {
+      background: linear-gradient(135deg, var(--teal), var(--pink));
+      border-color: var(--teal);
+    }
+
+    .pricing-footer {
+      margin-top: 48px; text-align: center;
+      font-size: 0.85rem; color: var(--muted);
+    }
+
+    .pricing-footer a { color: var(--sky); text-decoration: none; }
+
+    /* HOW IT WORKS */
+    .how { background: var(--surface); }
+
+    .steps {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+    }
+
+    .step {
+      padding: 40px 32px; background: var(--bg);
+      border: 1px solid var(--border); position: relative;
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 4rem; font-weight: 800;
+      background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(20,184,166,0.1));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    .step p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* LEAD CAPTURE */
+    .capture { background: var(--bg); position: relative; overflow: hidden; }
+
+    .capture-glow {
+      position: absolute; width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .capture-inner {
+      position: relative; max-width: 640px;
+      margin: 0 auto; text-align: center;
+    }
+
+    .capture-inner .section-title { margin: 0 auto 16px; }
+
+    .capture-form {
+      margin-top: 48px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+
+    .capture-form input,
+    .capture-form select,
+    .capture-form textarea {
+      width: 100%; background: var(--surface);
+      border: 1px solid var(--border); color: var(--text);
+      font-family: var(--font-body); font-size: 0.95rem;
+      padding: 14px 18px; outline: none;
+      transition: border-color 0.2s; appearance: none;
+    }
+
+    .capture-form input::placeholder,
+    .capture-form textarea::placeholder { color: var(--muted); }
+
+    .capture-form input:focus,
+    .capture-form select:focus,
+    .capture-form textarea:focus { border-color: var(--sky); }
+
+    .capture-form select option { background: var(--surface); }
+    .capture-form textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      border: none; padding: 18px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14,165,233,0.35);
+    }
+
+    .form-note { font-size: 0.8rem; color: var(--muted); margin-top: 12px; }
+
+    .form-success {
+      display: none; padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--sky);
+      text-align: center;
+    }
+
+    .form-success h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .form-success p { color: var(--muted); font-size: 0.9rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 40px;
+      position: relative; z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+
+    .footer-brand .footer-logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-logo-link img { height: 32px; width: auto; }
+
+    .footer-brand .nav-logo-text { font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .footer-col ul li a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+    .footer-bottom a { color: var(--sky); text-decoration: none; }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 14px 5%; }
+      .nav-links { display: none; }
+      section { padding: 70px 5%; }
+      .hero { padding: 100px 5% 60px; }
+      .gems-intro { grid-template-columns: 1fr; gap: 30px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* TRADE GRID */
+    .trade-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+    }
+
+    .trade-card {
+      background: var(--surface); padding: 32px 28px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+      display: block;
+    }
+
+    .trade-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .trade-card:hover::before { transform: scaleX(1); }
+    .trade-card:hover { background: var(--surface2); border-color: rgba(14,165,233,0.2); }
+
+    .trade-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      margin-bottom: 8px; color: var(--text);
+    }
+
+    .trade-card p {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px;
+    }
+
+    .trade-card .trade-link {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--sky);
+    }
+
+    /* BLOG PREVIEW */
+    .blog-preview { background: var(--bg); }
+
+    .blog-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    .blog-card {
+      background: var(--surface); padding: 32px 28px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+      display: block;
+    }
+
+    .blog-card:hover { background: var(--surface2); border-color: rgba(14,165,233,0.2); }
+
+    .blog-card .blog-tag {
+      font-family: var(--font-display);
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 10px; display: block;
+    }
+
+    .blog-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 700;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      margin-bottom: 8px; color: var(--text); line-height: 1.2;
+    }
+
+    .blog-card p {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particles"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="logo.png" alt="Peninsulas AI" />
+      <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Free Consult</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-glow3"></div>
+    <p class="hero-tag">Metro Detroit AI Consulting</p>
+    <h1>Stop Doing<br /><em>Everything</em><br />Manually.</h1>
+    <p class="hero-sub">
+      Peninsulas AI helps <strong>Metro Detroit trade and service businesses</strong>
+      use AI to save time, look sharper, and close more jobs. No tech background required.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">See Packages</a>
+      <a href="#contact" class="btn-ghost">Book a Free Call</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Serving Downriver + Metro Detroit</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Review Responses</span><span class="dot">&#10022;</span>
+      <span>Estimate Follow-Ups</span><span class="dot">&#10022;</span>
+      <span>SEO Blog Posts</span><span class="dot">&#10022;</span>
+      <span>Social Media Captions</span><span class="dot">&#10022;</span>
+      <span>Website Copy</span><span class="dot">&#10022;</span>
+      <span>Email Sequences</span><span class="dot">&#10022;</span>
+      <span>Lead Generation</span><span class="dot">&#10022;</span>
+      <span>Job Postings</span><span class="dot">&#10022;</span>
+      <span>Training Docs</span><span class="dot">&#10022;</span>
+      <span>Review Responses</span><span class="dot">&#10022;</span>
+      <span>Estimate Follow-Ups</span><span class="dot">&#10022;</span>
+      <span>SEO Blog Posts</span><span class="dot">&#10022;</span>
+      <span>Social Media Captions</span><span class="dot">&#10022;</span>
+      <span>Website Copy</span><span class="dot">&#10022;</span>
+      <span>Email Sequences</span><span class="dot">&#10022;</span>
+      <span>Lead Generation</span><span class="dot">&#10022;</span>
+      <span>Job Postings</span><span class="dot">&#10022;</span>
+      <span>Training Docs</span><span class="dot">&#10022;</span>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <section class="services" id="services">
+    <p class="section-label reveal">What We Do</p>
+    <h2 class="section-title reveal">AI That Works<br />For Your Business</h2>
+    <p class="section-sub reveal">We build and manage simple AI systems that handle the repetitive stuff so you can focus on the job.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">&#11088;</div>
+        <h3>Reputation Management</h3>
+        <p>AI-written responses to every Google review. Stay engaged without spending an hour on it.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#128232;</div>
+        <h3>Estimate Follow-Ups</h3>
+        <p>Automated follow-up emails for quotes that go cold. Most jobs are lost because nobody followed up. We fix that.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#128269;</div>
+        <h3>Local SEO Content</h3>
+        <p>Monthly blog posts and service pages written for Google. Real content that drives real local search traffic.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#128241;</div>
+        <h3>Social Media Content</h3>
+        <p>Weekly captions, post ideas, and seasonal promos written for your business. Show up online without doing it yourself.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#127760;</div>
+        <h3>Website Copy</h3>
+        <p>Service pages, About Us, and landing pages rewritten to actually convert visitors.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#9881;&#65039;</div>
+        <h3>Custom AI Workflows</h3>
+        <p>Got a repetitive task that eats your time? We build a custom AI system to handle it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIDDEN GEMS -->
+  <section class="hidden-gems" id="more">
+    <div class="gems-intro">
+      <div>
+        <p class="section-label reveal">The Stuff You Didn't Know You Needed</p>
+        <h2 class="section-title reveal">More Than You<br />Bargained For</h2>
+      </div>
+      <div>
+        <p class="section-sub reveal" style="margin-top:0;">Every package includes services most business owners don't even think to ask for. These are the quiet wins that add up fast.</p>
+      </div>
+    </div>
+
+    <div class="gems-list">
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Negative Review Recovery</strong>Drafted responses that de-escalate and protect your reputation.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Seasonal Promo Copy</strong>Ready-to-send emails and social posts for spring tune-ups, winter prep, and everything in between.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Job Posting Drafts</strong>AI-written job ads that attract better candidates.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>FAQ Page for Your Website</strong>Built from common customer questions. Ranks on Google, saves your phone time.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Proposal & Quote Templates</strong>Professional-looking estimate templates that make your business look twice as established.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Employee Onboarding Docs</strong>Basic SOPs and training materials so new hires aren't learning from scratch.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Website Audit Report</strong>We run your site through an AI grader and tell you exactly what's hurting your rankings.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Email Newsletter Drafts</strong>Monthly customer emails written and ready to send.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BY TRADE -->
+  <section class="services" id="trades">
+    <p class="section-label reveal">By Trade</p>
+    <h2 class="section-title reveal">Built for<br />Your Industry</h2>
+    <p class="section-sub reveal">Every trade has different pain points. We build systems tuned to yours.</p>
+
+    <div class="trade-grid">
+      <a href="/ai-for-hvac-companies-michigan/" class="trade-card reveal">
+        <h3>HVAC</h3>
+        <p>Estimate follow-ups, seasonal campaigns, furnace and AC service pages.</p>
+        <span class="trade-link">View HVAC Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-plumbing-companies-michigan/" class="trade-card reveal">
+        <h3>Plumbing</h3>
+        <p>Emergency response automation, water heater follow-ups, membership programs.</p>
+        <span class="trade-link">View Plumbing Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-roofing-companies-michigan/" class="trade-card reveal">
+        <h3>Roofing</h3>
+        <p>Storm response, insurance claim sequences, inspection campaign calendars.</p>
+        <span class="trade-link">View Roofing Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-electricians-michigan/" class="trade-card reveal">
+        <h3>Electrical</h3>
+        <p>Panel upgrade follow-ups, EV charger content, service call automation.</p>
+        <span class="trade-link">View Electrical Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-landscaping-companies-michigan/" class="trade-card reveal">
+        <h3>Landscaping</h3>
+        <p>Contract renewals, seasonal campaigns, snow removal marketing.</p>
+        <span class="trade-link">View Landscaping Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-cleaning-companies-michigan/" class="trade-card reveal">
+        <h3>Cleaning</h3>
+        <p>Client retention, review requests, onboarding docs, recurring service content.</p>
+        <span class="trade-link">View Cleaning Systems &rarr;</span>
+      </a>
+      <a href="/ai-for-general-contractors-michigan/" class="trade-card reveal">
+        <h3>General Contracting</h3>
+        <p>Long-cycle follow-ups, project showcases, past-client reactivation.</p>
+        <span class="trade-link">View GC Systems &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <p class="section-label reveal">Transparent Pricing</p>
+    <h2 class="section-title reveal">Pick Your<br />Starting Point</h2>
+    <p class="section-sub reveal">No long-term contracts. Cancel anytime. Upgrade when you're ready.</p>
+
+    <!-- A LA CARTE -->
+    <div class="alacarte-section">
+      <h3 class="alacarte-title reveal">One-Time Builds</h3>
+      <p class="alacarte-sub reveal">Need one thing done right? No subscription required. We build it, you own it.</p>
+      <div class="alacarte-grid">
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Services Calculator</h4>
+            <p>A lead-gen estimator tool for your website. Visitors price themselves, you get the lead.</p>
+          </div>
+          <div class="alacarte-price">$200</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Simple Automation</h4>
+            <p>One workflow. Could be a Zapier chain, email sequence, or form-to-CRM connection.</p>
+          </div>
+          <div class="alacarte-price">$200-500</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Review Responder Setup</h4>
+            <p>AI system that drafts Google review responses. We set it up, you approve and post.</p>
+          </div>
+          <div class="alacarte-price">$300</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Landing Page</h4>
+            <p>One conversion-focused page for a specific service, promo, or campaign.</p>
+          </div>
+          <div class="alacarte-price">$350</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Website Audit + Fix List</h4>
+            <p>Full SEO and conversion audit with a prioritized action plan you can hand to anyone.</p>
+          </div>
+          <div class="alacarte-price">$250</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Custom Build</h4>
+            <p>Something else? Tell us what you need and we'll scope it out. No commitment to hear a price.</p>
+          </div>
+          <div class="alacarte-price">Let's Talk</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONTHLY -->
+    <h3 class="monthly-label reveal">Monthly Retainers</h3>
+    <p class="monthly-sub reveal">Ongoing AI systems that run every month. No setup fees on any tier.</p>
+
+    <div class="pricing-grid">
+      <!-- STARTER -->
+      <div class="pricing-card reveal">
+        <p class="pricing-tier">Tier 01</p>
+        <h3>Starter</h3>
+        <p class="tagline">AI help without the headache. The basics, done right.</p>
+        <div class="price">
+          <span class="amount">$297</span>
+          <span class="period">/mo</span>
+        </div>
+        <p class="price-note">No setup fee. Cancel anytime.</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><strong>AI Review Responses</strong> up to 20 Google reviews/mo</li>
+          <li><strong>1 SEO Blog Post</strong> optimized for local search</li>
+          <li><strong>4 Social Media Captions</strong> written for your trade</li>
+          <li><strong>Monthly Website Audit Report</strong></li>
+          <li><strong>Negative Review Recovery</strong> drafted responses included</li>
+          <li><strong>Seasonal Promo Copy</strong> 1 campaign/mo</li>
+          <li>Email support within 48 hours</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Get Started</a>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="pricing-card featured reveal">
+        <p class="pricing-tier">Tier 02</p>
+        <h3>Growth</h3>
+        <p class="tagline">For businesses actively pulling ahead of local competition.</p>
+        <div class="price">
+          <span class="amount">$597</span>
+          <span class="period">/mo</span>
+        </div>
+        <p class="price-note">Everything in Starter, plus:</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><strong>Estimate Follow-Up System</strong> automated email sequences</li>
+          <li><strong>2 SEO Blog Posts</strong> double the organic reach</li>
+          <li><strong>8 Social Media Captions</strong> 2x per week</li>
+          <li><strong>FAQ Page Build</strong> one-time, SEO-optimized</li>
+          <li><strong>1 Service Page Rewrite</strong> per month</li>
+          <li><strong>Job Posting + Quote Templates</strong></li>
+          <li>Priority email + phone support</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Get Started</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="pricing-card reveal">
+        <p class="pricing-tier">Tier 03</p>
+        <h3>Pro</h3>
+        <p class="tagline">Full-stack AI operations. Systematize your growth.</p>
+        <div class="price">
+          <span class="amount">$997</span>
+          <span class="period">/mo</span>
+        </div>
+        <p class="price-note">Everything in Growth, plus:</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><strong>Custom AI Workflow</strong> 1 built-for-you automation/mo</li>
+          <li><strong>Monthly Strategy Call</strong> 30 min with Andrew</li>
+          <li><strong>Employee Onboarding Docs</strong> SOPs + training materials</li>
+          <li><strong>Email Newsletter</strong> monthly draft ready to send</li>
+          <li><strong>Unlimited Review Responses</strong></li>
+          <li><strong>4 SEO Blog Posts</strong> per month</li>
+          <li><strong>Lead Capture Page</strong> 1 landing page/quarter</li>
+          <li>Same-day response, priority everything</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Get Started</a>
+      </div>
+    </div>
+
+    <p class="pricing-footer reveal">
+      Not sure which fits? <a href="#contact">Book a free 20-minute call</a> and we'll figure it out. No sales pitch.
+    </p>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <p class="section-label reveal">The Process</p>
+    <h2 class="section-title reveal">Simple By Design</h2>
+    <p class="section-sub reveal">You run a business. This isn't supposed to be complicated.</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Free Consultation</h3>
+        <p>15 to 20 minutes. You tell me what's eating your time. I tell you what AI can and can't do for you.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Custom Setup</h3>
+        <p>I build out your AI systems, templates, and content calendar. First deliverables land within a week.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Monthly Delivery</h3>
+        <p>Every month, your content, responses, and automations show up in your inbox. Ready to go.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3>You Scale</h3>
+        <p>Your online presence grows. Leads increase. You stop spending evenings on stuff that shouldn't take that long.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FROM THE BLOG -->
+  <section class="blog-preview" id="blog">
+    <p class="section-label reveal">From the Blog</p>
+    <h2 class="section-title reveal">Practical Guides<br />For Your Trade</h2>
+    <p class="section-sub reveal">No fluff. Just actionable advice for trade and service businesses using AI.</p>
+
+    <div class="blog-grid">
+      <a href="/blog/ai-for-hvac-companies-michigan/" class="blog-card reveal">
+        <span class="blog-tag">HVAC</span>
+        <h3>How Metro Detroit HVAC Contractors Are Using AI to Win More Jobs</h3>
+        <p>The real cost of lost follow-ups and what to do about it.</p>
+      </a>
+      <a href="/blog/downriver-small-business-ai-guide/" class="blog-card reveal">
+        <span class="blog-tag">Small Business</span>
+        <h3>The Downriver Small Business Guide to AI (Without the Buzzwords)</h3>
+        <p>What AI actually does for a plumber, landscaper, or auto shop. Plain English.</p>
+      </a>
+      <a href="/blog/" class="blog-card reveal">
+        <span class="blog-tag">All Posts</span>
+        <h3>View All Blog Posts</h3>
+        <p>Guides, how-tos, and practical AI advice for Metro Detroit trade businesses.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- LEAD CAPTURE -->
+  <section class="capture" id="contact">
+    <div class="capture-glow"></div>
+    <div class="capture-inner">
+      <p class="section-label reveal">Let's Talk</p>
+      <h2 class="section-title reveal" style="text-align:center;">Get Your<br />Free Consult</h2>
+      <p class="section-sub reveal" style="margin: 0 auto; text-align:center;">Takes 30 seconds to fill out. I'll reach out within 24 hours to schedule a quick call.</p>
+
+      <form class="capture-form reveal" id="contactForm" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="project-inquiry" />
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="text" name="business" placeholder="Business Name" required />
+        </div>
+        <div class="form-row">
+          <input type="email" name="email" placeholder="Email Address" required />
+          <input type="tel" name="phone" placeholder="Phone Number" />
+        </div>
+        <select name="industry" required>
+          <option value="" disabled selected>What's your trade / industry?</option>
+          <option value="hvac">HVAC</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="electrical">Electrical</option>
+          <option value="roofing">Roofing</option>
+          <option value="landscaping">Landscaping / Lawn Care</option>
+          <option value="cleaning">Cleaning Services</option>
+          <option value="contracting">General Contracting</option>
+          <option value="auto">Auto Service</option>
+          <option value="other">Other</option>
+        </select>
+        <select name="package">
+          <option value="" disabled selected>Which package interests you? (optional)</option>
+          <option value="one-time">One-Time Build</option>
+          <option value="starter">Starter ($297/mo)</option>
+          <option value="growth">Growth ($597/mo)</option>
+          <option value="pro">Pro ($997/mo)</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+        <textarea name="message" placeholder="Anything specific you want help with? (optional)"></textarea>
+        <button type="submit" class="form-submit">Send My Request &#8594;</button>
+        <p class="form-note">No spam. No pushy sales calls. Just an honest conversation.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <h4>Got It.</h4>
+        <p>I'll be in touch within 24 hours to set up your free call. Talk soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo-link">
+          <img src="logo.png" alt="Peninsulas AI" />
+          <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+        </a>
+        <p>AI consulting for Metro Detroit trade and service businesses. Simple systems. Real results. No tech degree required.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#trades">By Trade</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="#contact">Free Consult</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a></li>
+          <li><a href="tel:3135499136">313-549-9136</a></li>
+          <li><a href="#">Wyandotte, MI</a></li>
+          <li><a href="#">Serving All of Metro Detroit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Peninsulas AI</p>
+      <p>Downriver Metro Detroit's AI Consulting Company</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle system
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+
+      const colors = [
+        'rgba(14,165,233,', // sky
+        'rgba(20,184,166,', // teal
+        'rgba(244,114,182,', // pink
+        'rgba(249,168,212,', // soft pink
+      ];
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+
+      function createParticle() {
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: Math.random() * -0.4 - 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.5 + 0.1,
+          fadeDir: Math.random() > 0.5 ? 1 : -1,
+        };
+      }
+
+      function init() {
+        resize();
+        particles = [];
+        const count = Math.min(Math.floor(w * h / 12000), 80);
+        for (let i = 0; i < count; i++) particles.push(createParticle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.opacity += p.fadeDir * 0.003;
+
+          if (p.opacity <= 0.05 || p.opacity >= 0.55) p.fadeDir *= -1;
+          if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+          if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.opacity + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', () => { resize(); });
+      init();
+      animate();
+    })();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Netlify form handling
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        try {
+          const formData = new FormData(form);
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            btn.textContent = 'Something went wrong. Try again.';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Something went wrong. Try again.';
+          btn.disabled = false;
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
