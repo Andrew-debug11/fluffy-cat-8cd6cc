@@ -107,21 +107,6 @@
 
     .nav-logo-text span { color: var(--sky); }
 
-    .nav-links {
-      display: flex; align-items: center; gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-display);
-      font-size: 0.9rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--sky); }
-
     nav a.nav-cta {
       font-family: var(--font-display);
       font-size: 0.9rem; font-weight: 700;
@@ -743,7 +728,6 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 14px 5%; }
-      .nav-links { display: none; }
       section { padding: 70px 5%; }
       .hero { padding: 100px 5% 60px; }
       .gems-intro { grid-template-columns: 1fr; gap: 30px; }
@@ -752,90 +736,6 @@
 
     @media (max-width: 560px) {
       .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* TRADE GRID */
-    .trade-grid {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2px;
-    }
-
-    .trade-card {
-      background: var(--surface); padding: 32px 28px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: border-color 0.3s, background 0.3s;
-      position: relative; overflow: hidden;
-      display: block;
-    }
-
-    .trade-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--sky), var(--teal));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .trade-card:hover::before { transform: scaleX(1); }
-    .trade-card:hover { background: var(--surface2); border-color: rgba(14,165,233,0.2); }
-
-    .trade-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem; font-weight: 700;
-      letter-spacing: 0.02em; text-transform: uppercase;
-      margin-bottom: 8px; color: var(--text);
-    }
-
-    .trade-card p {
-      font-size: 0.85rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px;
-    }
-
-    .trade-card .trade-link {
-      font-family: var(--font-display);
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--sky);
-    }
-
-    /* BLOG PREVIEW */
-    .blog-preview { background: var(--bg); }
-
-    .blog-grid {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2px;
-    }
-
-    .blog-card {
-      background: var(--surface); padding: 32px 28px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: border-color 0.3s, background 0.3s;
-      display: block;
-    }
-
-    .blog-card:hover { background: var(--surface2); border-color: rgba(14,165,233,0.2); }
-
-    .blog-card .blog-tag {
-      font-family: var(--font-display);
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--sky); margin-bottom: 10px; display: block;
-    }
-
-    .blog-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.15rem; font-weight: 700;
-      letter-spacing: 0.02em; text-transform: uppercase;
-      margin-bottom: 8px; color: var(--text); line-height: 1.2;
-    }
-
-    .blog-card p {
-      font-size: 0.85rem; color: var(--muted); line-height: 1.55;
     }
   </style>
 </head>
@@ -846,15 +746,10 @@
 
   <!-- NAV -->
   <nav>
-    <a href="/" class="nav-logo">
+    <a href="#" class="nav-logo">
       <img src="logo.png" alt="Peninsulas AI" />
       <div class="nav-logo-text">Peninsulas <span>AI</span></div>
     </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
     <a href="#contact" class="nav-cta">Free Consult</a>
   </nav>
 
@@ -966,19 +861,11 @@
       </div>
       <div class="gem-item reveal">
         <div class="gem-dot"></div>
-        <p><strong>Job Posting Drafts</strong>AI-written job ads that attract better candidates.</p>
+        <p><strong>Custom-Voiced Content</strong>Nothing generic. Every review response, blog post, and caption is written in your shop's voice.</p>
       </div>
       <div class="gem-item reveal">
         <div class="gem-dot"></div>
-        <p><strong>FAQ Page for Your Website</strong>Built from common customer questions. Ranks on Google, saves your phone time.</p>
-      </div>
-      <div class="gem-item reveal">
-        <div class="gem-dot"></div>
-        <p><strong>Proposal & Quote Templates</strong>Professional-looking estimate templates that make your business look twice as established.</p>
-      </div>
-      <div class="gem-item reveal">
-        <div class="gem-dot"></div>
-        <p><strong>Employee Onboarding Docs</strong>Basic SOPs and training materials so new hires aren't learning from scratch.</p>
+        <p><strong>Branded Short-Form Video</strong>Custom reels for social media. Edited, branded, ready to post. No filming required.</p>
       </div>
       <div class="gem-item reveal">
         <div class="gem-dot"></div>
@@ -986,53 +873,16 @@
       </div>
       <div class="gem-item reveal">
         <div class="gem-dot"></div>
+        <p><strong>Discounted Builds for Members</strong>On a monthly plan? One-time builds cost less and automation maintenance is waived.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
+        <p><strong>Service Page Refreshes</strong>We keep your service pages updated so Google keeps noticing you.</p>
+      </div>
+      <div class="gem-item reveal">
+        <div class="gem-dot"></div>
         <p><strong>Email Newsletter Drafts</strong>Monthly customer emails written and ready to send.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- BY TRADE -->
-  <section class="services" id="trades">
-    <p class="section-label reveal">By Trade</p>
-    <h2 class="section-title reveal">Built for<br />Your Industry</h2>
-    <p class="section-sub reveal">Every trade has different pain points. We build systems tuned to yours.</p>
-
-    <div class="trade-grid">
-      <a href="/ai-for-hvac-companies-michigan/" class="trade-card reveal">
-        <h3>HVAC</h3>
-        <p>Estimate follow-ups, seasonal campaigns, furnace and AC service pages.</p>
-        <span class="trade-link">View HVAC Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-plumbing-companies-michigan/" class="trade-card reveal">
-        <h3>Plumbing</h3>
-        <p>Emergency response automation, water heater follow-ups, membership programs.</p>
-        <span class="trade-link">View Plumbing Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-roofing-companies-michigan/" class="trade-card reveal">
-        <h3>Roofing</h3>
-        <p>Storm response, insurance claim sequences, inspection campaign calendars.</p>
-        <span class="trade-link">View Roofing Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-electricians-michigan/" class="trade-card reveal">
-        <h3>Electrical</h3>
-        <p>Panel upgrade follow-ups, EV charger content, service call automation.</p>
-        <span class="trade-link">View Electrical Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-landscaping-companies-michigan/" class="trade-card reveal">
-        <h3>Landscaping</h3>
-        <p>Contract renewals, seasonal campaigns, snow removal marketing.</p>
-        <span class="trade-link">View Landscaping Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-cleaning-companies-michigan/" class="trade-card reveal">
-        <h3>Cleaning</h3>
-        <p>Client retention, review requests, onboarding docs, recurring service content.</p>
-        <span class="trade-link">View Cleaning Systems &rarr;</span>
-      </a>
-      <a href="/ai-for-general-contractors-michigan/" class="trade-card reveal">
-        <h3>General Contracting</h3>
-        <p>Long-cycle follow-ups, project showcases, past-client reactivation.</p>
-        <span class="trade-link">View GC Systems &rarr;</span>
-      </a>
     </div>
   </section>
 
@@ -1045,35 +895,21 @@
     <!-- A LA CARTE -->
     <div class="alacarte-section">
       <h3 class="alacarte-title reveal">One-Time Builds</h3>
-      <p class="alacarte-sub reveal">Need one thing done right? No subscription required. We build it, you own it.</p>
+      <p class="alacarte-sub reveal">No subscription required. We build it, you own it. Monthly package members get discounted pricing.</p>
       <div class="alacarte-grid">
         <div class="alacarte-card reveal">
           <div>
-            <h4>Services Calculator</h4>
-            <p>A lead-gen estimator tool for your website. Visitors price themselves, you get the lead.</p>
+            <h4>Custom Reel</h4>
+            <p>Short-form vertical video for social media. Branded, edited, ready to post.</p>
           </div>
-          <div class="alacarte-price">$200</div>
-        </div>
-        <div class="alacarte-card reveal">
-          <div>
-            <h4>Simple Automation</h4>
-            <p>One workflow. Could be a Zapier chain, email sequence, or form-to-CRM connection.</p>
-          </div>
-          <div class="alacarte-price">$200-500</div>
-        </div>
-        <div class="alacarte-card reveal">
-          <div>
-            <h4>Review Responder Setup</h4>
-            <p>AI system that drafts Google review responses. We set it up, you approve and post.</p>
-          </div>
-          <div class="alacarte-price">$300</div>
+          <div class="alacarte-price">From $99</div>
         </div>
         <div class="alacarte-card reveal">
           <div>
             <h4>Landing Page</h4>
             <p>One conversion-focused page for a specific service, promo, or campaign.</p>
           </div>
-          <div class="alacarte-price">$350</div>
+          <div class="alacarte-price">$350–500</div>
         </div>
         <div class="alacarte-card reveal">
           <div>
@@ -1092,16 +928,45 @@
       </div>
     </div>
 
+    <!-- AUTOMATIONS -->
+    <div class="alacarte-section">
+      <h3 class="alacarte-title reveal">Automations</h3>
+      <p class="alacarte-sub reveal">Estimate follow-ups, review responders, form-to-CRM connections, Zapier workflows. Priced by scope and company size. Typically $200–$1,000. Optional $100/mo maintenance retainer for ongoing support. Package members get discounted builds and the maintenance retainer waived.</p>
+      <div class="alacarte-grid">
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Review Responder Setup</h4>
+            <p>AI system that drafts Google review responses matched to your voice. You approve and post.</p>
+          </div>
+          <div class="alacarte-price">Custom Quote</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Estimate Follow-Up System</h4>
+            <p>Automated email sequences that chase cold quotes so you don't have to.</p>
+          </div>
+          <div class="alacarte-price">Custom Quote</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Custom Workflow</h4>
+            <p>Any repetitive task that eats your time. We scope it, build it, and hand it over.</p>
+          </div>
+          <div class="alacarte-price">$200–1,000</div>
+        </div>
+      </div>
+    </div>
+
     <!-- MONTHLY -->
-    <h3 class="monthly-label reveal">Monthly Retainers</h3>
-    <p class="monthly-sub reveal">Ongoing AI systems that run every month. No setup fees on any tier.</p>
+    <h3 class="monthly-label reveal">Monthly Retainers*</h3>
+    <p class="monthly-sub reveal">Ongoing content and AI systems that run every month. No setup fees. No long-term contracts.</p>
 
     <div class="pricing-grid">
       <!-- STARTER -->
       <div class="pricing-card reveal">
         <p class="pricing-tier">Tier 01</p>
         <h3>Starter</h3>
-        <p class="tagline">AI help without the headache. The basics, done right.</p>
+        <p class="tagline">The basics, done right. Show up online without doing it yourself.</p>
         <div class="price">
           <span class="amount">$297</span>
           <span class="period">/mo</span>
@@ -1112,9 +977,10 @@
           <li><strong>AI Review Responses</strong> up to 20 Google reviews/mo</li>
           <li><strong>1 SEO Blog Post</strong> optimized for local search</li>
           <li><strong>4 Social Media Captions</strong> written for your trade</li>
+          <li><strong>1 Custom Reel</strong> per month</li>
           <li><strong>Monthly Website Audit Report</strong></li>
           <li><strong>Negative Review Recovery</strong> drafted responses included</li>
-          <li><strong>Seasonal Promo Copy</strong> 1 campaign/mo</li>
+          <li>Discounted one-time builds + automation retainer waived</li>
           <li>Email support within 48 hours</li>
         </ul>
         <a href="#contact" class="pricing-cta">Get Started</a>
@@ -1132,12 +998,11 @@
         <p class="price-note">Everything in Starter, plus:</p>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><strong>Estimate Follow-Up System</strong> automated email sequences</li>
-          <li><strong>2 SEO Blog Posts</strong> double the organic reach</li>
+          <li><strong>3 SEO Blog Posts</strong> per month</li>
           <li><strong>8 Social Media Captions</strong> 2x per week</li>
-          <li><strong>FAQ Page Build</strong> one-time, SEO-optimized</li>
-          <li><strong>1 Service Page Rewrite</strong> per month</li>
-          <li><strong>Job Posting + Quote Templates</strong></li>
+          <li><strong>2 Custom Reels</strong> per month</li>
+          <li><strong>Seasonal Promo Copy</strong> 1 campaign/mo</li>
+          <li><strong>1 Service Page Rewrite or Refresh</strong> per month</li>
           <li>Priority email + phone support</li>
         </ul>
         <a href="#contact" class="pricing-cta">Get Started</a>
@@ -1147,7 +1012,7 @@
       <div class="pricing-card reveal">
         <p class="pricing-tier">Tier 03</p>
         <h3>Pro</h3>
-        <p class="tagline">Full-stack AI operations. Systematize your growth.</p>
+        <p class="tagline">Full content engine. Systematize your online presence.</p>
         <div class="price">
           <span class="amount">$997</span>
           <span class="period">/mo</span>
@@ -1155,13 +1020,11 @@
         <p class="price-note">Everything in Growth, plus:</p>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><strong>Custom AI Workflow</strong> 1 built-for-you automation/mo</li>
-          <li><strong>Monthly Strategy Call</strong> 30 min with Andrew</li>
-          <li><strong>Employee Onboarding Docs</strong> SOPs + training materials</li>
-          <li><strong>Email Newsletter</strong> monthly draft ready to send</li>
-          <li><strong>Unlimited Review Responses</strong></li>
           <li><strong>4 SEO Blog Posts</strong> per month</li>
-          <li><strong>Lead Capture Page</strong> 1 landing page/quarter</li>
+          <li><strong>3 Custom Reels</strong> per month</li>
+          <li><strong>Monthly Email Newsletter</strong> draft ready to send</li>
+          <li><strong>Unlimited Review Responses</strong></li>
+          <li><strong>Monthly Strategy Call</strong> 30 min with Andrew</li>
           <li>Same-day response, priority everything</li>
         </ul>
         <a href="#contact" class="pricing-cta">Get Started</a>
@@ -1169,6 +1032,7 @@
     </div>
 
     <p class="pricing-footer reveal">
+      *All packages are starting points. <a href="#contact">Contact us</a> to customize a package based on your business needs.<br />
       Not sure which fits? <a href="#contact">Book a free 20-minute call</a> and we'll figure it out. No sales pitch.
     </p>
   </section>
@@ -1200,31 +1064,6 @@
         <h3>You Scale</h3>
         <p>Your online presence grows. Leads increase. You stop spending evenings on stuff that shouldn't take that long.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- FROM THE BLOG -->
-  <section class="blog-preview" id="blog">
-    <p class="section-label reveal">From the Blog</p>
-    <h2 class="section-title reveal">Practical Guides<br />For Your Trade</h2>
-    <p class="section-sub reveal">No fluff. Just actionable advice for trade and service businesses using AI.</p>
-
-    <div class="blog-grid">
-      <a href="/blog/ai-for-hvac-companies-michigan/" class="blog-card reveal">
-        <span class="blog-tag">HVAC</span>
-        <h3>How Metro Detroit HVAC Contractors Are Using AI to Win More Jobs</h3>
-        <p>The real cost of lost follow-ups and what to do about it.</p>
-      </a>
-      <a href="/blog/downriver-small-business-ai-guide/" class="blog-card reveal">
-        <span class="blog-tag">Small Business</span>
-        <h3>The Downriver Small Business Guide to AI (Without the Buzzwords)</h3>
-        <p>What AI actually does for a plumber, landscaper, or auto shop. Plain English.</p>
-      </a>
-      <a href="/blog/" class="blog-card reveal">
-        <span class="blog-tag">All Posts</span>
-        <h3>View All Blog Posts</h3>
-        <p>Guides, how-tos, and practical AI advice for Metro Detroit trade businesses.</p>
-      </a>
     </div>
   </section>
 
@@ -1263,6 +1102,7 @@
         <select name="package">
           <option value="" disabled selected>Which package interests you? (optional)</option>
           <option value="one-time">One-Time Build</option>
+          <option value="automation">Automation (Custom Quote)</option>
           <option value="starter">Starter ($297/mo)</option>
           <option value="growth">Growth ($597/mo)</option>
           <option value="pro">Pro ($997/mo)</option>
@@ -1294,9 +1134,8 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#trades">By Trade</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="/blog/">Blog</a></li>
+          <li><a href="#how">How It Works</a></li>
           <li><a href="#contact">Free Consult</a></li>
         </ul>
       </div>
