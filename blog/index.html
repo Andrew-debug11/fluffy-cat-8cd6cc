@@ -270,9 +270,104 @@
 
     @media (max-width: 768px) {
       nav { padding: 14px 5%; }
-      .nav-links { display: none; }
       .blog-index-wrapper { padding: 110px 5% 60px; }
       .footer-grid { grid-template-columns: 1fr; }
+    }
+.nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 20px;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center;
+      gap: 5px; width: 28px; height: 28px;
+      background: none; border: none; cursor: pointer;
+      padding: 0; z-index: 110;
+    }
+
+    .nav-hamburger span {
+      display: block; width: 100%; height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+
+    .nav-hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+
+      .nav-links {
+        position: fixed; top: 0; right: 0;
+        width: 260px; height: 100vh;
+        flex-direction: column; align-items: flex-start;
+        gap: 0;
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        padding: 80px 32px 32px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 105;
+      }
+
+      .nav-links.open { transform: translateX(0); }
+
+      .nav-links a {
+        font-size: 1rem;
+        padding: 14px 0;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 104;
+      }
+
+      .nav-overlay.open { display: block; }
+
+      nav a.nav-cta { display: none; }
+
+      .nav-links .nav-cta-mobile {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.9rem; font-weight: 700;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--sky), var(--teal));
+        padding: 12px 24px; text-decoration: none; text-align: center;
+        margin-top: 20px; width: 100%;
+        border-bottom: none;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .nav-cta-mobile { display: none; }
+      .nav-overlay { display: none !important; }
     }
   </style>
 </head>
@@ -285,12 +380,21 @@
       <img src="/logo.png" alt="Peninsulas AI" />
       <div class="nav-logo-text">Peninsulas <span>AI</span></div>
     </a>
-    <ul class="nav-links">
-      <li><a href="/#services">Services</a></li>
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/blog/">Blog</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#services" class="nav-link">Services</a></li>
+      <li><a href="/#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="/#how" class="nav-link">How It Works</a></li>
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      <a href="/#contact" class="nav-cta-mobile nav-link">Free Consult</a>
     </ul>
-    <a href="/#contact" class="nav-cta">Free Consult</a>
+    <div class="nav-right">
+      <a href="/#contact" class="nav-cta">Free Consult</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
   </nav>
 
   <div class="blog-index-wrapper">
