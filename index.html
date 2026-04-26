@@ -391,6 +391,86 @@
     /* HIDDEN GEMS */
     .hidden-gems { background: var(--surface); }
 
+    /* TRAINING CALLOUT */
+    .training-callout {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 5%;
+      position: relative; z-index: 1;
+    }
+
+    .training-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .training-callout h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .training-callout h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .training-callout p {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.7; margin-bottom: 12px;
+    }
+
+    .training-callout p strong { color: var(--text); }
+
+    .training-details {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .training-details::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+    }
+
+    .training-detail-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 16px;
+    }
+
+    .training-detail-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.5; margin-bottom: 10px;
+    }
+
+    .training-detail-item::before {
+      content: '→'; color: var(--sky);
+      font-weight: 700; flex-shrink: 0;
+    }
+
+    .training-detail-item strong { color: var(--text); }
+
+    .training-cta-wrap { margin-top: 24px; }
+
+    @media (max-width: 768px) {
+      .training-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
     .gems-intro {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 60px; align-items: start; margin-bottom: 60px;
@@ -872,6 +952,7 @@
     <p class="hero-sub">
       Peninsulas AI helps <strong>Metro Detroit trade and service businesses</strong>
       use AI to save time, look sharper, and close more jobs. No tech background required.
+      We show your staff how to use the tools already in your box, so they can get back to the human stuff.
     </p>
     <div class="hero-actions">
       <a href="#pricing" class="btn-primary">See Packages</a>
@@ -886,6 +967,7 @@
   <!-- MARQUEE -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
+      <span>AI Staff Training</span><span class="dot">&#10022;</span>
       <span>Review Responses</span><span class="dot">&#10022;</span>
       <span>Estimate Follow-Ups</span><span class="dot">&#10022;</span>
       <span>SEO Blog Posts</span><span class="dot">&#10022;</span>
@@ -895,6 +977,7 @@
       <span>Lead Generation</span><span class="dot">&#10022;</span>
       <span>Job Postings</span><span class="dot">&#10022;</span>
       <span>Training Docs</span><span class="dot">&#10022;</span>
+      <span>AI Staff Training</span><span class="dot">&#10022;</span>
       <span>Review Responses</span><span class="dot">&#10022;</span>
       <span>Estimate Follow-Ups</span><span class="dot">&#10022;</span>
       <span>SEO Blog Posts</span><span class="dot">&#10022;</span>
@@ -914,6 +997,11 @@
     <p class="section-sub reveal">We build and manage simple AI systems that handle the repetitive stuff so you can focus on the job.</p>
 
     <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">&#127891;</div>
+        <h3>AI Staff Training</h3>
+        <p>Your team already has the tools. They just don't know how to use them yet. We come in, assess what you're paying for, and teach your people to actually use it. Hands-on. In your voice. Not a lecture.</p>
+      </div>
       <div class="service-card reveal">
         <div class="service-icon">&#11088;</div>
         <h3>Reputation Management</h3>
@@ -946,6 +1034,29 @@
       </div>
     </div>
   </section>
+
+  <!-- TRAINING CALLOUT -->
+  <div class="training-callout">
+    <div class="training-inner">
+      <div class="reveal">
+        <p class="section-label">Start Here</p>
+        <h2>We Recommend Starting With <em>Training</em></h2>
+        <p>Most businesses are already paying for AI tools they barely touch. Gmail, Google Workspace, ChatGPT, CRM features collecting dust. Your staff isn't resistant to AI. They just haven't been shown what it can do for them.</p>
+        <p><strong>Our on-site or virtual training session is the fastest way to start your AI journey.</strong> We walk in, assess what tools you already have, and teach your team to actually use them. Not a slide deck. Hands-on. In your company's voice. By the time we leave, your people have working systems, not good intentions.</p>
+        <div class="training-cta-wrap">
+          <a href="#contact" class="btn-primary">Book a Training Session</a>
+        </div>
+      </div>
+      <div class="training-details reveal">
+        <div class="training-detail-label">What You Get</div>
+        <div class="training-detail-item"><strong>Tool audit</strong> of what you're already paying for</div>
+        <div class="training-detail-item"><strong>Hands-on session</strong> with your actual workflows</div>
+        <div class="training-detail-item"><strong>AI tools programmed</strong> with your company voice, context, and FAQs</div>
+        <div class="training-detail-item"><strong>Quick-reference guide</strong> your team keeps after we leave</div>
+        <div class="training-detail-item"><strong>On-site or virtual.</strong> Half day. Your whole team.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- HIDDEN GEMS -->
   <section class="hidden-gems" id="more">
@@ -1000,6 +1111,28 @@
     <p class="section-label reveal">Transparent Pricing</p>
     <h2 class="section-title reveal">Pick Your<br />Starting Point</h2>
     <p class="section-sub reveal">No long-term contracts. Cancel anytime. Upgrade when you're ready.</p>
+
+    <!-- AI TRAINING -->
+    <div class="alacarte-section">
+      <h3 class="alacarte-title reveal">AI Staff Training</h3>
+      <p class="alacarte-sub reveal">The best place to start. We assess your tools, train your team, and leave you with working systems. On-site or virtual.</p>
+      <div class="alacarte-grid">
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Team Training Session</h4>
+            <p>Half-day, hands-on session for your staff. We audit your tools, program AI with your voice and context, and build working workflows on the spot. Includes a quick-reference guide.</p>
+          </div>
+          <div class="alacarte-price">From $500</div>
+        </div>
+        <div class="alacarte-card reveal">
+          <div>
+            <h4>Quarterly Tune-Ups</h4>
+            <p>Follow-up sessions to onboard new hires, refine prompts, and show your team what's new. Keep the momentum going.</p>
+          </div>
+          <div class="alacarte-price">$300–500</div>
+        </div>
+      </div>
+    </div>
 
     <!-- A LA CARTE -->
     <div class="alacarte-section">
@@ -1210,6 +1343,7 @@
         </select>
         <select name="package">
           <option value="" disabled selected>Which package interests you? (optional)</option>
+          <option value="training">AI Staff Training</option>
           <option value="one-time">One-Time Build</option>
           <option value="automation">Automation (Custom Quote)</option>
           <option value="starter">Starter ($297/mo)</option>
