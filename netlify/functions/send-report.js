@@ -52,7 +52,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         from: "Veronica at Peninsulas AI <veronica@peninsulasai.com>",
-        to: ["amjerni@gmail.com"],
+        to: ["jernigan.m.andrew@gmailcom"],
         subject: `New Grader Lead: ${email} — ${report.url} scored ${report.overallScore}/10`,
         html: `<p><strong>Email:</strong> ${email}</p><p><strong>Site:</strong> ${report.url}</p><p><strong>Score:</strong> ${report.overallScore}/10</p><p><strong>Summary:</strong> ${report.overallSummary}</p>`,
       }),
