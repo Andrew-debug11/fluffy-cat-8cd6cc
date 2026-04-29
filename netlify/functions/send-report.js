@@ -43,26 +43,25 @@ exports.handler = async (event) => {
       return { statusCode: 500, headers, body: JSON.stringify({ error: "Failed to send report email" }) };
     }
 
-    // Notify andrew@ of new lead (fire and forget, don't block)
-    fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "Veronica at Peninsulas AI <veronica@peninsulasai.com>",
-        to: ["amjerni@gmail.com"],
-        subject: `New Grader Lead: ${email} — ${report.url} scored ${report.overallScore}/10`,
-        html: `<p><strong>Email:</strong> ${email}</p><p><strong>Site:</strong> ${report.url}</p><p><strong>Score:</strong> ${report.overallScore}/10</p><p><strong>Summary:</strong> ${report.overallSummary}</p>`,
-      }),
-    }).catch(err => console.error("Lead notify error:", err));
-
-    return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
-
-  } catch (err) {
-    console.error("send-report error:", err);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: "Email delivery failed" }) };
+    // Notify of new lead
+try {
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "Veronica at Peninsulas AI <veronica@peninsulasai.com>",
+      to: ["amjerni@gmail.com"],
+      subject: `New Grader Lead: ${email} — ${report.url} scored ${report.overallScore}/10`,
+      html: `<p><strong>Email:</strong> ${email}</p><p><strong>Site:</strong> ${report.url}</p><p><strong>Score:</strong> ${report.overallScore}/10</p><p><strong>Summary:</strong> ${report.overallSummary}</p>`,
+    }),
+  });
+} catch (err) {
+  console.error("Lead notify error:", err);
+}
+    return { statusCode: 200, headers, body: JSON.stringify({ error: "Email delivery failed" }) };
   }
 };
 
