@@ -1,0 +1,8 @@
+{
+  "name": "peninsulas-ai-grader",
+  "version": "1.0.0",
+  "description": "Website Grader lead gen tool for Peninsulas AI",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

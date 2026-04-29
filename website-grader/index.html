@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Website Grader — Peninsulas AI</title>
+  <meta name="description" content="Find out what your website is costing you. Get a free AI-powered score covering SEO, mobile, and conversion in 30 seconds." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://peninsulasai.com/grader" />
+  <meta property="og:title" content="Free Website Grader — Peninsulas AI" />
+  <meta property="og:description" content="Paste your URL. Get a real score. Find out exactly what's hurting you online." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface2: #141425;
+      --border: rgba(255,255,255,0.07);
+      --sky: #0EA5E9;
+      --teal: #14B8A6;
+      --pink: #F472B6;
+      --text: #F0EDE8;
+      --muted: #8899AA;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Syne', sans-serif;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: 0.3;
+    }
+
+    /* Ambient glow */
+    .glow-orb {
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-orb-2 {
+      position: fixed;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,184,166,0.06) 0%, transparent 70%);
+      bottom: 10%; left: -100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo span {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* MAIN LAYOUT */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sky);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sky);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 8vw, 64px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    h1 .grad {
+      background: linear-gradient(135deg, var(--sky) 0%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* INPUT CARD */
+    .input-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+    }
+    .input-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .url-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .url-input {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .url-input::placeholder { color: rgba(136,153,170,0.5); }
+    .url-input:focus { border-color: rgba(14,165,233,0.5); }
+    .btn-grade {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 24px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #080810;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn-grade:hover { opacity: 0.9; }
+    .btn-grade:active { transform: scale(0.98); }
+    .btn-grade:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .input-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      text-align: center;
+    }
+    .error-msg {
+      background: rgba(244,114,182,0.1);
+      border: 1px solid rgba(244,114,182,0.25);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--pink);
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* LOADING STATE */
+    .loading-state {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+    .spinner-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .spinner {
+      width: 24px; height: 24px;
+      border: 2px solid var(--border);
+      border-top-color: var(--sky);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .loading-steps {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* PREVIEW STATE */
+    .preview-state { display: none; }
+
+    .score-reveal {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .score-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .score-circle {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      background: linear-gradient(var(--surface), var(--surface)) padding-box,
+                  linear-gradient(135deg, var(--sky), var(--teal)) border-box;
+      margin-bottom: 16px;
+    }
+    .score-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .score-denom {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .score-summary {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .teaser-finding {
+      background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(20,184,166,0.08));
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+    .teaser-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--sky);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .teaser-text {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* EMAIL GATE */
+    .gate-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .gate-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .gate-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .gate-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .gate-checklist {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .gate-checklist li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gate-checklist li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .gate-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      text-align: center;
+    }
+    .gate-input::placeholder { color: rgba(136,153,170,0.5); }
+    .gate-input:focus { border-color: rgba(14,165,233,0.5); }
+    .btn-unlock {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #080810;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+    .btn-unlock:hover { opacity: 0.9; }
+    .btn-unlock:disabled { opacity: 0.5; cursor: not-allowed; }
+    .gate-privacy {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* FULL REPORT */
+    .full-report { display: none; }
+
+    .report-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .report-url {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      word-break: break-all;
+    }
+    .report-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    /* SECTION SCORE CARDS */
+    .section-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .section-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .section-score-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .score-pill {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .score-pill.high { color: var(--teal); }
+    .score-pill.mid { color: var(--sky); }
+    .score-pill.low { color: var(--pink); }
+    .score-bar-wrap {
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .score-bar {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.8s ease;
+    }
+    .score-bar.high { background: linear-gradient(90deg, var(--teal), var(--sky)); }
+    .score-bar.mid { background: linear-gradient(90deg, var(--sky), rgba(14,165,233,0.6)); }
+    .score-bar.low { background: linear-gradient(90deg, var(--pink), rgba(244,114,182,0.6)); }
+    .findings-list {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+    .findings-list li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 3px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .findings-list li::before {
+      content: '→';
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .fix-block {
+      background: rgba(20,184,166,0.06);
+      border: 1px solid rgba(20,184,166,0.15);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .fix-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .fix-text {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(20,184,166,0.08));
+      border: 1px solid rgba(14,165,233,0.15);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cta-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-cta-primary {
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #080810;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .btn-cta-primary:hover { opacity: 0.9; }
+    .btn-cta-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 24px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cta-secondary:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* GRADE ANOTHER */
+    .grade-another {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 24px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      text-align: center;
+      padding: 20px 0 0;
+      border-top: 1px solid var(--border);
+    }
+    .trust-bar p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .trust-bar a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .trust-bar a:hover { color: var(--sky); }
+
+    /* SUCCESS EMAIL MESSAGE */
+    .email-sent-msg {
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.25);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--teal);
+      text-align: center;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* RESPONSIVE */
+    @media (min-width: 480px) {
+      .cta-buttons { flex-direction: row; }
+      .btn-cta-primary, .btn-cta-secondary { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow-orb"></div>
+<div class="glow-orb-2"></div>
+
+<nav>
+  <a href="/" class="nav-logo">Peninsulas <span>AI</span></a>
+  <a href="/" class="nav-back">← Back to site</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Free Website Grader</div>
+    <h1>Find Out What Your<br><span class="grad">Website Is Costing You</span></h1>
+    <p class="hero-sub">Paste your URL. Get a real score in about 30 seconds. No account, no credit card, no fluff.</p>
+  </section>
+
+  <!-- URL INPUT -->
+  <div class="input-card" id="inputCard">
+    <label class="input-label" for="urlInput">Your Website URL</label>
+    <div class="url-row">
+      <input
+        type="url"
+        id="urlInput"
+        class="url-input"
+        placeholder="yourcompany.com"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <button class="btn-grade" id="gradeBtn" onclick="startGrading()">Grade It</button>
+    </div>
+    <p class="input-note">Works on any public website. Results are private to you.</p>
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading-state" id="loadingState">
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <span class="loading-text">Analyzing your site...</span>
+    </div>
+    <p class="loading-steps" id="loadingStep">Fetching page content</p>
+  </div>
+
+  <!-- PREVIEW (teaser + email gate) -->
+  <div class="preview-state" id="previewState">
+
+    <div class="score-reveal">
+      <p class="score-label">Overall Score</p>
+      <div class="score-circle">
+        <span class="score-number" id="previewScore">--</span>
+        <span class="score-denom">/10</span>
+      </div>
+      <p class="score-summary" id="previewSummary"></p>
+    </div>
+
+    <div class="teaser-finding">
+      <p class="teaser-label">🔍 Top Finding</p>
+      <p class="teaser-text" id="teaserText"></p>
+    </div>
+
+    <!-- EMAIL GATE -->
+    <div class="gate-card" id="gateCard">
+      <div class="gate-icon">📋</div>
+      <h2 class="gate-title">See the Full Report</h2>
+      <p class="gate-sub">Your breakdown covers 5 categories: SEO, mobile, AI readiness, conversion, and Google Business alignment. Enter your email and we'll send it too.</p>
+      <ul class="gate-checklist">
+        <li>Section-by-section scores with specific findings</li>
+        <li>Exact fixes for every weak spot</li>
+        <li>Report emailed to you for reference</li>
+      </ul>
+      <div class="gate-form">
+        <input type="email" id="gateEmail" class="gate-input" placeholder="your@email.com" />
+        <button class="btn-unlock" id="unlockBtn" onclick="unlockReport()">Unlock My Full Report →</button>
+      </div>
+      <p class="gate-privacy">No spam. Unsubscribe any time. We're not going to sell your email to anyone.</p>
+      <div class="email-sent-msg" id="emailSentMsg">✓ Report sent to your inbox.</div>
+    </div>
+
+  </div>
+
+  <!-- FULL REPORT -->
+  <div class="full-report" id="fullReport">
+
+    <div class="report-header">
+      <p class="report-url" id="reportUrl"></p>
+      <h2 class="report-title">Your Website Grade Report</h2>
+    </div>
+
+    <div class="section-grid" id="sectionGrid">
+      <!-- JS populates -->
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2 class="cta-title">Want a Human Walkthrough?</h2>
+      <p class="cta-sub">We'll go through the report together and show you exactly what to prioritize. 30 minutes. No obligation. We work with trade and service businesses across Metro Detroit.</p>
+      <div class="cta-buttons">
+        <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" class="btn-cta-primary">Book a Free Call</a>
+        <a href="https://peninsulasai.com/#contact" class="btn-cta-secondary">$300 Full Audit</a>
+      </div>
+      <p class="cta-note">The $300 audit includes a recorded walkthrough, prioritized fix list, and 30-day follow-up check.</p>
+    </div>
+
+    <div class="grade-another">
+      <button class="btn-ghost" onclick="resetGrader()">← Grade Another Site</button>
+    </div>
+
+    <div class="trust-bar">
+      <p>Peninsulas AI · Downriver + Metro Detroit · <a href="https://peninsulasai.com">peninsulasai.com</a></p>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+
+  let currentReport = null;
+
+  function showError(msg) {
+    const el = document.getElementById("errorMsg");
+    el.textContent = msg;
+    el.style.display = "block";
+  }
+
+  function hideError() {
+    document.getElementById("errorMsg").style.display = "none";
+  }
+
+  function setLoading(step) {
+    document.getElementById("loadingStep").textContent = step;
+  }
+
+  async function startGrading() {
+    hideError();
+    let url = document.getElementById("urlInput").value.trim();
+    if (!url) {
+      showError("Enter a URL first.");
+      return;
+    }
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      url = "https://" + url;
+    }
+    try { new URL(url); } catch {
+      showError("That doesn't look like a valid URL.");
+      return;
+    }
+
+    // UI state: show loading
+    document.getElementById("inputCard").style.display = "none";
+    document.getElementById("previewState").style.display = "none";
+    document.getElementById("fullReport").style.display = "none";
+    document.getElementById("loadingState").style.display = "block";
+
+    const steps = [
+      "Fetching page content",
+      "Checking SEO structure",
+      "Analyzing mobile setup",
+      "Reviewing trust signals",
+      "Generating your score",
+    ];
+    let stepIdx = 0;
+    const stepTimer = setInterval(() => {
+      stepIdx = (stepIdx + 1) % steps.length;
+      setLoading(steps[stepIdx]);
+    }, 1800);
+
+    try {
+      const res = await fetch("/api/grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+
+      clearInterval(stepTimer);
+      const data = await res.json();
+
+      if (!res.ok) {
+        document.getElementById("inputCard").style.display = "block";
+        document.getElementById("loadingState").style.display = "none";
+        showError(data.error || "Something went wrong. Try again.");
+        return;
+      }
+
+      currentReport = data;
+      showPreview(data);
+
+    } catch (err) {
+      clearInterval(stepTimer);
+      document.getElementById("inputCard").style.display = "block";
+      document.getElementById("loadingState").style.display = "none";
+      showError("Connection failed. Check your internet and try again.");
+    }
+  }
+
+  function showPreview(report) {
+    document.getElementById("loadingState").style.display = "none";
+    document.getElementById("previewState").style.display = "block";
+
+    document.getElementById("previewScore").textContent = report.overallScore;
+    document.getElementById("previewSummary").textContent = report.overallSummary;
+    document.getElementById("teaserText").textContent = report.teaserFinding;
+
+    // Color the score number
+    const scoreEl = document.getElementById("previewScore");
+    const score = report.overallScore;
+    if (score >= 7) scoreEl.style.cssText = "background: linear-gradient(135deg, #14B8A6, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
+    else if (score >= 4) scoreEl.style.cssText = "background: linear-gradient(135deg, #0EA5E9, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
+    else scoreEl.style.cssText = "color: #F472B6; -webkit-text-fill-color: #F472B6;";
+  }
+
+  function getScoreClass(score) {
+    if (score >= 7) return "high";
+    if (score >= 4) return "mid";
+    return "low";
+  }
+
+  function renderSections(report) {
+    const grid = document.getElementById("sectionGrid");
+    grid.innerHTML = "";
+    report.sections.forEach(section => {
+      const cls = getScoreClass(section.score);
+      const barWidth = (section.score / 10) * 100;
+      const card = document.createElement("div");
+      card.className = "section-card";
+      card.innerHTML = `
+        <div class="section-header">
+          <span class="section-name">${section.label}</span>
+          <div class="section-score-badge">
+            <span class="score-pill ${cls}">${section.score}</span>
+            <span style="color:var(--muted);font-size:13px;">/10</span>
+          </div>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar ${cls}" style="width: 0%" data-width="${barWidth}%"></div>
+        </div>
+        <ul class="findings-list">
+          ${section.findings.map(f => `<li>${f}</li>`).join("")}
+        </ul>
+        <div class="fix-block">
+          <p class="fix-label">Fix This First</p>
+          <p class="fix-text">${section.fix}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Animate bars after brief delay
+    setTimeout(() => {
+      document.querySelectorAll(".score-bar").forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    }, 100);
+  }
+
+  async function unlockReport() {
+    const email = document.getElementById("gateEmail").value.trim();
+    if (!email || !email.includes("@")) {
+      document.getElementById("gateEmail").focus();
+      document.getElementById("gateEmail").style.borderColor = "rgba(244,114,182,0.5)";
+      return;
+    }
+    document.getElementById("gateEmail").style.borderColor = "";
+
+    const btn = document.getElementById("unlockBtn");
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    // Send report via Resend (server-side Netlify function)
+    if (currentReport) {
+      try {
+        const res = await fetch("/api/send-report", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, report: currentReport }),
+        });
+        if (res.ok) {
+          document.getElementById("emailSentMsg").style.display = "block";
+        }
+      } catch (err) {
+        console.error("Send report error:", err);
+        // Still show report even if email fails
+      }
+    }
+
+    // Show full report
+    document.getElementById("gateCard").style.display = "none";
+    document.getElementById("fullReport").style.display = "block";
+    document.getElementById("reportUrl").textContent = currentReport.url;
+    renderSections(currentReport);
+
+    // Scroll to report
+    document.getElementById("fullReport").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function resetGrader() {
+    currentReport = null;
+    document.getElementById("urlInput").value = "";
+    document.getElementById("gateEmail").value = "";
+    document.getElementById("gateCard").style.display = "block";
+    document.getElementById("emailSentMsg").style.display = "none";
+    document.getElementById("fullReport").style.display = "none";
+    document.getElementById("previewState").style.display = "none";
+    document.getElementById("inputCard").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Enter key on URL input
+  document.getElementById("urlInput").addEventListener("keydown", e => {
+    if (e.key === "Enter") startGrading();
+  });
+
+  // Enter key on email input
+  document.getElementById("gateEmail").addEventListener("keydown", e => {
+    if (e.key === "Enter") unlockReport();
+  });
+</script>
+
+</body>
+</html>
