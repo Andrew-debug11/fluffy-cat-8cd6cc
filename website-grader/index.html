@@ -755,7 +755,7 @@
         <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" class="btn-cta-primary">Book My Free Call</a>
         <a href="https://peninsulasai.com/#contact" class="btn-cta-secondary">Get the Full Roadmap — $300</a>
       </div>
-      <p class="cta-note">Not ready to talk? The $300 audit goes deeper. You get a 20+ page plain-English report covering every SEO issue on your site, a social media content plan built around your business, and a prioritized fix list you can hand to anyone. A local SEO agency charges $3,000 a month just to figure out what's wrong. This is $300 to skip straight to the answers.<br /><br /><strong>Here's how it works:</strong> Fill out the contact form and mention the full audit. The report takes 24 hours. Every line gets checked by hand — not just auto-generated and emailed. You pay when it's delivered. Included with every report: a 30-minute call where we walk through the findings together so you actually know what to do with it.</p>
+      <p class="cta-note">Not ready to talk? The $300 audit goes deeper. You get a 20+ page plain-English report covering every SEO issue on your site, a social media content plan built around your business, and a prioritized fix list you can hand to anyone. A local SEO agency charges $3,000 a month just to figure out what's wrong. This is $300 to skip straight to the answers.</p>
     </div>
 
     <div class="grade-another">
@@ -854,16 +854,27 @@
     document.getElementById("loadingState").style.display = "none";
     document.getElementById("previewState").style.display = "block";
 
-    document.getElementById("previewScore").textContent = report.overallScore;
     document.getElementById("previewSummary").textContent = report.overallSummary;
     document.getElementById("teaserText").textContent = report.teaserFinding;
 
-    // Color the score number
     const scoreEl = document.getElementById("previewScore");
-    const score = report.overallScore;
-    if (score >= 7) scoreEl.style.cssText = "background: linear-gradient(135deg, #14B8A6, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
-    else if (score >= 4) scoreEl.style.cssText = "background: linear-gradient(135deg, #0EA5E9, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
-    else scoreEl.style.cssText = "color: #F472B6; -webkit-text-fill-color: #F472B6;";
+    const denomEl = scoreEl.nextElementSibling;
+
+    if (report.isSPA || report.overallScore === null) {
+      // SPA detected — replace score circle with label
+      scoreEl.style.fontSize = "18px";
+      scoreEl.style.letterSpacing = "0.02em";
+      scoreEl.textContent = "JS";
+      denomEl.textContent = "Rendered";
+      scoreEl.style.cssText += "color: #8899AA; -webkit-text-fill-color: #8899AA; font-size: 18px;";
+    } else {
+      scoreEl.textContent = report.overallScore;
+      // Color the score number
+      const score = report.overallScore;
+      if (score >= 7) scoreEl.style.cssText = "background: linear-gradient(135deg, #14B8A6, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
+      else if (score >= 4) scoreEl.style.cssText = "background: linear-gradient(135deg, #0EA5E9, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
+      else scoreEl.style.cssText = "color: #F472B6; -webkit-text-fill-color: #F472B6;";
+    }
   }
 
   function getScoreClass(score) {
@@ -875,6 +886,19 @@
   function renderSections(report) {
     const grid = document.getElementById("sectionGrid");
     grid.innerHTML = "";
+
+    // SPA report — no sections, show manual review message instead
+    if (report.isSPA || !report.sections || report.sections.length === 0) {
+      grid.innerHTML = `
+        <div class="section-card" style="text-align:center;padding:32px 24px;">
+          <p style="font-size:32px;margin-bottom:16px;">🔍</p>
+          <p style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:12px;">Manual Review Required</p>
+          <p style="color:var(--muted);font-size:15px;line-height:1.6;">This site builds its pages in the browser after load. Our scanner confirmed it's live and secure, but scoring requires a human eye. Book a free call and we'll walk through it with you.</p>
+        </div>
+      `;
+      return;
+    }
+
     report.sections.forEach(section => {
       const cls = getScoreClass(section.score);
       const barWidth = (section.score / 10) * 100;
