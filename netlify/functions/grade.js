@@ -1,7 +1,6 @@
 const Anthropic = require("@anthropic-ai/sdk");
 
 // Simple in-memory cache (survives warm function instances, resets on cold starts)
-// For production, swap to KV store or Redis. Fine for v1.
 const reportCache = new Map();
 const ipRateLimits = new Map();
 
@@ -31,6 +30,74 @@ function getCachedReport(url) {
   return entry.report;
 }
 
+// SPA detection — runs signals in priority order, returns on first match
+function detectSPA(html) {
+  // Signal 1: Body text under 500 characters after stripping tags
+  const stripped = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  if (stripped.length < 500) {
+    return { isSPA: true, reason: "empty-body" };
+  }
+
+  // Signal 2: Known SPA root containers
+  if (/<div[^>]+id=["'](root|app|__next|___gatsby)["']/i.test(html)) {
+    return { isSPA: true, reason: "spa-container" };
+  }
+
+  // Signal 3: Wix markers
+  if (
+    /static\.parastorage\.com/i.test(html) ||
+    /wix\.com/i.test(html) ||
+    /X-Wix-/i.test(html)
+  ) {
+    return { isSPA: true, reason: "wix" };
+  }
+
+  // Signal 4: Squarespace markers
+  if (
+    /Static\.SQUARESPACE_CONTEXT/i.test(html) ||
+    /squarespace-cdn\.com/i.test(html)
+  ) {
+    return { isSPA: true, reason: "squarespace" };
+  }
+
+  // Signal 5: Webflow markers
+  if (/data-wf-page/i.test(html) || /webflow\.com/i.test(html)) {
+    return { isSPA: true, reason: "webflow" };
+  }
+
+  // Signal 6: Generic SPA fallback — small HTML, many scripts, no semantic content
+  const scriptCount = (html.match(/<script/gi) || []).length;
+  const hasSemanticContent = /<(main|article)[^>]*>/i.test(html);
+  if (html.length < 5000 && scriptCount >= 3 && !hasSemanticContent) {
+    return { isSPA: true, reason: "generic-spa" };
+  }
+
+  return { isSPA: false };
+}
+
+function buildSPAReport(url, reason) {
+  const platformNames = {
+    wix: "Wix",
+    squarespace: "Squarespace",
+    webflow: "Webflow",
+    "spa-container": "a JavaScript framework",
+    "empty-body": "a JavaScript framework",
+    "generic-spa": "a JavaScript framework",
+  };
+  const platform = platformNames[reason] || "a JavaScript framework";
+
+  return {
+    url,
+    isSPA: true,
+    spaReason: reason,
+    overallScore: null,
+    overallSummary: `This site loads its content dynamically — it's built on ${platform}. Our scanner reads the raw page code, and on sites like this, that code is mostly empty until a browser runs it. We can confirm the site is live and the connection is secure, but we can't score what we can't see.`,
+    teaserFinding: `This site is built on ${platform}. Our scanner can confirm it's live and secure, but can't read the content until a browser renders it. A manual review is the right next step.`,
+    sections: [],
+    generatedAt: new Date().toISOString(),
+  };
+}
+
 async function fetchSiteContent(url) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
@@ -43,9 +110,12 @@ async function fetchSiteContent(url) {
       },
     });
     clearTimeout(timeout);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const err = new Error(`HTTP ${res.status}`);
+      err.statusCode = res.status;
+      throw err;
+    }
     const html = await res.text();
-    // Trim to ~15k chars to keep prompt cost reasonable
     return html.substring(0, 15000);
   } catch (err) {
     clearTimeout(timeout);
@@ -202,16 +272,37 @@ exports.handler = async (event) => {
   try {
     siteHtml = await fetchSiteContent(url);
   } catch (err) {
-    let userMessage = "Could not reach that site.";
+    let userMessage = "We couldn't reach this site. Double-check the URL or contact us if you think this is a mistake.";
+
     if (err.name === "AbortError") {
-      userMessage = "That site took too long to respond. Try again or check the URL.";
-    } else if (err.message?.includes("4") || err.message?.includes("5")) {
-      userMessage = `Site returned an error (${err.message}). It might be blocking automated requests.`;
+      userMessage = "That site took too long to respond. It may be down or blocking automated requests.";
+    } else if (err.statusCode === 403) {
+      userMessage = "That site blocked our request. Some sites don't allow automated access.";
+    } else if (err.statusCode === 404) {
+      userMessage = "That page doesn't exist. Check the URL and try again.";
+    } else if (err.statusCode >= 500) {
+      userMessage = "That site is having server issues right now. Try again later.";
+    } else if (err.message?.toLowerCase().includes("failed to fetch") || err.code === "ENOTFOUND") {
+      userMessage = "We couldn't find that site. Double-check the URL — there may be a typo.";
     }
+
     return {
       statusCode: 422,
       headers,
       body: JSON.stringify({ error: userMessage }),
+    };
+  }
+
+  // SPA detection — runs before Claude, no API cost on match
+  const spaCheck = detectSPA(siteHtml);
+  if (spaCheck.isSPA) {
+    const spaReport = buildSPAReport(url, spaCheck.reason);
+    // Cache SPA results too — same URL won't re-run detection
+    reportCache.set(url, { report: spaReport, timestamp: Date.now() });
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify(spaReport),
     };
   }
 
@@ -233,7 +324,6 @@ exports.handler = async (event) => {
     });
 
     const rawText = message.content[0].text;
-    // Strip any markdown code fences if present
     const cleaned = rawText.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
     report = JSON.parse(cleaned);
     report.url = url;

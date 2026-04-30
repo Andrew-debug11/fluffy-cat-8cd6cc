@@ -5,22 +5,22 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
- 
+
   if (event.httpMethod === "OPTIONS") return { statusCode: 200, headers, body: "" };
   if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
- 
+
   let body;
   try { body = JSON.parse(event.body); } catch {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid request body" }) };
   }
- 
+
   const { email, report } = body;
   if (!email || !report) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing email or report" }) };
   }
- 
+
   const reportHtml = buildReportHtml(report);
- 
+
   try {
     // Send report to user
     const userRes = await fetch("https://api.resend.com/emails", {
@@ -36,13 +36,13 @@ exports.handler = async (event) => {
         html: reportHtml,
       }),
     });
- 
+
     if (!userRes.ok) {
       const err = await userRes.json();
       console.error("Resend error (user):", err);
       return { statusCode: 500, headers, body: JSON.stringify({ error: "Failed to send report email" }) };
     }
- 
+
     // Notify of new lead
     try {
       await fetch("https://api.resend.com/emails", {
@@ -61,16 +61,53 @@ exports.handler = async (event) => {
     } catch (err) {
       console.error("Lead notify error:", err);
     }
- 
+
     return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
- 
+
   } catch (err) {
     console.error("send-report error:", err);
     return { statusCode: 500, headers, body: JSON.stringify({ error: "Email delivery failed" }) };
   }
 };
- 
+
 function buildReportHtml(report) {
+  // SPA branch — different template, no section scores
+  if (report.isSPA) {
+    const platformNames = {
+      wix: "Wix", squarespace: "Squarespace", webflow: "Webflow",
+      "spa-container": "a JavaScript framework",
+      "empty-body": "a JavaScript framework",
+      "generic-spa": "a JavaScript framework",
+    };
+    const platform = platformNames[report.spaReason] || "a JavaScript framework";
+    return `
+      <!DOCTYPE html>
+      <html>
+      <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+      <body style="background:#080810;color:#F0EDE8;font-family:sans-serif;margin:0;padding:0;">
+        <div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+          <div style="text-align:center;margin-bottom:32px;">
+            <p style="color:#8899AA;font-size:13px;margin-bottom:4px;">Peninsulas AI · Website Grader</p>
+            <h1 style="font-size:28px;margin-bottom:4px;">Dynamic Site Detected</h1>
+            <p style="color:#8899AA;font-size:13px;word-break:break-all;">${report.url}</p>
+          </div>
+          <div style="background:#0e0e1a;border:1px solid rgba(14,165,233,0.2);border-radius:10px;padding:20px;margin-bottom:24px;">
+            <p style="font-size:16px;line-height:1.6;margin:0;">This site loads its content dynamically — it's built on ${platform}. Our scanner reads the raw page code, and on sites like this, that code is mostly empty until a browser runs it. We can confirm the site is live and the connection is secure, but we can't score what we can't see.</p>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(14,165,233,0.1),rgba(20,184,166,0.1));border:1px solid rgba(14,165,233,0.2);border-radius:10px;padding:24px;text-align:center;margin-top:32px;">
+            <h2 style="font-size:22px;margin-bottom:8px;">Book a Free Call</h2>
+            <p style="color:#8899AA;font-size:15px;margin-bottom:20px;">We'll walk through your site manually — no scanner needed. 30 minutes, no obligation.</p>
+            <a href="https://calendly.com/andrew-peninsulasai/30min" style="background:linear-gradient(135deg,#0EA5E9,#14B8A6);color:#080810;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:bold;font-size:16px;display:inline-block;">Book My Free Call</a>
+          </div>
+          <p style="color:#8899AA;font-size:12px;text-align:center;margin-top:24px;">
+            Peninsulas AI · Downriver + Metro Detroit · <a href="https://peninsulasai.com" style="color:#8899AA;">peninsulasai.com</a>
+          </p>
+        </div>
+      </body>
+      </html>
+    `;
+  }
+
   const sectionRows = report.sections.map(s => {
     const color = s.score >= 7 ? "#14B8A6" : s.score >= 4 ? "#0EA5E9" : "#F472B6";
     return `
@@ -87,7 +124,7 @@ function buildReportHtml(report) {
       </div>
     `;
   }).join("");
- 
+
   return `
     <!DOCTYPE html>
     <html>
