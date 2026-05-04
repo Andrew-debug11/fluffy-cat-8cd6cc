@@ -123,6 +123,29 @@ async function fetchSiteContent(url) {
   }
 }
 
+// Headless fetch via ScrapingBee — used only when SPA guard fires
+async function fetchSiteContentHeadless(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  try {
+    const res = await fetch(
+      `https://app.scrapingbee.com/api/v1/?api_key=${process.env.SCRAPINGBEE_API_KEY}&url=${encodeURIComponent(url)}&render_js=true&wait=3000`,
+      { signal: controller.signal }
+    );
+    clearTimeout(timeout);
+    if (!res.ok) {
+      const err = new Error(`ScrapingBee HTTP ${res.status}`);
+      err.statusCode = res.status;
+      throw err;
+    }
+    const html = await res.text();
+    return html.substring(0, 15000);
+  } catch (err) {
+    clearTimeout(timeout);
+    throw err;
+  }
+}
+
 const ANALYSIS_PROMPT = `You are a plain-talking website grader for small businesses. Analyze the HTML below and return a JSON report. No jargon. Write like you're talking to a plumber or HVAC tech who doesn't have time for tech speak.
 
 Score each section 1-10. Be honest — a 6 should feel like a 6. Don't pad scores.
@@ -267,12 +290,13 @@ exports.handler = async (event) => {
     };
   }
 
-  // Fetch site HTML
+  // Fetch site HTML — raw fetch first (fast, no API cost)
   let siteHtml;
   try {
     siteHtml = await fetchSiteContent(url);
   } catch (err) {
-    let userMessage = "We couldn't reach this site. Double-check the URL or contact us if you think this is a mistake.";
+    // Raw fetch failed — do NOT fall through to headless, return immediately
+    let userMessage = "We couldn't reach this site. Double-check the URL or try again in a few minutes.";
 
     if (err.name === "AbortError") {
       userMessage = "That site took too long to respond. It may be down or blocking automated requests.";
@@ -296,14 +320,21 @@ exports.handler = async (event) => {
   // SPA detection — runs before Claude, no API cost on match
   const spaCheck = detectSPA(siteHtml);
   if (spaCheck.isSPA) {
-    const spaReport = buildSPAReport(url, spaCheck.reason);
-    // Cache SPA results too — same URL won't re-run detection
-    reportCache.set(url, { report: spaReport, timestamp: Date.now() });
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify(spaReport),
-    };
+    // Raw HTML confirmed SPA — attempt headless render via ScrapingBee
+    try {
+      siteHtml = await fetchSiteContentHeadless(url);
+      // Headless succeeded — fall through to scoring with rendered HTML
+    } catch (err) {
+      // Headless failed — return graceful error with Calendly CTA, never a false score
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          error: "This site uses a JavaScript framework we couldn't fully render. Book a free call and we'll audit it manually.",
+          calendly: true,
+        }),
+      };
+    }
   }
 
   // Build prompt
