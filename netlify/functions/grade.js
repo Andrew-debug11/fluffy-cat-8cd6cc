@@ -126,10 +126,10 @@ async function fetchSiteContent(url) {
 // Headless fetch via ScrapingBee — used only when SPA guard fires
 async function fetchSiteContentHeadless(url) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+  const timeout = setTimeout(() => controller.abort(), 30000);
   try {
     const res = await fetch(
-      `https://app.scrapingbee.com/api/v1/?api_key=${process.env.SCRAPINGBEE_API_KEY}&url=${encodeURIComponent(url)}&render_js=true&wait=3000`,
+      `https://app.scrapingbee.com/api/v1/?api_key=${process.env.SCRAPINGBEE_API_KEY}&url=${encodeURIComponent(url)}&render_js=true&wait=5000&premium_proxy=true`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);
