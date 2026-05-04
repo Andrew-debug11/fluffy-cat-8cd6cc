@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | Peninsulas AI — AI for Metro Detroit Small Businesses</title>
-  <meta name="description" content="Practical AI guides for Metro Detroit trade and service businesses. HVAC, plumbing, roofing, electrical, and more. No buzzwords." />
-  <meta name="keywords" content="AI blog Metro Detroit, small business AI guides, HVAC AI, plumbing AI, trade business automation" />
+
+  <title>Blog | Peninsulas AI</title>
+  <meta name="description" content="Plain-English writing on AI for Downriver Michigan trade and service businesses. No buzzwords. Real results from real shops." />
+  <meta name="keywords" content="AI blog Downriver, AI for small business Michigan, HVAC AI, plumbing AI, trade business AI, Wyandotte AI consulting" />
   <meta property="og:title" content="Blog | Peninsulas AI" />
-  <meta property="og:description" content="Practical AI guides for Metro Detroit trade and service businesses." />
-  <meta name="robots" content="index, follow" />
+  <meta property="og:description" content="Plain-English writing on AI for Downriver Michigan trade and service businesses." />
   <meta property="og:type" content="website" />
+
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://peninsulasai.com/blog/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,91 +36,37 @@
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
     body::before {
-      content: '';
-      position: fixed; inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 1000; opacity: 0.3;
     }
 
-    #particles {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none; z-index: 0;
-    }
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 16px 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(8,8,16,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      padding: 16px 5%; display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
     }
 
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-    }
-
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; }
-
-    .nav-logo-text {
-      font-family: var(--font-display);
-      font-size: 1.4rem; font-weight: 800;
-      letter-spacing: 0.05em; color: var(--text);
-    }
-
+    .nav-logo-text { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; letter-spacing: 0.05em; color: var(--text); }
     .nav-logo-text span { color: var(--sky); }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-display);
-      font-size: 0.9rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--sky); }
+    nav a.nav-cta { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: linear-gradient(135deg, var(--sky), var(--teal)); padding: 10px 22px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    nav a.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(14,165,233,0.35); }
 
-    nav a.nav-cta {
-      font-family: var(--font-display);
-      font-size: 0.9rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--bg);
-      background: linear-gradient(135deg, var(--sky), var(--teal));
-      padding: 10px 22px; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .blog-wrapper { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 140px 5% 80px; }
 
-    nav a.nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(14,165,233,0.35);
-    }
+    .blog-header { margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    .blog-index-wrapper {
-      position: relative; z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 140px 5% 80px;
-    }
-
-    .blog-index-wrapper h1 {
+    .blog-header h1 {
       font-family: var(--font-display);
       font-size: clamp(2.4rem, 5vw, 3.5rem);
       font-weight: 800; line-height: 1.05;
@@ -126,248 +74,71 @@
       margin-bottom: 16px;
     }
 
-    .blog-index-sub {
-      font-size: 1.02rem; color: var(--muted);
-      margin-bottom: 48px; max-width: 600px;
-    }
+    .blog-header p { font-size: 1.05rem; color: var(--muted); max-width: 580px; }
 
-    .blog-list {
-      display: flex; flex-direction: column; gap: 2px;
-    }
+    .blog-list { display: flex; flex-direction: column; gap: 2px; }
 
     .blog-list-item {
+      display: block;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 32px 28px;
+      padding: 32px 36px;
       text-decoration: none;
-      display: block;
-      transition: border-color 0.3s, background 0.3s;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
     }
 
-    .blog-list-item:hover {
-      background: var(--surface2);
-      border-color: rgba(14,165,233,0.2);
-    }
+    .blog-list-item:hover { border-color: rgba(14,165,233,0.4); transform: translateX(4px); }
 
     .blog-list-tag {
+      display: inline-block;
       font-family: var(--font-display);
-      font-size: 0.65rem; font-weight: 600;
+      font-size: 0.7rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--sky); margin-bottom: 8px; display: block;
+      color: var(--sky);
+      margin-bottom: 12px;
     }
 
     .blog-list-item h2 {
       font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.01em;
-      margin-bottom: 8px; color: var(--text); line-height: 1.15;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 700; line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--text);
     }
 
-    .blog-list-item p {
-      font-size: 0.9rem; color: var(--muted); line-height: 1.6;
-      margin-bottom: 0;
-    }
+    .blog-list-item p { font-size: 0.98rem; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
 
     .blog-list-meta {
-      font-size: 0.8rem; color: var(--muted);
-      margin-top: 12px;
-    }
-
-    .blog-cta {
-      margin-top: 64px;
-      padding: 48px 36px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blog-cta::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--sky), var(--teal), var(--pink));
-    }
-
-    .blog-cta h2 {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700; text-transform: uppercase;
-      margin-bottom: 16px;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .blog-cta p {
-      max-width: 480px; margin: 0 auto 28px;
-      text-align: center; color: var(--muted);
-    }
-
-    .btn-primary {
-      font-family: var(--font-display);
-      font-size: 1rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--bg);
-      background: linear-gradient(135deg, var(--sky), var(--teal));
-      padding: 16px 36px; text-decoration: none;
-      border: none; cursor: pointer; display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(14,165,233,0.35);
-    }
-
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 60px 5% 40px;
-      position: relative; z-index: 1;
-    }
-
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px; margin-bottom: 48px;
-    }
-
-    .footer-brand .footer-logo-link {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none; margin-bottom: 14px;
-    }
-
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 5% 40px; position: relative; z-index: 1; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .footer-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px; }
     .footer-brand .footer-logo-link img { height: 32px; width: auto; }
     .footer-brand .nav-logo-text { font-size: 1.2rem; }
     .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; }
-
-    .footer-col h4 {
-      font-family: var(--font-display);
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 16px;
-    }
-
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul li a {
-      font-size: 0.88rem; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
-    }
+    .footer-col ul li a { font-size: 0.88rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-col ul li a:hover { color: var(--sky); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 12px;
-    }
-
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
 
-    .reveal {
-      opacity: 0; transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
       nav { padding: 14px 5%; }
-      .blog-index-wrapper { padding: 110px 5% 60px; }
+      .nav-links { display: none; }
+      .blog-wrapper { padding: 110px 5% 60px; }
+      .blog-list-item { padding: 24px 22px; }
       .footer-grid { grid-template-columns: 1fr; }
-    }
-.nav-links {
-      display: flex; align-items: center; gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-display);
-      font-size: 0.9rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--sky); }
-
-    .nav-right {
-      display: flex; align-items: center; gap: 20px;
-    }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column; justify-content: center;
-      gap: 5px; width: 28px; height: 28px;
-      background: none; border: none; cursor: pointer;
-      padding: 0; z-index: 110;
-    }
-
-    .nav-hamburger span {
-      display: block; width: 100%; height: 2px;
-      background: var(--text);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .nav-hamburger.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-
-    .nav-hamburger.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    @media (max-width: 768px) {
-      .nav-hamburger { display: flex; }
-
-      .nav-links {
-        position: fixed; top: 0; right: 0;
-        width: 260px; height: 100vh;
-        flex-direction: column; align-items: flex-start;
-        gap: 0;
-        background: var(--surface);
-        border-left: 1px solid var(--border);
-        padding: 80px 32px 32px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        z-index: 105;
-      }
-
-      .nav-links.open { transform: translateX(0); }
-
-      .nav-links a {
-        font-size: 1rem;
-        padding: 14px 0;
-        width: 100%;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-overlay {
-        display: none;
-        position: fixed; inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 104;
-      }
-
-      .nav-overlay.open { display: block; }
-
-      nav a.nav-cta { display: none; }
-
-      .nav-links .nav-cta-mobile {
-        display: block;
-        font-family: var(--font-display);
-        font-size: 0.9rem; font-weight: 700;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        color: var(--bg);
-        background: linear-gradient(135deg, var(--sky), var(--teal));
-        padding: 12px 24px; text-decoration: none; text-align: center;
-        margin-top: 20px; width: 100%;
-        border-bottom: none;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .nav-cta-mobile { display: none; }
-      .nav-overlay { display: none !important; }
     }
   </style>
 </head>
@@ -380,70 +151,48 @@
       <img src="/logo.png" alt="Peninsulas AI" />
       <div class="nav-logo-text">Peninsulas <span>AI</span></div>
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/#services" class="nav-link">Services</a></li>
-      <li><a href="/#pricing" class="nav-link">Pricing</a></li>
-      <li><a href="/#how" class="nav-link">How It Works</a></li>
-      <li><a href="/blog/" class="nav-link">Blog</a></li>
-      <li><a href="/#contact" class="nav-link">Contact</a></li>
-      <a href="/#contact" class="nav-cta-mobile nav-link">Free Consult</a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/blog/">Blog</a></li>
     </ul>
-    <div class="nav-right">
-      <a href="/#contact" class="nav-cta">Free Consult</a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="nav-overlay" id="navOverlay"></div>
+    <a href="/#contact" class="nav-cta">Free Consult</a>
   </nav>
 
-  <div class="blog-index-wrapper">
+  <main class="blog-wrapper">
 
-    <h1 class="reveal">Blog</h1>
-    <p class="blog-index-sub reveal">Practical AI guides for Metro Detroit trade and service businesses. No buzzwords. Just what works.</p>
+    <div class="blog-header reveal">
+      <h1>Blog</h1>
+      <p>Plain-English writing on AI for Downriver Michigan trade and service businesses. No buzzwords. Real shops, real numbers.</p>
+    </div>
 
     <div class="blog-list">
 
-      <!-- ADD NEW POSTS HERE — newest first -->
-      <a href="/blog/employees-already-have-ai/" class="blog-list-item reveal">
-        <span class="blog-list-tag">AI Training</span>
-        <h2>Your Employees Already Have AI. They Just Don't Know How to Use It.</h2>
-        <p>Your team has AI subscriptions. They just need someone to show them what to do with them.</p>
-        <div class="blog-list-meta">April 2026 &bull; 4 min read</div>
+      <a href="/blog/300-website-audit-vs-free-tool/" class="blog-list-item reveal">
+        <span class="blog-list-tag">Local SEO</span>
+        <h2>What a $300 Website Audit Actually Tells You (That a Free Tool Can't)</h2>
+        <p>A walkthrough of a real audit, section by section. What the free grader catches, where it stops, and what's actually costing you jobs.</p>
+        <div class="blog-list-meta">May 2026 &bull; 6 min read</div>
       </a>
 
-      <a href="/blog/hvac-metro-detroit-ai/" class="blog-list-item reveal">
-        <span class="blog-list-tag">HVAC</span>
-        <h2>How Metro Detroit HVAC Contractors Are Using AI to Win More Jobs</h2>
-        <p>The real cost of not following up on quotes, and the simple systems that fix it.</p>
+      <a href="/blog/your-employees-already-use-ai/" class="blog-list-item reveal">
+        <span class="blog-list-tag">Operations</span>
+        <h2>Your Employees Are Already Using AI, You Just Don't Know It Yet</h2>
+        <p>Your foreman is copy-pasting Google review replies into ChatGPT on his lunch break. That's not a problem. That's a starting point.</p>
         <div class="blog-list-meta">April 2026 &bull; 5 min read</div>
       </a>
 
       <a href="/blog/downriver-small-business-ai-guide/" class="blog-list-item reveal">
-        <span class="blog-list-tag">Small Business</span>
+        <span class="blog-list-tag">Guide</span>
         <h2>The Downriver Small Business Guide to AI (Without the Buzzwords)</h2>
-        <p>What AI actually does for a plumber, landscaper, or auto shop. Plain English version.</p>
-        <div class="blog-list-meta">April 2026 &bull; 6 min read</div>
+        <p>What AI can actually do for a small business in Downriver. The five tasks it handles best and what it won't touch.</p>
+        <div class="blog-list-meta">April 2026 &bull; 7 min read</div>
       </a>
-
-      <!-- TEMPLATE FOR FUTURE POSTS:
-      <a href="/blog/POST-SLUG/" class="blog-list-item reveal">
-        <span class="blog-list-tag">TAG</span>
-        <h2>POST TITLE</h2>
-        <p>Short description.</p>
-        <div class="blog-list-meta">Month Year &bull; X min read</div>
-      </a>
-      -->
 
     </div>
 
-    <div class="blog-cta reveal">
-      <h2>Want This Done for You?</h2>
-      <p>We write SEO blog posts, review responses, and social content for trade businesses. Monthly. No contracts.</p>
-      <a href="/#contact" class="btn-primary">Book Your Free Consult</a>
-    </div>
-
-  </div>
+  </main>
 
   <footer>
     <div class="footer-grid">
@@ -459,6 +208,7 @@
         <ul>
           <li><a href="/#services">Services</a></li>
           <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#how">How It Works</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/#contact">Free Consult</a></li>
         </ul>
@@ -484,31 +234,49 @@
       const canvas = document.getElementById('particles');
       const ctx = canvas.getContext('2d');
       let w, h, particles = [];
-      const colors = ['rgba(14,165,233,','rgba(20,184,166,','rgba(244,114,182,','rgba(249,168,212,',];
+      const colors = ['rgba(14,165,233,', 'rgba(20,184,166,', 'rgba(244,114,182,', 'rgba(249,168,212,'];
       function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
       function createParticle() {
-        return { x: Math.random() * w, y: Math.random() * h, size: Math.random() * 2.5 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3, speedY: Math.random() * -0.4 - 0.1,
+        return {
+          x: Math.random() * w, y: Math.random() * h,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: Math.random() * -0.4 - 0.1,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: Math.random() * 0.5 + 0.1, fadeDir: Math.random() > 0.5 ? 1 : -1 };
+          opacity: Math.random() * 0.5 + 0.1,
+          fadeDir: Math.random() > 0.5 ? 1 : -1,
+        };
       }
-      function init() { resize(); particles = []; const count = Math.min(Math.floor(w * h / 12000), 80);
-        for (let i = 0; i < count; i++) particles.push(createParticle()); }
-      function animate() { ctx.clearRect(0, 0, w, h);
-        for (let p of particles) { p.x += p.speedX; p.y += p.speedY; p.opacity += p.fadeDir * 0.003;
+      function init() { resize(); particles = []; const count = Math.min(Math.floor(w * h / 12000), 80); for (let i = 0; i < count; i++) particles.push(createParticle()); }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.speedX; p.y += p.speedY;
+          p.opacity += p.fadeDir * 0.003;
           if (p.opacity <= 0.05 || p.opacity >= 0.55) p.fadeDir *= -1;
           if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
           if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = p.color + p.opacity + ')'; ctx.fill(); }
-        requestAnimationFrame(animate); }
-      window.addEventListener('resize', resize); init(); animate();
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.opacity + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+      init(); animate();
     })();
+
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => { if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60); observer.unobserve(entry.target); } });
-    }, { threshold: 0.1 }); reveals.forEach(el => observer.observe(el));
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
   </script>
 
 </body>
