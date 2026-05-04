@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>What a $300 Website Audit Actually Tells You (That a Free Tool Can't) | Peninsulas AI</title>
+  <meta name="description" content="A free website grader catches the obvious stuff. A $300 audit walks through the five things actually costing you jobs. Real example, real numbers, no pitch." />
+  <meta name="keywords" content="website audit Downriver, small business website audit, free website grader, local SEO audit Michigan, HVAC website audit, plumbing website audit, Wyandotte AI consulting" />
+  <meta property="og:title" content="What a $300 Website Audit Actually Tells You (That a Free Tool Can't)" />
+  <meta property="og:description" content="A walkthrough of a real audit, section by section. What the free tool catches, where it stops, and what's actually costing you jobs." />
+  <meta property="og:type" content="article" />
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://peninsulasai.com/blog/300-website-audit-vs-free-tool/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface2: #141425;
+      --border: rgba(255,255,255,0.06);
+      --sky: #0EA5E9;
+      --teal: #14B8A6;
+      --pink: #F472B6;
+      --text: #F0EDE8;
+      --muted: #8899AA;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.3;
+    }
+
+    #particles {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text);
+    }
+
+    .nav-logo-text span { color: var(--sky); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    nav a.nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 10px 22px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav a.nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+    }
+
+    .article-wrapper {
+      position: relative; z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 5% 80px;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      color: var(--sky); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover { color: var(--teal); }
+
+    .breadcrumb span { margin: 0 8px; color: var(--border); }
+
+    .article-wrapper h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.05;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .article-meta {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-wrapper h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; line-height: 1.1;
+      text-transform: uppercase; letter-spacing: 0.01em;
+      margin-top: 56px; margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .article-wrapper h2::before {
+      content: '';
+      display: block;
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+      margin-bottom: 16px;
+    }
+
+    .article-wrapper p {
+      font-size: 1.02rem; line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .article-wrapper p strong { color: var(--text); }
+
+    .article-wrapper ul {
+      list-style: none;
+      margin-bottom: 24px;
+      padding-left: 0;
+    }
+
+    .article-wrapper ul li {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.6;
+      padding: 8px 0 8px 24px;
+      position: relative;
+    }
+
+    .article-wrapper ul li::before {
+      content: '\2192';
+      color: var(--sky); font-weight: 700;
+      position: absolute; left: 0; top: 8px;
+    }
+
+    .article-wrapper ul li strong { color: var(--text); }
+
+    .article-wrapper a {
+      color: var(--sky); text-decoration: none;
+      border-bottom: 1px solid rgba(14,165,233,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .article-wrapper a:hover { border-color: var(--sky); }
+
+    .article-cta {
+      margin-top: 64px;
+      padding: 48px 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal), var(--pink));
+    }
+
+    .article-cta h2 { margin-top: 0; }
+    .article-cta h2::before { display: none; }
+
+    .article-cta p {
+      max-width: 520px; margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .article-wrapper a.btn-primary,
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 16px 36px; text-decoration: none;
+      border: none; border-bottom: none; cursor: pointer; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .article-wrapper a.btn-primary:hover { color: var(--bg); border-bottom: none; }
+
+    .article-wrapper a.btn-secondary,
+    .btn-secondary {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-wrapper a.btn-secondary:hover { color: var(--sky); border-bottom-color: var(--sky); }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14,165,233,0.35);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 14px 28px; text-decoration: none;
+      display: inline-block;
+      margin-left: 12px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--sky); color: var(--sky); }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 40px;
+      position: relative; z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+
+    .footer-brand .footer-logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-logo-link img { height: 32px; width: auto; }
+    .footer-brand .nav-logo-text { font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+      border: none;
+    }
+    .footer-col ul li a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 5%; }
+      .nav-links { display: none; }
+      .article-wrapper { padding: 110px 5% 60px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .btn-secondary { margin-left: 0; margin-top: 12px; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="Peninsulas AI" />
+      <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Free Consult</a>
+  </nav>
+
+  <article class="article-wrapper">
+
+    <div class="breadcrumb reveal">
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>$300 Website Audit
+    </div>
+
+    <h1 class="reveal">What a $300 Website Audit Actually Tells You (That a Free Tool Can't)</h1>
+
+    <div class="article-meta reveal">
+      Published May 4, 2026 &nbsp;&bull;&nbsp; Peninsulas AI &nbsp;&bull;&nbsp; 6 min read
+    </div>
+
+    <p class="reveal">A buddy of mine runs a small HVAC operation south of here. Call him Jonas. Two trucks, three guys, mostly residential, mostly word of mouth. Last month he asked me a fair question. "Why would I pay for an audit when there's a free one online?" Good question. I ran both on his site. Here's what each one actually told us.</p>
+
+    <p class="reveal">I'll use Jonas and Sons as the running example. The numbers are real. The patterns are the same on almost every trade business site I look at, so this will probably feel familiar.</p>
+
+    <h2 class="reveal">First, What the Free Grader Catches</h2>
+
+    <p class="reveal">The free tool on our site is the <a href="/website-grader/">Free Website Grader</a>. It scans your site in about 30 seconds and gives you a score out of 10 across five categories. It's automated. It's surface-level. It's honest about that.</p>
+
+    <p class="reveal">For Jonas, it caught the obvious stuff. Mobile load time was 4.8 seconds. Should be under 2.5. His meta descriptions were missing on three pages. His SSL was fine. His H1 tags were inconsistent. His images weren't compressed. The grader gave him a 6 out of 10 overall and a list of 14 things to fix.</p>
+
+    <p class="reveal">That's useful. If you're a contractor with no time and no marketing budget, the free grader will catch the technical bleeders for free. Fix the 14 things, you'll convert a little better. Worth the 30 seconds.</p>
+
+    <p class="reveal">Here's where it stops. The free grader can't tell you why your phone isn't ringing. It can tell you the door is sticking. It can't tell you nobody's walking up to it.</p>
+
+    <h2 class="reveal">Section 1: Mobile Performance (What the Audit Adds)</h2>
+
+    <p class="reveal">The free tool said "your mobile is slow." The $300 audit said "your mobile is slow because your hero image is a 4MB uncompressed JPG and your contact form takes three taps to find on a phone, and 71% of your traffic is on a phone."</p>
+
+    <p class="reveal">That's the difference. The free grader gives you a symptom. The audit gives you a sentence that includes the word <em>because</em>.</p>
+
+    <p class="reveal">For Jonas, the audit found that on mobile his "Get a Quote" button was below the fold on every screen size. People had to scroll to find it. That's not a code issue. That's a layout issue. No automated scan flags layout because layout depends on context. A human looking at the site for the first time spots it in seconds.</p>
+
+    <h2 class="reveal">Section 2: Local SEO Gaps</h2>
+
+    <p class="reveal">This is the section that usually makes people quiet on the call. The free grader checked Jonas's basic SEO. Title tags, meta descriptions, schema markup. He passed most of it. The audit checked something different. Was his Google Business Profile optimized? Were his service areas listed in schema? Did his service pages target city-specific searches like "AC repair Trenton MI" or just "AC repair"?</p>
+
+    <p class="reveal">Jonas was missing eight Downriver cities he services. His GBP didn't list half his services. His service area was set to a 5-mile radius from his shop. The shop is in a city with 25,000 people. His actual service area covers about 400,000.</p>
+
+    <p class="reveal">If you want a primer on the ground game for trade businesses in this region, I wrote one here: <a href="/blog/downriver-small-business-ai-guide/">a plain-English guide to AI for Downriver small businesses</a>. It covers the local SEO basics in language that doesn't make you want to throw your phone.</p>
+
+    <h2 class="reveal">Section 3: Review Presence</h2>
+
+    <p class="reveal">Jonas had 23 Google reviews. Average 4.6 stars. He hadn't responded to any of them. Not one. Not the 5-stars, not the 1-star from a guy who was mad about a dispatch fee three years ago.</p>
+
+    <p class="reveal">The free grader doesn't check reviews. It can't. The audit pulled his review history, calculated his response rate at 0%, flagged three competitors with similar star counts and 90%+ response rates. Then it estimated what that gap costs him in local search ranking. Google's local algorithm rewards businesses that engage with reviews. That's documented. Jonas was leaving that signal completely on the table.</p>
+
+    <p class="reveal">Side note. Most of the trade businesses I work with already have employees doing some version of this manually, badly, in their spare time. I wrote about that pattern here: <a href="/blog/your-employees-already-use-ai/">your employees are already using AI, you just don't know it yet</a>. Worth a read if you've got a foreman copy-pasting Google review replies into ChatGPT on his lunch break.</p>
+
+    <h2 class="reveal">Section 4: Content Quality</h2>
+
+    <p class="reveal">Jonas had a homepage, an about page, a services page, and a contact page. Four pages total. The free grader said "add more content." That's not an audit. That's a fortune cookie.</p>
+
+    <p class="reveal">The audit said this. His main money keyword is "AC repair Downriver Michigan." That keyword has about 320 monthly searches. The top three results all have dedicated city pages. Jonas has none. His one services page tries to rank for everything from furnace tune-ups to ductwork to refrigerant leaks. Google sees a generic services page and ranks it generically. His competitors have pages titled "AC Repair in Trenton, MI" and "Furnace Replacement Wyandotte." They show up. Jonas doesn't.</p>
+
+    <p class="reveal">The audit gave him a list of 11 specific pages to build, ordered by search volume and competition. That's not something a 30-second scan can produce.</p>
+
+    <h2 class="reveal">Section 5: Competitor Comparison</h2>
+
+    <p class="reveal">This is the section nobody else does and it's usually the one that lands hardest. The audit pulls three of your closest local competitors. Same trade. Same service area. Same size. Then it shows you exactly what they're doing that you're not.</p>
+
+    <p class="reveal">For Jonas, two of his three nearest competitors had blog content. One was posting weekly. The other was posting monthly. Both were ranking for long-tail searches Jonas had never even targeted. Things like "why is my AC freezing up in summer Michigan." That post on his competitor's site has been bringing in 40-60 visitors a month for two years.</p>
+
+    <p class="reveal">Forty visitors a month. Pick a 3% conversion rate. That's one extra job a month from a single blog post written three years ago. Multiply by 24 posts. The math gets uncomfortable fast.</p>
+
+    <p class="reveal">If any of this is starting to sound like your shop, the <a href="/ai-consulting-downriver-mi/">Downriver AI consulting page</a> walks through how we handle this end-to-end. Content, reviews, follow-ups, all of it.</p>
+
+    <h2 class="reveal">So What's the Actual Difference?</h2>
+
+    <p class="reveal">The free grader catches what's broken on the page. The audit catches what's broken in your business as a result.</p>
+
+    <p class="reveal">One tells you "your image is too big." The other tells you "you're losing roughly 8 jobs a month to your nearest competitor because their site loads faster, ranks for the keyword you're missing, and responds to reviews while yours doesn't."</p>
+
+    <p class="reveal">Both have a place. Start with the free one. If the report comes back and you think "I want to know more," that's when the paid audit makes sense. If the free report comes back and you think "alright, I'll fix the 14 things and move on," do that. No pitch.</p>
+
+    <h2 class="reveal">What Would Yours Say?</h2>
+
+    <p class="reveal">Jonas signed up for the audit after seeing the free report. He said the free one made him curious. The paid one made him do something. That's about right. The free tool starts the conversation. The audit finishes it.</p>
+
+    <p class="reveal">If you want to start at the top, the <a href="/website-grader/">Free Website Grader</a> is the place. 30 seconds, no email gate, no pitch at the end. If you want the full picture, that's what the $300 audit is for. If you're not sure which you want, run the free one first and decide from there. That's what Jonas did, and he's not the type to spend $300 on something he doesn't need.</p>
+
+    <p class="reveal">Same thing applies to AI in general. Most trade businesses don't need a $5,000 system. They need to know what's actually broken first. The <a href="/ai-consulting-downriver-mi/">consulting page</a> is built around that idea. Diagnose, then fix what's worth fixing.</p>
+
+    <p class="reveal">Your competitor probably already ran one of these. That's not a threat. That's just where things are now.</p>
+
+    <div class="article-cta reveal">
+      <h2>Start with the Free Grader</h2>
+      <p>30 seconds. No email gate. You'll get a score out of 10 across five categories and a list of fixes you can hand to whoever built your site. If you want the full picture after that, the $300 audit is right there.</p>
+      <a href="/website-grader/" class="btn-primary">Run the Free Grader</a>
+      <a href="/#contact" class="btn-secondary">Ask About the $300 Audit</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+        </a>
+        <p>AI consulting for Metro Detroit trade and service businesses. Simple systems. Real results. No tech degree required.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#how">How It Works</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#contact">Free Consult</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a></li>
+          <li><a href="tel:3135499136">313-549-9136</a></li>
+          <li><a href="#">Wyandotte, MI</a></li>
+          <li><a href="#">Serving All of Metro Detroit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Peninsulas AI</p>
+      <p>Downriver Metro Detroit's AI Consulting Company</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const colors = [
+        'rgba(14,165,233,',
+        'rgba(20,184,166,',
+        'rgba(244,114,182,',
+        'rgba(249,168,212,',
+      ];
+      function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      function createParticle() {
+        return {
+          x: Math.random() * w, y: Math.random() * h,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: Math.random() * -0.4 - 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.5 + 0.1,
+          fadeDir: Math.random() > 0.5 ? 1 : -1,
+        };
+      }
+      function init() {
+        resize();
+        particles = [];
+        const count = Math.min(Math.floor(w * h / 12000), 80);
+        for (let i = 0; i < count; i++) particles.push(createParticle());
+      }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.speedX; p.y += p.speedY;
+          p.opacity += p.fadeDir * 0.003;
+          if (p.opacity <= 0.05 || p.opacity >= 0.55) p.fadeDir *= -1;
+          if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+          if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.opacity + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+      init(); animate();
+    })();
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
