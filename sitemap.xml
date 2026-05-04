@@ -1,102 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!--  Homepage  -->
-<url>
-<loc>https://peninsulasai.com/</loc>
-<lastmod>2026-04-19</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-</url>
-<!--  Service Hub Pages  -->
-<url>
-<loc>https://peninsulasai.com/ai-consulting-downriver-mi/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-hvac-companies-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-plumbing-companies-michigan/</loc>
-<lastmod>2026-04-27</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-roofing-companies-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-electricians-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-landscaping-companies-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-cleaning-companies-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/ai-for-general-contractors-michigan/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<!--  Service Tool Pages  -->
-<url>
-<loc>https://peninsulasai.com/google-review-responder-metro-detroit/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/estimate-follow-up-system/</loc>
-<lastmod>2026-04-18</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<!--  Blog  -->
-<url>
-<loc>https://peninsulasai.com/blog/</loc>
-<lastmod>2026-04-19</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/blog/hvac-metro-detroit-ai/</loc>
-<lastmod>2026-04-19</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/blog/downriver-small-business-ai-guide/</loc>
-<lastmod>2026-04-19</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://peninsulasai.com/blog/employees-already-have-ai/</loc>
-<lastmod>2026-04-27</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-  <loc>https://peninsulasai.com/website-grader/</loc>
-  <lastmod>2026-04-29</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
+
+  <url>
+    <loc>https://peninsulasai.com/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-consulting-downriver-mi/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-hvac-companies-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-plumbing-companies-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-roofing-companies-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-electricians-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-landscaping-companies-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-cleaning-companies-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/ai-for-general-contractors-michigan/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/google-review-responder-metro-detroit/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/estimate-follow-up-system/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/website-grader/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/blog/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/blog/300-website-audit-vs-free-tool/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/blog/your-employees-already-use-ai/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://peninsulasai.com/blog/downriver-small-business-ai-guide/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
