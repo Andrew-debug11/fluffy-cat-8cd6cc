@@ -1,22 +1,23 @@
 [build]
-  publish = "."
-  functions = "netlify/functions"
-  [functions]
-  timeout = 26
+publish = "."
+functions = "netlify/functions"
+
+[functions]
+timeout = 26
 
 [[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[redirects]]
-  from = "/api/grade"
-  to = "/.netlify/functions/grade"
-  status = 200
+from = "/api/grade"
+to = "/.netlify/functions/grade"
+status = 200
 
 [[redirects]]
-  from = "/api/send-report"
-  to = "/.netlify/functions/send-report"
-  status = 200
+from = "/api/send-report"
+to = "/.netlify/functions/send-report"
+status = 200
