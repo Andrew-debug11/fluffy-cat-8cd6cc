@@ -359,6 +359,7 @@ exports.handler = async (event) => {
     report = JSON.parse(cleaned);
     report.url = url;
     report.generatedAt = new Date().toISOString();
+    report.isWix = spaCheck.reason === "wix";
   } catch (err) {
     console.error("Claude API error:", err);
     return {
