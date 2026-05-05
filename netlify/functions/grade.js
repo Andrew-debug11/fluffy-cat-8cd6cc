@@ -139,7 +139,7 @@ async function fetchSiteContentHeadless(url) {
       throw err;
     }
     const html = await res.text();
-    return html.substring(0, 15000);
+    return html.substring(0, 30000);
   } catch (err) {
     clearTimeout(timeout);
     throw err;
