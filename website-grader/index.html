@@ -339,6 +339,25 @@
       line-height: 1.5;
     }
 
+    /* WIX CAVEAT BANNER */
+    .wix-caveat {
+      background: rgba(244,114,182,0.08);
+      border: 1px solid rgba(244,114,182,0.2);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .wix-caveat a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+    .wix-caveat a:hover {
+      text-decoration: underline;
+    }
+
     /* EMAIL GATE */
     .gate-card {
       background: var(--surface);
@@ -715,6 +734,11 @@
       <p class="teaser-text" id="teaserText"></p>
     </div>
 
+    <!-- WIX CAVEAT — shown by JS when report.isWix is true -->
+    <div class="wix-caveat" id="wixCaveat" style="display:none;">
+      ⚠️ <strong style="color:var(--text);">Wix site detected.</strong> Scores on Wix-built sites may run lower than expected — our scanner has limited visibility into Wix content. If your score looks off, <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank">book a free call</a> and we'll review it manually.
+    </div>
+
     <!-- EMAIL GATE -->
     <div class="gate-card" id="gateCard">
       <div class="gate-icon">📋</div>
@@ -869,12 +893,15 @@
       scoreEl.style.cssText += "color: #8899AA; -webkit-text-fill-color: #8899AA; font-size: 18px;";
     } else {
       scoreEl.textContent = report.overallScore;
-      // Color the score number
       const score = report.overallScore;
       if (score >= 7) scoreEl.style.cssText = "background: linear-gradient(135deg, #14B8A6, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
       else if (score >= 4) scoreEl.style.cssText = "background: linear-gradient(135deg, #0EA5E9, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;";
       else scoreEl.style.cssText = "color: #F472B6; -webkit-text-fill-color: #F472B6;";
     }
+
+    // Wix caveat banner
+    const caveat = document.getElementById("wixCaveat");
+    caveat.style.display = report.isWix ? "block" : "none";
   }
 
   function getScoreClass(score) {
@@ -982,6 +1009,7 @@
     document.getElementById("emailSentMsg").style.display = "none";
     document.getElementById("fullReport").style.display = "none";
     document.getElementById("previewState").style.display = "none";
+    document.getElementById("wixCaveat").style.display = "none";
     document.getElementById("inputCard").style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
