@@ -289,7 +289,8 @@ exports.handler = async (event) => {
       body: JSON.stringify({ ...cached, cached: true }),
     };
   }
-
+console.log(`GRADE_REQUEST url=${url} ip=${ip}`);
+  
   // Fetch site HTML — raw fetch first (fast, no API cost)
   let siteHtml;
   try {
