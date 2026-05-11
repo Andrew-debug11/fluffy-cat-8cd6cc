@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       BLOG POST TEMPLATE — EDIT THESE FOR EACH POST
+       ============================================================ -->
+  <title>Why I Built a Free Website Grader (And Why SEO Agencies Should Be Nervous) | Peninsulas AI</title>
+  <meta name="description" content="SEO agencies are charging small business owners thousands of dollars a month for information that now costs pennies to produce. That's why the Website Grader is free." />
+  <meta name="keywords" content="free website grader, SEO audit Downriver Michigan, small business SEO Michigan, AI website audit, local SEO Metro Detroit, Peninsulas AI website grader" />
+  <meta property="og:title" content="Why I Built a Free Website Grader (And Why SEO Agencies Should Be Nervous) | Peninsulas AI" />
+  <meta property="og:description" content="SEO agencies are charging small business owners thousands of dollars a month for information that now costs pennies to produce. That's why the Website Grader is free." />
+  <!-- ============================================================ -->
+
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://peninsulasai.com/blog/why-i-built-free-website-grader/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface2: #141425;
+      --border: rgba(255,255,255,0.06);
+      --sky: #0EA5E9;
+      --teal: #14B8A6;
+      --pink: #F472B6;
+      --text: #F0EDE8;
+      --muted: #8899AA;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NOISE */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.3;
+    }
+
+    /* PARTICLE CANVAS */
+    #particles {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 40px; width: auto; }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text);
+    }
+
+    .nav-logo-text span { color: var(--sky); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky); }
+
+    nav a.nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 10px 22px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav a.nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+    }
+
+    /* ARTICLE LAYOUT */
+    .article-wrapper {
+      position: relative; z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 140px 5% 80px;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      color: var(--sky); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover { color: var(--teal); }
+
+    .breadcrumb span { margin: 0 8px; color: var(--border); }
+
+    /* ARTICLE CONTENT */
+    .article-wrapper h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.05;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .article-meta {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-wrapper h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; line-height: 1.1;
+      text-transform: uppercase; letter-spacing: 0.01em;
+      margin-top: 56px; margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .article-wrapper h2::before {
+      content: '';
+      display: block;
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal));
+      margin-bottom: 16px;
+    }
+
+    .article-wrapper p {
+      font-size: 1.02rem; line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .article-wrapper p strong { color: var(--text); }
+
+    .article-wrapper ul {
+      list-style: none;
+      margin-bottom: 24px;
+      padding-left: 0;
+    }
+
+    .article-wrapper ul li {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.6;
+      padding: 8px 0 8px 24px;
+      position: relative;
+    }
+
+    .article-wrapper ul li::before {
+      content: '\2192';
+      color: var(--sky); font-weight: 700;
+      position: absolute; left: 0; top: 8px;
+    }
+
+    .article-wrapper ul li strong { color: var(--text); }
+
+    .article-wrapper a {
+      color: var(--sky); text-decoration: none;
+      border-bottom: 1px solid rgba(14,165,233,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .article-wrapper a:hover { border-color: var(--sky); }
+
+    .article-wrapper a.btn-primary {
+      color: var(--bg);
+      border-bottom: none;
+    }
+
+    .article-wrapper a.btn-primary:hover { border-bottom: none; }
+
+    /* CTA BLOCK */
+    .article-cta {
+      margin-top: 64px;
+      padding: 48px 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-cta::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky), var(--teal), var(--pink));
+    }
+
+    .article-cta h2 {
+      margin-top: 0;
+    }
+
+    .article-cta h2::before { display: none; }
+
+    .article-cta p {
+      max-width: 480px; margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      padding: 16px 36px; text-decoration: none;
+      border: none; cursor: pointer; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(14,165,233,0.35);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 40px;
+      position: relative; z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+
+    .footer-brand .footer-logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-logo-link img { height: 32px; width: auto; }
+    .footer-brand .nav-logo-text { font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+      border: none;
+    }
+    .footer-col ul li a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 14px 5%; }
+      .nav-links { display: none; }
+      .article-wrapper { padding: 110px 5% 60px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="Peninsulas AI" />
+      <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#how">How It Works</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Free Consult</a>
+  </nav>
+
+  <!-- ARTICLE -->
+  <article class="article-wrapper">
+
+    <div class="breadcrumb reveal">
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>Website Grader
+    </div>
+
+    <h1 class="reveal">Why I Built a Free Website Grader (And Why SEO Agencies Should Be Nervous)</h1>
+
+    <div class="article-meta reveal">
+      Published May 12, 2026 &nbsp;&bull;&nbsp; Andrew Jernigan &nbsp;&bull;&nbsp; 5 min read
+    </div>
+
+    <p class="reveal">Somebody called me last spring asking about their website.</p>
+
+    <p class="reveal">They had a plumbing company out of Taylor. Good reviews. Steady work. They wanted to know why they weren't showing up on Google when someone searched for a plumber near them.</p>
+
+    <p class="reveal">I looked at their site in about four minutes. Missing meta descriptions. No structured data. Half the pages had duplicate titles. The blog they paid for hadn't been updated since 2022. Their Google Business Profile was claiming an address they'd moved out of two years ago.</p>
+
+    <p class="reveal">Basic stuff. Fixable stuff.</p>
+
+    <p class="reveal">They'd already paid an SEO agency $2,200 a month for seven months. Fifteen thousand dollars. The agency's reports had a lot of charts in them.</p>
+
+    <p class="reveal">I couldn't tell them what those charts meant, and I don't think the agency could either. At least not in plain English to a plumber who has better things to do than decode a 40-page PDF.</p>
+
+    <p class="reveal">That stuck with me.</p>
+
+    <h2 class="reveal">The Math Doesn't Add Up Anymore</h2>
+
+    <p class="reveal">Here's what an SEO audit actually costs to run in 2026.</p>
+
+    <p class="reveal">A few API calls. Some structured data checks. A crawl of your pages. Maybe thirty seconds of compute.</p>
+
+    <p class="reveal">The scan is cheap. Running it is automated. So we made it free.</p>
+
+    <p class="reveal">What's not free is the part where a human reads the output, figures out what actually matters for your specific business, and hands you a prioritized list of fixes in plain English. That part still takes time. That's the <a href="/website-grader/">$300 audit</a>. One flat fee. No contract. No retainer. You own the report.</p>
+
+    <p class="reveal">But if you just want to know whether your foundation is solid before you spend a dollar on anything? That's what the free Grader is for.</p>
+
+    <p class="reveal">The information was expensive once. You had to hire someone to know how to pull it, interpret it, and package it. That was the value. Fine. That made sense in 2015.</p>
+
+    <p class="reveal">It does not make sense in 2026.</p>
+
+    <p class="reveal">The tools changed. The cost of the scan collapsed. The pricing at most agencies did not follow.</p>
+
+    <p class="reveal">I'm not saying SEO agencies are bad people. I know some good ones. But a lot of the industry is built on an information gap, and that gap is closing fast. Most agencies have no particular incentive to tell you that.</p>
+
+    <h2 class="reveal">What the Grader Actually Does</h2>
+
+    <p class="reveal">I want to be honest about scope here, because I'm not trying to oversell this thing.</p>
+
+    <p class="reveal">The <a href="/website-grader/">Website Grader</a> checks the stuff that matters most for small business local SEO. On-page structure. Meta tags. Page speed signals. Mobile readiness. Whether your Google Business Profile is set up correctly. Whether you're showing up in the places you should be showing up.</p>
+
+    <p class="reveal">It does not replace a full technical audit. It does not crawl a thousand-page site. It does not predict your competitor's next move.</p>
+
+    <p class="reveal">What it does is tell you, clearly, whether your foundation is solid. Most of the time it isn't. Most of the time there are three or four things sitting right on the surface that would take an afternoon to fix and would move the needle by next month.</p>
+
+    <p class="reveal">You can see those things for free. Today. Without a contract. If you want someone to turn that list into a prioritized action plan, that's what the <a href="/website-grader/">paid audit</a> is for. But the free Grader gives you enough to have an honest conversation about your site. Whether that conversation is with us or with whoever you already pay.</p>
+
+    <h2 class="reveal">Why Free</h2>
+
+    <p class="reveal">Because it should be free.</p>
+
+    <p class="reveal">I know that sounds like a slogan. Let me explain what I mean.</p>
+
+    <p class="reveal">The information the Grader produces has almost no marginal cost anymore. There's no labor pool it's drawing from. No expertise it's consuming that regenerates slowly. Running the scan in 2026 is fundamentally different from running one in 2015. The work that used to justify the price tag is mostly gone.</p>
+
+    <p class="reveal">Charging for access to that scan, at the rates some agencies charge, is not value creation. It's a rent on an information gap that used to exist and increasingly does not.</p>
+
+    <p class="reveal">I built the Grader free because charging for it felt wrong. Because a plumber in Taylor should be able to know what's broken on his website without paying fifteen thousand dollars to find out.</p>
+
+    <p class="reveal">That's it. That's the whole reason.</p>
+
+    <h2 class="reveal">What This Means for You</h2>
+
+    <p class="reveal">If you've been paying for monthly SEO reports you don't understand, run the Grader.</p>
+
+    <p class="reveal">Not to cancel your agency. Not yet. Run it so you have something to compare. Ask your agency about the specific items it flags. See if they can explain them clearly.</p>
+
+    <p class="reveal">If they can, great. You're getting real value and you should keep paying for it.</p>
+
+    <p class="reveal">If they can't, that's information too.</p>
+
+    <p class="reveal">The Grader won't tell you everything. But it'll tell you enough to know whether the conversation you've been having about your website is an honest one.</p>
+
+    <p class="reveal">If you want to go deeper, the <a href="/website-grader/">full audit</a> is $300. One time. No contract. A human reviewed your site, prioritized what actually matters, and wrote it up in plain English. Most clients get it back in 48 hours. Whether you hire us after that is entirely up to you.</p>
+
+    <p class="reveal">Run yours. See what it says. Decide what to do from there.</p>
+
+    <!-- CTA -->
+    <div class="article-cta reveal">
+      <h2>Run Your Free Website Grader</h2>
+      <p>See exactly what's working and what's not on your site. No contract. No pitch. Takes about 60 seconds.</p>
+      <a href="/website-grader/" class="btn-primary">Run the Free Grader</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <div class="nav-logo-text">Peninsulas <span>AI</span></div>
+        </a>
+        <p>AI consulting for Metro Detroit trade and service businesses. Simple systems. Real results. No tech degree required.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#how">How It Works</a></li>
+          <li><a href="/#contact">Free Consult</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a></li>
+          <li><a href="tel:3135499136">313-549-9136</a></li>
+          <li><a href="#">Wyandotte, MI</a></li>
+          <li><a href="#">Serving All of Metro Detroit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Peninsulas AI</p>
+      <p>Downriver Metro Detroit's AI Consulting Company</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle system
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const colors = [
+        'rgba(14,165,233,',
+        'rgba(20,184,166,',
+        'rgba(244,114,182,',
+        'rgba(249,168,212,',
+      ];
+      function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      function createParticle() {
+        return {
+          x: Math.random() * w, y: Math.random() * h,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: Math.random() * -0.4 - 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.5 + 0.1,
+          fadeDir: Math.random() > 0.5 ? 1 : -1,
+        };
+      }
+      function init() {
+        resize();
+        particles = [];
+        const count = Math.min(Math.floor(w * h / 12000), 80);
+        for (let i = 0; i < count; i++) particles.push(createParticle());
+      }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.speedX; p.y += p.speedY;
+          p.opacity += p.fadeDir * 0.003;
+          if (p.opacity <= 0.05 || p.opacity >= 0.55) p.fadeDir *= -1;
+          if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+          if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.opacity + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+      init(); animate();
+    })();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
