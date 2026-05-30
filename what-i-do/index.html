@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What I Do — Peninsulas AI</title>
+  <meta name="description" content="Three things, done well. Peninsulas AI builds a content engine, practical automations, and AI training for Metro Detroit small businesses. No jargon, no forty-item menu." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="What I Do — Peninsulas AI" />
+  <meta property="og:description" content="A content engine, practical automations, and hands-on AI training for small businesses. Three things, done well." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://peninsulasai.com/what-i-do/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
+    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
+    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
+    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
+  .brand .wordmark span{color:var(--sky)}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative}
+  .navlinks a.active{color:var(--ink)}
+  .navlinks a:not(.btn)::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--sky);transition:width .3s}
+  .navlinks a.active::after{width:100%}
+  .navlinks a:not(.btn):hover{color:var(--ink)}
+  .navlinks a:not(.btn):hover::after{width:100%}
+  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
+  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}.brand .wordmark{display:none}}
+
+  /* HERO */
+  .phero{padding:160px 0 30px;position:relative}
+  .phero .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:30px}
+  .phero .eyebrow::before{content:'';width:44px;height:1px;background:var(--sky)}
+  .phero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,7vw,6rem);line-height:0.92;text-transform:uppercase;letter-spacing:-0.02em}
+  .phero p{color:var(--muted);font-size:1.1rem;margin-top:26px;max-width:48ch;line-height:1.75}
+  .phero p strong{color:var(--ink);font-weight:600}
+
+  /* OFFER ROWS */
+  .offer-row{padding:80px 0;border-top:1px solid var(--line);position:relative;z-index:1}
+  .o-inner{display:grid;grid-template-columns:0.8fr 1.2fr;gap:64px;align-items:start}
+  .o-rail{position:relative}
+  .o-num{font-family:var(--disp);font-weight:800;font-size:clamp(4rem,9vw,8rem);line-height:0.8;letter-spacing:-0.03em;color:transparent;-webkit-text-stroke:1px var(--line2);text-stroke:1px var(--line2)}
+  .o-icon{width:54px;height:54px;color:var(--sky);margin-top:26px}
+  .o-icon svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.1;fill:none}
+  .o-body h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4vw,2.9rem);text-transform:uppercase;letter-spacing:-0.01em;line-height:1}
+  .o-body .lead{color:var(--muted);font-size:1.05rem;margin-top:18px;line-height:1.75;max-width:52ch}
+  .o-body .lead strong{color:var(--ink);font-weight:600}
+  .deliver{margin-top:30px}
+  .deliver .dh{font-family:var(--disp);font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky);margin-bottom:16px}
+  .deliver ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:13px 28px}
+  .deliver li{font-size:0.92rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.5}
+  .deliver li::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%}
+  .deliver li strong{color:var(--ink);font-weight:600}
+  .fit{margin-top:26px;font-family:var(--disp);font-size:0.95rem;letter-spacing:0.04em;color:var(--ink);border-left:2px solid var(--teal);padding-left:16px}
+  .fit span{color:var(--muted)}
+  @media(max-width:860px){
+    .offer-row{padding:56px 0}
+    .o-inner{grid-template-columns:1fr;gap:24px}
+    .o-rail{display:flex;align-items:center;gap:24px}
+    .o-icon{margin-top:0}
+    .deliver ul{grid-template-columns:1fr}
+  }
+
+  /* ONE-TIME BAND */
+  .onetime-band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0;position:relative;z-index:1}
+  .otb-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .otb h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);text-transform:uppercase;line-height:1.02}
+  .otb p{color:var(--muted);margin-top:18px;line-height:1.75;max-width:44ch}
+  .otb-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .otb-list li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;font-family:var(--disp);letter-spacing:0.03em}
+  .otb-list li:last-child{border-bottom:none}
+  .otb-list .n{color:var(--ink);font-weight:600;font-size:1.05rem}
+  .otb-list .d{color:var(--muted);font-family:var(--body);font-size:0.86rem;font-weight:400;text-align:right;max-width:22ch}
+  .otb-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:860px){.otb-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* CLOSE */
+  .close{text-align:center;padding:140px 0;position:relative;z-index:1}
+  .close .eyebrow{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:24px}
+  .close h2{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5vw,4.2rem);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em}
+  .close p{color:var(--muted);max-width:42ch;margin:22px auto 0;font-size:1.05rem}
+  .close-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(14,165,233,0.1),transparent 70%);pointer-events:none}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px}
+  .btn-solid{color:#08060f;background:var(--ink);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}
+  .btn-solid:hover{background:#fff;transform:translateY(-1px)}
+  .btn-line{color:var(--ink);border:1px solid var(--line2);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;background:transparent;transition:border-color .2s,color .2s}
+  .btn-line:hover{border-color:var(--sky);color:var(--sky)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:54px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-brand .brand{margin-bottom:14px}
+  .foot-brand p{color:var(--muted);font-size:0.9rem;max-width:32ch}
+  .foot-col h4{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--ink);opacity:0.75;text-decoration:none;font-size:0.92rem;margin-bottom:10px;transition:opacity .2s,color .2s}
+  .foot-col a:hover{opacity:1;color:var(--sky)}
+  .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:0.82rem;font-family:var(--disp);letter-spacing:0.08em;text-transform:uppercase}
+
+  /* MOTION */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Peninsulas AI" />
+    <span class="wordmark">Peninsulas<span>AI</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="/what-i-do/" class="active">Work</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/website-grader/">Free Grader</a>
+    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <p class="eyebrow reveal">What I do</p>
+    <h1 class="reveal">Three things.<br>Done well.</h1>
+    <p class="reveal">Most agencies hand you a menu of forty services and hope something sticks. <strong>I do three things, and I do them right.</strong> A content engine that keeps you visible, automations that stop work slipping through the cracks, and training that finally makes the tools you pay for earn their keep.</p>
+  </div>
+</header>
+
+<!-- OFFER 01 -->
+<section class="offer-row">
+  <div class="wrap o-inner">
+    <div class="o-rail reveal">
+      <div class="o-num">01</div>
+      <div class="o-icon">
+        <svg viewBox="0 0 48 48"><path d="M10 6h20l8 8v28H10z"/><path d="M30 6v8h8"/><path d="M16 24h16M16 30h16M16 36h10"/></svg>
+      </div>
+    </div>
+    <div class="o-body reveal">
+      <h2>Content Engine</h2>
+      <p class="lead">The hardest part of marketing isn't being clever once. It's showing up every week without fail. <strong>I run that for you.</strong> Blog posts written for local search, social captions in your voice, short-form reels, and review responses that keep your reputation warm, all handled on a schedule so you never have to think about it.</p>
+      <div class="deliver">
+        <div class="dh">What lands in your inbox</div>
+        <ul>
+          <li><strong>SEO blog posts</strong> built to get found locally</li>
+          <li><strong>Social captions</strong> written for your trade</li>
+          <li><strong>Short-form reels</strong> ready to post</li>
+          <li><strong>Review responses</strong> drafted in your voice</li>
+          <li><strong>Seasonal promos</strong> when they matter</li>
+          <li><strong>A monthly rhythm</strong> you can count on</li>
+        </ul>
+      </div>
+      <p class="fit">Good fit if <span>you know you should be posting but never get to it.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER 02 -->
+<section class="offer-row">
+  <div class="wrap o-inner">
+    <div class="o-rail reveal">
+      <div class="o-num">02</div>
+      <div class="o-icon">
+        <svg viewBox="0 0 48 48"><circle cx="12" cy="12" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><path d="M16 14l5 18M32 14l-5 18M17 12h14"/></svg>
+      </div>
+    </div>
+    <div class="o-body reveal">
+      <h2>Automations</h2>
+      <p class="lead">Most jobs aren't lost to better competitors. They're lost because nobody followed up. <strong>Automations close that gap.</strong> The repetitive, easy-to-forget tasks that quietly cost you money get built once and then run on their own, in the background, whether you remember them or not.</p>
+      <div class="deliver">
+        <div class="dh">What it handles</div>
+        <ul>
+          <li><strong>Estimate follow-ups</strong> that chase cold quotes</li>
+          <li><strong>Review responders</strong> that stay on top of feedback</li>
+          <li><strong>Lead routing</strong> so nothing sits unanswered</li>
+          <li><strong>Custom workflows</strong> for whatever eats your time</li>
+        </ul>
+      </div>
+      <p class="fit">Good fit if <span>things keep falling through the cracks when you get busy.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER 03 -->
+<section class="offer-row">
+  <div class="wrap o-inner">
+    <div class="o-rail reveal">
+      <div class="o-num">03</div>
+      <div class="o-icon">
+        <svg viewBox="0 0 48 48"><path d="M24 8l16 7-16 7-16-7 16-7z"/><path d="M14 19v9c0 3 5 5 10 5s10-2 10-5v-9"/><path d="M40 15v10"/></svg>
+      </div>
+    </div>
+    <div class="o-body reveal">
+      <h2>AI Staff Training</h2>
+      <p class="lead">Your team is probably already paying for tools they barely touch. <strong>I come in and fix that.</strong> Hands-on, plain-English training that meets your people where they are, shows them how to actually use what you've got, and sends them back to work with skills they'll use that afternoon. Not a lecture. Not a slide deck nobody opens again.</p>
+      <div class="deliver">
+        <div class="dh">How it works</div>
+        <ul>
+          <li><strong>Audit</strong> of the tools you already pay for</li>
+          <li><strong>Hands-on sessions</strong> built around your work</li>
+          <li><strong>Real workflows</strong>, not theory</li>
+          <li><strong>Plain English</strong>, no tech degree needed</li>
+        </ul>
+      </div>
+      <p class="fit">Good fit if <span>you suspect you're wasting money on software nobody uses.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ONE-TIME BAND -->
+<section class="onetime-band">
+  <div class="wrap">
+    <div class="otb-grid">
+      <div class="otb reveal">
+        <h2>Not ready for monthly?</h2>
+        <p>Plenty of people start with a single project. One reel, one landing page, one cleanup. No retainer, no commitment. We scope it, I build it, you keep it.</p>
+        <div class="otb-cta">
+          <a href="/#pricing" class="btn-line">See Pricing</a>
+          <a href="/contact/" class="btn-solid">Ask About a Build</a>
+        </div>
+      </div>
+      <ul class="otb-list reveal">
+        <li><span class="n">Reels</span><span class="d">Scroll-stopping short video</span></li>
+        <li><span class="n">Landing Pages</span><span class="d">One focused page built to convert</span></li>
+        <li><span class="n">Website Audits</span><span class="d">A plain-English plan to fix your site</span></li>
+        <li><span class="n">Custom Automations</span><span class="d">Scoped and priced to the job</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close">
+  <div class="close-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Let's talk</p>
+    <h2 class="reveal">Which one<br>sounds like you?</h2>
+    <p class="reveal">Tell me what's eating your time and I'll tell you which of these actually helps. No pitch.</p>
+    <div class="cta-row reveal">
+      <a href="/contact/" class="btn-solid">Get in Touch</a>
+      <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn-line">Book a Free Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="brand">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <span class="wordmark">Peninsulas<span>AI</span></span>
+        </a>
+        <p>AI for Metro Detroit small businesses. Simple systems. Real results.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="/what-i-do/">What I Do</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/website-grader/">Free Grader</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Get in Touch</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a>
+        <a href="tel:3135499136">313 549 9136</a>
+        <a href="/contact/">Wyandotte, MI</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Peninsulas AI</span>
+      <span>Downriver Metro Detroit's AI Company</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);obs.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

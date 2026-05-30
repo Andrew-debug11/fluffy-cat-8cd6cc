@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get in Touch — Peninsulas AI</title>
+  <meta name="description" content="Tell Peninsulas AI a bit about your business and how you'd rather be reached. No pressure, no calendar required. Andrew follows up your way." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://peninsulasai.com/contact/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
+    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
+    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
+    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
+  .brand .wordmark span{color:var(--sky)}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+  .navlinks a:not(.btn):hover{color:var(--ink)}
+  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
+  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}.brand .wordmark{display:none}}
+
+  /* LAYOUT */
+  .page{padding:150px 0 110px;position:relative;z-index:1}
+  .form-glow{position:absolute;top:120px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,233,0.1),transparent 70%);pointer-events:none;z-index:0}
+  .grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:72px;align-items:start}
+  .intro .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:28px}
+  .intro .eyebrow::before{content:'';width:40px;height:1px;background:var(--sky)}
+  .intro h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,6vw,4.6rem);line-height:0.92;text-transform:uppercase;letter-spacing:-0.02em}
+  .intro p{color:var(--muted);font-size:1.05rem;margin-top:24px;max-width:38ch;line-height:1.75}
+  .intro p strong{color:var(--ink);font-weight:600}
+  .intro .alt{margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+  .intro .alt .lab{font-family:var(--disp);font-size:0.74rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .intro .alt a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-family:var(--disp);font-weight:600;letter-spacing:0.04em;font-size:1.05rem;transition:color .2s}
+  .intro .alt a:hover{color:var(--sky)}
+  .intro .alt .row{margin-bottom:12px}
+
+  /* FORM */
+  .card{border:1px solid var(--line2);background:var(--bg2);border-radius:3px;padding:40px;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-family:var(--disp);font-weight:600;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .field label .req{color:var(--sky)}
+  .field input,.field select,.field textarea{
+    width:100%;background:var(--bg);border:1px solid var(--line2);color:var(--ink);
+    font-family:var(--body);font-size:0.98rem;padding:13px 15px;border-radius:2px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:rgba(136,153,170,0.6)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(14,165,233,0.12)}
+  .field textarea{resize:vertical;min-height:110px}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238899AA' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:520px){.two{grid-template-columns:1fr}}
+
+  /* preferred contact pills */
+  .pills{display:flex;gap:10px;flex-wrap:wrap}
+  .pill{flex:1;min-width:90px;position:relative}
+  .pill input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .pill span{display:block;text-align:center;font-family:var(--disp);font-weight:600;font-size:0.86rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);padding:13px 8px;border-radius:2px;cursor:pointer;transition:all .2s}
+  .pill input:checked + span{color:#08060f;background:linear-gradient(135deg,var(--sky),var(--teal));border-color:transparent}
+  .pill input:focus-visible + span{box-shadow:0 0 0 3px rgba(14,165,233,0.2)}
+
+  .submit{width:100%;margin-top:6px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f;background:var(--ink);border:none;padding:16px;border-radius:2px;cursor:pointer;transition:background .2s,transform .2s}
+  .submit:hover{background:#fff;transform:translateY(-1px)}
+  .submit:disabled{opacity:0.6;cursor:default;transform:none}
+  .formnote{color:var(--muted);font-size:0.82rem;text-align:center;margin-top:16px}
+
+  .hidden{display:none}
+  .success{text-align:center;padding:30px 10px}
+  .success h2{font-family:var(--disp);font-weight:800;font-size:2.2rem;text-transform:uppercase;margin-bottom:12px}
+  .success p{color:var(--muted)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:40px 0}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:0.82rem;font-family:var(--disp);letter-spacing:0.08em;text-transform:uppercase}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--sky)}
+
+  @media(max-width:860px){.grid{grid-template-columns:1fr;gap:44px}.card{padding:30px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Peninsulas AI" />
+    <span class="wordmark">Peninsulas<span>AI</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="/what-i-do/">Work</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/website-grader/">Free Grader</a>
+    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="form-glow"></div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="intro">
+        <p class="eyebrow">Get in touch</p>
+        <h1>Let's see if<br>I can help.</h1>
+        <p>Tell me a little about your business and how you'd rather be reached. <strong>No calendar to wrestle with, no pressure.</strong> I'll follow up your way, usually within a day.</p>
+        <div class="alt">
+          <p class="lab">Rather not fill out a form?</p>
+          <div class="row"><a href="tel:3135499136">Call 313 549 9136</a></div>
+          <div class="row"><a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a></div>
+          <div class="row"><a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener">Or grab a time on my calendar →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="leadForm" name="interest" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="interest" />
+          <p class="hidden"><label>Leave this empty: <input name="bot-field" /></label></p>
+
+          <div class="two">
+            <div class="field">
+              <label>Your Name <span class="req">*</span></label>
+              <input type="text" name="name" placeholder="First and last" required />
+            </div>
+            <div class="field">
+              <label>Business Name</label>
+              <input type="text" name="business" placeholder="Optional" />
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" name="email" placeholder="you@business.com" required />
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input type="tel" name="phone" placeholder="Optional" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Best way to reach you <span class="req">*</span></label>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="preferred_contact" value="Email" required /><span>Email</span></label>
+              <label class="pill"><input type="radio" name="preferred_contact" value="Phone call" /><span>Call</span></label>
+              <label class="pill"><input type="radio" name="preferred_contact" value="Text" /><span>Text</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>What are you curious about?</label>
+            <select name="interest_area">
+              <option value="" disabled selected>Pick one (optional)</option>
+              <option value="Monthly plan">A monthly plan</option>
+              <option value="One-time build">A one-time build (reel, landing page, audit)</option>
+              <option value="Automation">An automation</option>
+              <option value="AI training">AI training for my team</option>
+              <option value="Not sure yet">Not sure yet, just exploring</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Anything you want me to know?</label>
+            <textarea name="message" placeholder="A sentence or two is plenty. Optional."></textarea>
+          </div>
+
+          <button type="submit" class="submit">Send It Over</button>
+          <p class="formnote">No spam. No pushy sales calls. Just a straight answer.</p>
+        </form>
+
+        <div class="success hidden" id="success">
+          <h2>Got it.</h2>
+          <p>Thanks. I'll reach out your way, usually within a day. Talk soon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Peninsulas AI</span>
+    <span><a href="/">peninsulasai.com</a> · Wyandotte, MI</span>
+  </div>
+</footer>
+
+<script>
+  const form=document.getElementById('leadForm');
+  const success=document.getElementById('success');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const btn=form.querySelector('.submit');
+    btn.textContent='Sending...';btn.disabled=true;
+    try{
+      const data=new FormData(form);
+      const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()});
+      if(res.ok){form.classList.add('hidden');success.classList.remove('hidden');}
+      else{btn.textContent='Something went wrong. Try again.';btn.disabled=false;}
+    }catch{btn.textContent='Something went wrong. Try again.';btn.disabled=false;}
+  });
+</script>
+</body>
+</html>
