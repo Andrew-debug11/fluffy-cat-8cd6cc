@@ -205,7 +205,7 @@
 
   /* ---------- PRICING ---------- */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
-  .tier{padding:42px 34px;border-right:1px solid var(--line);position:relative;transition:background .35s}
+  .tier{padding:42px 34px;border-right:1px solid var(--line);position:relative;transition:background .35s;display:flex;flex-direction:column}
   .tier:last-child{border-right:none}
   .tier:hover{background:var(--bg2)}
   .tier.feature{background:linear-gradient(180deg,rgba(14,165,233,0.06),transparent)}
@@ -225,7 +225,7 @@
   .tier li{font-size:0.9rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.5}
   .tier li::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%}
   .tier li strong{color:var(--ink);font-weight:600}
-  .tier .tcta{display:block;margin-top:30px;text-align:center;font-family:var(--disp);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;padding:13px;text-decoration:none;border:1px solid var(--line2);color:var(--ink);transition:all .25s}
+  .tier .tcta{display:block;margin-top:auto;padding-top:30px;text-align:center;font-family:var(--disp);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;padding:13px;text-decoration:none;border:1px solid var(--line2);color:var(--ink);transition:all .25s}
   .tier .tcta:hover{background:var(--ink);color:#08060f}
   .tier.feature .tcta{background:linear-gradient(135deg,var(--sky),var(--teal));border:none;color:#08060f}
   .tier.feature .tcta:hover{filter:brightness(1.08)}
@@ -405,7 +405,7 @@
         <div class="pshape">From $297<span class="per">/mo</span></div>
         <div class="trule"></div>
         <p class="tdesc">Three monthly plans depending on how much content you want flowing. Blog, social, reels, reviews.</p>
-        <a href="/contact/" class="tcta">See Plans</a>
+        <a href="/pricing/#content" class="tcta">See Plans</a>
       </div>
 
       <div class="tier reveal">
@@ -414,20 +414,20 @@
         <div class="pshape quote">Scoped per build</div>
         <div class="trule"></div>
         <p class="tdesc">Priced to the workflow, not a subscription. We scope it, you own it. Optional monthly upkeep if you want it.</p>
-        <a href="/contact/" class="tcta">Get a Quote</a>
+        <a href="/pricing/#automation" class="tcta">Get Started</a>
       </div>
 
       <div class="tier reveal">
         <div class="tname">AI Staff Training</div>
         <div class="ttag">Make the tools you pay for earn their keep.</div>
-        <div class="pshape quote">Per session</div>
+        <div class="pshape">From $500<span class="per">/half day</span></div>
         <div class="trule"></div>
         <p class="tdesc">Hands-on training built around your team and your tools. Priced by the engagement.</p>
-        <a href="/contact/" class="tcta">Get a Quote</a>
+        <a href="/pricing/#training" class="tcta">Get Started</a>
       </div>
     </div>
 
-    <p class="pricing-foot reveal">Want the full breakdown, plans and one-time build prices? <a href="/contact/">Get in touch</a> and I'll send it over.</p>
+    <p class="pricing-foot reveal">Want the full breakdown? <a href="/pricing/">See all pricing</a> for plans, audits, and one-time builds.</p>
   </div>
 </section>
 

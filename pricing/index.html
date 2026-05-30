@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Peninsulas AI</title>
+  <meta name="description" content="Straight pricing from Peninsulas AI. Monthly content plans, two audit options, and one-time AI builds for Metro Detroit small businesses. No surprises, no hourly games." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Pricing — Peninsulas AI" />
+  <meta property="og:description" content="Monthly content plans, audits, and one-time AI builds. Priced on outcomes, quoted straight." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://peninsulasai.com/pricing/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
+    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
+    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
+    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
+  .brand .wordmark span{color:var(--sky)}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative}
+  .navlinks a.active{color:var(--ink)}
+  .navlinks a:not(.btn)::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--sky);transition:width .3s}
+  .navlinks a.active::after{width:100%}
+  .navlinks a:not(.btn):hover{color:var(--ink)}
+  .navlinks a:not(.btn):hover::after{width:100%}
+  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
+  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}.brand .wordmark{display:none}}
+
+  /* HERO */
+  .phero{padding:160px 0 20px;position:relative}
+  .phero .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:30px}
+  .phero .eyebrow::before{content:'';width:44px;height:1px;background:var(--sky)}
+  .phero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,7vw,6rem);line-height:0.92;text-transform:uppercase;letter-spacing:-0.02em}
+  .phero p{color:var(--muted);font-size:1.1rem;margin-top:26px;max-width:50ch;line-height:1.75}
+  .phero p strong{color:var(--ink);font-weight:600}
+
+  /* HOW IT WORKS STRIP */
+  .how{margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .how .h{display:flex;gap:14px;align-items:flex-start}
+  .how .hn{font-family:var(--disp);font-weight:700;font-size:0.95rem;color:var(--sky);min-width:24px}
+  .how .ht{font-family:var(--disp);font-weight:600;font-size:1rem;letter-spacing:0.02em;color:var(--ink);text-transform:uppercase}
+  .how .hd{color:var(--muted);font-size:0.86rem;margin-top:3px;line-height:1.5}
+  @media(max-width:760px){.how{grid-template-columns:1fr;gap:18px}}
+
+  /* SECTIONS */
+  section{padding:90px 0;position:relative;z-index:1}
+  .sec-head{margin-bottom:48px}
+  .sec-kick{font-family:var(--disp);font-weight:600;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
+  .sec-title{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1;text-transform:uppercase;letter-spacing:-0.01em}
+  .sec-lead{color:var(--muted);max-width:56ch;margin-top:16px;font-size:1.02rem;line-height:1.7}
+
+  /* CONTENT TIERS (scope ladder) */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+  .tier{padding:38px 30px;border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;transition:background .35s}
+  .tier:last-child{border-right:none}
+  .tier:hover{background:var(--bg2)}
+  .tier.feature{background:linear-gradient(180deg,rgba(14,165,233,0.07),transparent)}
+  .tier.feature::before{content:'Most pick this';position:absolute;top:0;right:0;font-family:var(--disp);font-size:0.64rem;letter-spacing:0.16em;text-transform:uppercase;color:#08060f;background:var(--teal);padding:6px 12px;font-weight:700}
+  .tier .stage{font-family:var(--disp);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .tier .tname{font-family:var(--disp);font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.03em}
+  .tier .tprice{font-family:var(--disp);font-weight:800;font-size:2.8rem;letter-spacing:-0.02em;margin:16px 0 2px;line-height:1}
+  .tier .tprice .per{font-size:0.95rem;color:var(--muted);font-weight:500}
+  .tier .unlocks{color:var(--ink);font-size:0.92rem;margin:14px 0 20px;line-height:1.55;font-weight:600}
+  .tier .unlocks span{color:var(--teal)}
+  .tier .trule{height:1px;background:var(--line);margin-bottom:20px}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+  .tier li{font-size:0.9rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.45}
+  .tier li::before{content:'';position:absolute;left:0;top:7px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%}
+  .tier li.off{color:rgba(136,153,170,0.45)}
+  .tier li.off::before{border-color:rgba(136,153,170,0.3)}
+  .tier li strong{color:var(--ink);font-weight:600}
+  .tier .tcta{display:block;margin-top:auto;text-align:center;font-family:var(--disp);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;padding:13px;text-decoration:none;border:1px solid var(--line2);color:var(--ink);transition:all .25s}
+  .tier .tcta:hover{background:var(--ink);color:#08060f}
+  .tier.feature .tcta{background:linear-gradient(135deg,var(--sky),var(--teal));border:none;color:#08060f}
+  .tier.feature .tcta:hover{filter:brightness(1.08)}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr}.tier{border-right:none;border-bottom:1px solid var(--line)}.tier:last-child{border-bottom:none}}
+
+  /* AUDITS */
+  .audits{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .audit{border:1px solid var(--line2);background:var(--bg2);border-radius:3px;padding:36px;position:relative;display:flex;flex-direction:column}
+  .audit.flag::before{content:'Start here for builds & training';position:absolute;top:0;left:0;right:0;font-family:var(--disp);font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:#08060f;background:linear-gradient(90deg,var(--sky),var(--teal));padding:6px 12px;font-weight:700;text-align:center}
+  .audit.flag{padding-top:50px}
+  .audit .aname{font-family:var(--disp);font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.02em}
+  .audit .ameta{font-family:var(--disp);font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky);margin-top:6px}
+  .audit .aprice{font-family:var(--disp);font-weight:800;font-size:2.6rem;margin:18px 0 2px;line-height:1}
+  .audit .aprice .per{font-size:0.9rem;color:var(--muted);font-weight:500}
+  .audit p{color:var(--muted);font-size:0.94rem;line-height:1.65;margin-top:14px}
+  .audit p strong{color:var(--ink);font-weight:600}
+  .audit .get{font-family:var(--disp);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-top:22px;margin-bottom:8px}
+  .audit ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+  .audit li{font-size:0.9rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.45}
+  .audit li::before{content:'';position:absolute;left:0;top:7px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%}
+  .audit li strong{color:var(--ink);font-weight:600}
+  .audit .acta{display:block;margin-top:auto;text-align:center;font-family:var(--disp);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;padding:14px;text-decoration:none;transition:all .25s}
+  .audit .acta.solid{background:var(--ink);color:#08060f}
+  .audit .acta.solid:hover{background:#fff}
+  .audit .acta.line{border:1px solid var(--line2);color:var(--ink)}
+  .audit .acta.line:hover{border-color:var(--sky);color:var(--sky)}
+  @media(max-width:760px){.audits{grid-template-columns:1fr}}
+
+  /* BUILDS */
+  .builds{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .build-row{display:grid;grid-template-columns:0.5fr 1.5fr;gap:40px;padding:40px 0;border-top:1px solid var(--line);align-items:start}
+  .build-row:first-of-type{border-top:none}
+  .build-tier{font-family:var(--disp)}
+  .build-tier .bn{font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.02em}
+  .build-tier .bp{font-weight:800;font-size:1.9rem;color:var(--sky);margin-top:6px;line-height:1}
+  .build-body .bdesc{color:var(--ink);font-size:1rem;font-weight:600;margin-bottom:16px}
+  .build-body .bex{display:flex;flex-wrap:wrap;gap:10px}
+  .build-body .bex span{font-family:var(--disp);font-size:0.84rem;letter-spacing:0.04em;color:var(--muted);border:1px solid var(--line2);padding:7px 14px;border-radius:2px}
+  @media(max-width:760px){.build-row{grid-template-columns:1fr;gap:16px;padding:30px 0}}
+  .build-note{margin-top:40px;color:var(--muted);font-size:0.95rem;line-height:1.7;max-width:62ch}
+  .build-note strong{color:var(--ink);font-weight:600}
+
+  /* TRAINING */
+  .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .train .tprice2{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;letter-spacing:-0.02em}
+  .train .tprice2 .per{font-size:1.05rem;color:var(--muted);font-weight:500}
+  .train p{color:var(--muted);margin-top:18px;line-height:1.7;font-size:1.02rem}
+  .train p strong{color:var(--ink);font-weight:600}
+  .train ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .train li{padding-left:24px;position:relative;color:var(--muted);line-height:1.5}
+  .train li::before{content:'';position:absolute;left:0;top:8px;width:10px;height:10px;border:1px solid var(--teal);border-radius:50%}
+  .train li strong{color:var(--ink);font-weight:600}
+  @media(max-width:760px){.train-grid{grid-template-columns:1fr;gap:32px}}
+
+  /* CLOSE */
+  .close{text-align:center;padding:130px 0;position:relative;z-index:1}
+  .close .eyebrow{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:24px}
+  .close h2{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5vw,4rem);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em}
+  .close p{color:var(--muted);max-width:42ch;margin:22px auto 0;font-size:1.05rem}
+  .close-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(14,165,233,0.1),transparent 70%);pointer-events:none}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px}
+  .btn-solid{color:#08060f;background:var(--ink);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}
+  .btn-solid:hover{background:#fff;transform:translateY(-1px)}
+  .btn-line{color:var(--ink);border:1px solid var(--line2);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;background:transparent;transition:border-color .2s,color .2s}
+  .btn-line:hover{border-color:var(--sky);color:var(--sky)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:54px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-brand .brand{margin-bottom:14px}
+  .foot-brand p{color:var(--muted);font-size:0.9rem;max-width:32ch}
+  .foot-col h4{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--ink);opacity:0.75;text-decoration:none;font-size:0.92rem;margin-bottom:10px;transition:opacity .2s,color .2s}
+  .foot-col a:hover{opacity:1;color:var(--sky)}
+  .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:0.82rem;font-family:var(--disp);letter-spacing:0.08em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Peninsulas AI" />
+    <span class="wordmark">Peninsulas<span>AI</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="/what-i-do/">Work</a>
+    <a href="/pricing/" class="active">Pricing</a>
+    <a href="/website-grader/">Free Grader</a>
+    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <p class="eyebrow reveal">Pricing</p>
+    <h1 class="reveal">Straight pricing.<br>No games.</h1>
+    <p class="reveal">No hourly mystery, no bundles built to confuse you. <strong>Content runs on a monthly plan. Bigger projects start with an audit, then get quoted as a one-time build with optional monthly upkeep.</strong> You always see the line items.</p>
+
+    <div class="how reveal">
+      <div class="h"><span class="hn">01</span><div><div class="ht">Pick a lane</div><div class="hd">Monthly content, or an audit for automations and training.</div></div></div>
+      <div class="h"><span class="hn">02</span><div><div class="ht">See the plan</div><div class="hd">For builds, the audit gives you a written plan you keep either way.</div></div></div>
+      <div class="h"><span class="hn">03</span><div><div class="ht">Build &amp; run</div><div class="hd">One-time build fee, then optional monthly management. Never bundled.</div></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT PLANS -->
+<section id="content">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kick">Content Engine · Monthly</div>
+      <h2 class="sec-title">Content plans</h2>
+      <p class="sec-lead">Each plan isn't just more posts. It unlocks a new way to get noticed. Start by showing up, climb to getting found, top out with the full machine.</p>
+    </div>
+
+    <div class="tiers">
+      <!-- STARTER -->
+      <div class="tier reveal">
+        <div class="stage">Stage 01</div>
+        <div class="tname">Starter</div>
+        <div class="tprice">$297<span class="per">/mo</span></div>
+        <div class="unlocks">Unlocks: <span>showing up.</span> A steady presence so you don't look closed.</div>
+        <div class="trule"></div>
+        <ul>
+          <li><strong>3 social posts</strong> a week, in your voice</li>
+          <li><strong>Review responses</strong>, up to 20/mo</li>
+          <li><strong>Monthly content calendar</strong></li>
+          <li class="off">No blog</li>
+          <li class="off">No video</li>
+        </ul>
+        <a href="/contact/" class="tcta">Get Started</a>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="tier feature reveal">
+        <div class="stage">Stage 02</div>
+        <div class="tname">Growth</div>
+        <div class="tprice">$597<span class="per">/mo</span></div>
+        <div class="unlocks">Unlocks: <span>getting found.</span> The blog turns you into something Google can rank.</div>
+        <div class="trule"></div>
+        <ul>
+          <li><strong>2 blog posts</strong> a month, built for local search</li>
+          <li><strong>3 social posts</strong> a week, tied to the blog</li>
+          <li><strong>1 reel</strong> a month</li>
+          <li><strong>Review responses</strong>, up to 40/mo</li>
+          <li><strong>Active community management</strong></li>
+        </ul>
+        <a href="/contact/" class="tcta">Get Started</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="tier reveal">
+        <div class="stage">Stage 03</div>
+        <div class="tname">Pro</div>
+        <div class="tprice">$997<span class="per">/mo</span></div>
+        <div class="unlocks">Unlocks: <span>the full machine.</span> Video and strategy on top of a weekly drumbeat.</div>
+        <div class="trule"></div>
+        <ul>
+          <li><strong>1 blog a week</strong> (4/mo)</li>
+          <li><strong>5 social posts</strong> a week, all tied to the blog</li>
+          <li><strong>2 reels</strong> a month</li>
+          <li><strong>Unlimited</strong> review responses</li>
+          <li><strong>Monthly strategy call</strong> with Andrew</li>
+        </ul>
+        <a href="/contact/" class="tcta">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDITS -->
+<section id="audit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kick">Audits · Paid, with a deliverable</div>
+      <h2 class="sec-title">Two ways to get a read</h2>
+      <p class="sec-lead">Both are paid, and both leave you with something in writing. One looks at your website. The other looks at your whole operation and where AI actually fits.</p>
+    </div>
+
+    <div class="audits">
+      <div class="audit reveal">
+        <div class="aname">Website Audit</div>
+        <div class="ameta">Remote · Quick turnaround</div>
+        <div class="aprice">$300</div>
+        <p>A plain-English teardown of your current site. The human read behind the free grader. <strong>You get the report, not a meeting.</strong></p>
+        <div class="get">You walk away with</div>
+        <ul>
+          <li>A prioritized <strong>fix list</strong> for your site</li>
+          <li>What's <strong>costing you customers</strong> right now</li>
+          <li>What to fix <strong>first</strong>, and why</li>
+        </ul>
+        <a href="/contact/" class="acta line">Request a Website Audit</a>
+      </div>
+
+      <div class="audit flag reveal">
+        <div class="aname">AI Implementation Audit</div>
+        <div class="ameta">On-site · Half a day, scoped for bigger teams</div>
+        <div class="aprice">$350<span class="per"> on-site</span></div>
+        <p>I come to you, learn how your business actually runs, and leave you with a real plan. <strong>Small shops are usually half a day. If your operation takes longer to understand, it's priced to match.</strong></p>
+        <div class="get">You walk away with</div>
+        <ul>
+          <li>A written <strong>AI implementation plan</strong></li>
+          <li>Specific <strong>automations</strong> worth building</li>
+          <li>Where <strong>staff training</strong> pays off</li>
+          <li>It's <strong>yours to keep</strong>, build with me or not</li>
+        </ul>
+        <a href="/contact/" class="acta solid">Book an Implementation Audit</a>
+      </div>
+    </div>
+    <p class="build-note reveal" style="margin-top:24px">Build with me after the audit and a fair rebate comes off your build. The plan still costs you nothing extra if you'd rather take it and run.</p>
+  </div>
+</section>
+
+<!-- BUILDS -->
+<section class="builds" id="automation">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kick">One-Time Builds</div>
+      <h2 class="sec-title">What you can actually build</h2>
+      <p class="sec-lead">Most owners have no idea what's possible, so here's the lay of the land. Builds are one-time. Some run on their own, some you keep on a small monthly plan. Your audit tells you exactly which level fits.</p>
+    </div>
+
+    <div class="build-row reveal">
+      <div class="build-tier">
+        <div class="bn">Simple</div>
+        <div class="bp">$1k – $2.5k</div>
+      </div>
+      <div class="build-body">
+        <div class="bdesc">One trigger, one job. The quick wins that save you an hour a day.</div>
+        <div class="bex">
+          <span>Smart contact forms that route &amp; reply</span>
+          <span>Instant quote calculators</span>
+          <span>A chatbot that answers your FAQs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="build-row reveal">
+      <div class="build-tier">
+        <div class="bn">Standard</div>
+        <div class="bp">$2.5k – $6k</div>
+      </div>
+      <div class="build-body">
+        <div class="bdesc">Multiple steps, hooked into one of your tools. The stuff that quietly makes you money.</div>
+        <div class="bex">
+          <span>Lead follow-up that chases cold quotes</span>
+          <span>Paperwork turned into spreadsheets</span>
+          <span>Scheduled email drafts</span>
+          <span>An onboarding chatbot</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="build-row reveal">
+      <div class="build-tier">
+        <div class="bn">Complex</div>
+        <div class="bp">$6k – $15k+</div>
+      </div>
+      <div class="build-body">
+        <div class="bdesc">Several systems talking to each other. The kind of thing that replaces a task you'd hire for.</div>
+        <div class="bex">
+          <span>AI that calls &amp; qualifies leads</span>
+          <span>Live job dashboards</span>
+          <span>Multi-step agents</span>
+          <span>Compliance-ready workflows</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="build-note reveal"><strong>Not sure where you land?</strong> That's the whole point of the implementation audit. We figure out what's worth building before you spend a dime on the build itself.</p>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kick">AI Staff Training</div>
+      <h2 class="sec-title">Train your team</h2>
+    </div>
+    <div class="train train-grid">
+      <div class="reveal">
+        <div class="tprice2">From $500<span class="per"> / half day</span></div>
+        <p>Your team probably already pays for tools nobody really uses. I fix that. <strong>Hands-on, plain-English sessions built around your people and the work they actually do.</strong></p>
+        <p>Price moves with how many seats you're training and whether we've got an ongoing relationship. The best setups end up on a small monthly retainer, where I keep your team current as the tools keep changing.</p>
+      </div>
+      <ul class="reveal">
+        <li><strong>Half-day and full-day</strong> on-site sessions</li>
+        <li><strong>Built around your tools</strong>, not generic slides</li>
+        <li><strong>Priced by seats</strong> and relationship</li>
+        <li><strong>Optional retainer</strong> to keep you up to date</li>
+        <li><strong>Starts with the audit</strong> for the full picture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close">
+  <div class="close-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Still reading prices?</p>
+    <h2 class="reveal">Let's just<br>talk it through.</h2>
+    <p class="reveal">Tell me what's eating your time and I'll point you at the right number. No pressure, no pitch.</p>
+    <div class="cta-row reveal">
+      <a href="/contact/" class="btn-solid">Get in Touch</a>
+      <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn-line">Book a Free Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="brand">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <span class="wordmark">Peninsulas<span>AI</span></span>
+        </a>
+        <p>AI for Metro Detroit small businesses. Simple systems. Real results.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="/what-i-do/">What I Do</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/website-grader/">Free Grader</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Get in Touch</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a>
+        <a href="tel:3135499136">313 549 9136</a>
+        <a href="/contact/">Wyandotte, MI</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Peninsulas AI</span>
+      <span>Downriver Metro Detroit's AI Company</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);obs.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
