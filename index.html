@@ -215,6 +215,12 @@
   .tier .tprice{font-family:var(--disp);font-weight:800;font-size:3rem;letter-spacing:-0.02em;margin:22px 0 4px;line-height:1}
   .tier .tprice .per{font-size:1rem;color:var(--muted);font-weight:500}
   .tier .trule{height:1px;background:var(--line);margin:22px 0}
+  .pshape{font-family:var(--disp);font-weight:800;font-size:1.7rem;letter-spacing:-0.01em;margin:20px 0 4px;line-height:1;color:var(--ink)}
+  .pshape .per{font-size:0.95rem;color:var(--muted);font-weight:500}
+  .pshape.quote{color:var(--teal)}
+  .pricing-foot{margin-top:26px;text-align:center;color:var(--muted);font-size:0.96rem}
+  .pricing-foot a{color:var(--sky);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  .pricing-foot a:hover{border-color:var(--sky)}
   .tier ul{list-style:none;display:flex;flex-direction:column;gap:13px}
   .tier li{font-size:0.9rem;color:var(--muted);padding-left:22px;position:relative;line-height:1.5}
   .tier li::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%}
@@ -223,10 +229,19 @@
   .tier .tcta:hover{background:var(--ink);color:#08060f}
   .tier.feature .tcta{background:linear-gradient(135deg,var(--sky),var(--teal));border:none;color:#08060f}
   .tier.feature .tcta:hover{filter:brightness(1.08)}
-  .onetime{margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border:1px solid var(--line);padding:24px 30px}
-  .onetime .ot-l{font-family:var(--disp);font-weight:600;letter-spacing:0.04em;color:var(--ink)}
-  .onetime .ot-l span{color:var(--muted);font-family:var(--body);font-weight:400;font-size:0.92rem;margin-left:6px}
-  .onetime a{font-family:var(--disp);font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sky);text-decoration:none}
+  .tdesc{color:var(--muted);font-size:0.93rem;line-height:1.6}
+  .scoped{margin-top:24px;border:1px solid var(--line);padding:30px 34px}
+  .scoped-head{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+  .scoped-head .ot-l{font-family:var(--disp);font-weight:700;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink)}
+  .scoped-head p{color:var(--muted);font-size:0.96rem;max-width:62ch;line-height:1.6}
+  .scoped-items{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .scoped-items .si{padding:20px 20px 20px 0;border-right:1px solid var(--line)}
+  .scoped-items .si:last-child{border-right:none;padding-right:0}
+  .scoped-items .n{display:block;font-family:var(--disp);font-weight:600;font-size:1.05rem;letter-spacing:0.04em;color:var(--ink)}
+  .scoped-items .d{display:block;color:var(--muted);font-size:0.86rem;margin-top:5px}
+  .scoped-cta{display:inline-block;margin-top:22px;font-family:var(--disp);font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sky);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  .scoped-cta:hover{border-color:var(--sky)}
+  @media(max-width:680px){.scoped-items{grid-template-columns:1fr}.scoped-items .si{border-right:none;border-bottom:1px solid var(--line);padding:16px 0}.scoped-items .si:last-child{border-bottom:none;padding-bottom:0}}
   @media(max-width:860px){.tiers{grid-template-columns:1fr}.tier{border-right:none;border-bottom:1px solid var(--line)}.tier:last-child{border-bottom:none}}
 
   /* ---------- CLOSE ---------- */
@@ -379,58 +394,40 @@
       <div class="sec-num">02</div>
       <div>
         <h2 class="sec-title">Simple pricing</h2>
-        <p class="sec-lead">Monthly plans below. Not sure which fits? <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener">Book a call</a> and I'll tell you straight.</p>
+        <p class="sec-lead">Same three things. Content runs on monthly plans. Automations and training are scoped to what you actually need.</p>
       </div>
     </div>
 
     <div class="tiers">
       <div class="tier reveal">
-        <div class="tname">Starter</div>
-        <div class="ttag">Show up online without doing it yourself.</div>
-        <div class="tprice">$297<span class="per">/mo</span></div>
+        <div class="tname">Content Engine</div>
+        <div class="ttag">The steady drumbeat that keeps you visible.</div>
+        <div class="pshape">From $297<span class="per">/mo</span></div>
         <div class="trule"></div>
-        <ul>
-          <li><strong>1 blog post</strong> built for local search</li>
-          <li><strong>4 social captions</strong> a month</li>
-          <li><strong>1 custom reel</strong> a month</li>
-          <li><strong>Review responses</strong> up to 20/mo</li>
-        </ul>
-        <a href="/contact/" class="tcta">Get Started</a>
-      </div>
-
-      <div class="tier feature reveal">
-        <div class="tname">Growth</div>
-        <div class="ttag">For businesses actively pulling ahead of the competition.</div>
-        <div class="tprice">$597<span class="per">/mo</span></div>
-        <div class="trule"></div>
-        <ul>
-          <li><strong>Everything in Starter</strong></li>
-          <li><strong>3 blog posts</strong> a month</li>
-          <li><strong>8 captions</strong> + <strong>2 reels</strong></li>
-          <li><strong>1 seasonal promo</strong> campaign</li>
-        </ul>
-        <a href="/contact/" class="tcta">Get Started</a>
+        <p class="tdesc">Three monthly plans depending on how much content you want flowing. Blog, social, reels, reviews.</p>
+        <a href="/contact/" class="tcta">See Plans</a>
       </div>
 
       <div class="tier reveal">
-        <div class="tname">Pro</div>
-        <div class="ttag">The full content engine, systematized.</div>
-        <div class="tprice">$997<span class="per">/mo</span></div>
+        <div class="tname">Automations</div>
+        <div class="ttag">Stop losing work to forgotten follow-ups.</div>
+        <div class="pshape quote">Scoped per build</div>
         <div class="trule"></div>
-        <ul>
-          <li><strong>Everything in Growth</strong></li>
-          <li><strong>4 blog posts</strong> + <strong>3 reels</strong></li>
-          <li><strong>Monthly newsletter</strong> + unlimited reviews</li>
-          <li><strong>Strategy call</strong> with Andrew</li>
-        </ul>
-        <a href="/contact/" class="tcta">Get Started</a>
+        <p class="tdesc">Priced to the workflow, not a subscription. We scope it, you own it. Optional monthly upkeep if you want it.</p>
+        <a href="/contact/" class="tcta">Get a Quote</a>
+      </div>
+
+      <div class="tier reveal">
+        <div class="tname">AI Staff Training</div>
+        <div class="ttag">Make the tools you pay for earn their keep.</div>
+        <div class="pshape quote">Per session</div>
+        <div class="trule"></div>
+        <p class="tdesc">Hands-on training built around your team and your tools. Priced by the engagement.</p>
+        <a href="/contact/" class="tcta">Get a Quote</a>
       </div>
     </div>
 
-    <div class="onetime reveal">
-      <div class="ot-l">One-time builds <span>Reels, landing pages, audits, custom automations</span></div>
-      <a href="/contact/">Ask About One-Time Work →</a>
-    </div>
+    <p class="pricing-foot reveal">Want the full breakdown, plans and one-time build prices? <a href="/contact/">Get in touch</a> and I'll send it over.</p>
   </div>
 </section>
 
