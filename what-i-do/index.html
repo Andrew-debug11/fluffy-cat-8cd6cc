@@ -35,6 +35,12 @@
   .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
   .brand .wordmark span{color:var(--sky)}
   .navlinks{display:flex;align-items:center;gap:34px}
+  .nav-right{display:flex;align-items:center;gap:34px}
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;padding:0}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s;margin:0 auto}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative}
   .navlinks a.active{color:var(--ink)}
   .navlinks a:not(.btn)::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--sky);transition:width .3s}
@@ -44,7 +50,16 @@
   .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
   .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
   .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
-  @media(max-width:760px){.navlinks a:not(.btn){display:none}.brand .wordmark{display:none}}
+  @media(max-width:760px){
+    .brand .wordmark{display:none}
+    .hamburger{display:flex}
+    .nav-right{gap:14px}
+    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(8,8,16,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:6px 0;display:none}
+    .navlinks.open{display:flex}
+    .navlinks a{padding:15px 32px;font-size:0.95rem;letter-spacing:0.12em}
+    .navlinks a:not(:first-child){border-top:1px solid var(--line)}
+    .navlinks a:not(.btn)::after{display:none}
+  }
 
   /* HERO */
   .phero{padding:160px 0 30px;position:relative}
@@ -128,11 +143,14 @@
     <img src="/logo.png" alt="Peninsulas AI" />
     <span class="wordmark">Peninsulas<span>AI</span></span>
   </a>
-  <div class="navlinks">
-    <a href="/what-i-do/" class="active">Work</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/website-grader/">Free Grader</a>
+  <div class="nav-right">
+    <div class="navlinks" id="navlinks">
+      <a href="/what-i-do/" class="active">Work</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/website-grader/">Free Grader</a>
+    </div>
     <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -233,7 +251,7 @@
         <h2>Not ready for monthly?</h2>
         <p>Plenty of people start with a single project. One reel, one landing page, one cleanup. No retainer, no commitment. We scope it, I build it, you keep it.</p>
         <div class="otb-cta">
-          <a href="/#pricing" class="btn-line">See Pricing</a>
+          <a href="/pricing/" class="btn-line">See Pricing</a>
           <a href="/contact/" class="btn-solid">Ask About a Build</a>
         </div>
       </div>
@@ -275,7 +293,7 @@
       <div class="foot-col">
         <h4>Navigate</h4>
         <a href="/what-i-do/">What I Do</a>
-        <a href="/#pricing">Pricing</a>
+        <a href="/pricing/">Pricing</a>
         <a href="/about/">About</a>
         <a href="/website-grader/">Free Grader</a>
         <a href="/blog/">Blog</a>
@@ -298,6 +316,18 @@
 <script>
   const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);obs.unobserve(e.target)}})},{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+  (function(){
+    var h=document.getElementById('hamburger'),m=document.getElementById('navlinks');
+    if(!h||!m)return;
+    h.addEventListener('click',function(){
+      var open=m.classList.toggle('open');
+      h.classList.toggle('open',open);
+      h.setAttribute('aria-expanded',open?'true':'false');
+    });
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');});});
+  })();
 </script>
 </body>
 </html>
