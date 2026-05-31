@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Peninsulas AI</title>
+  <meta name="description" content="Andrew Jernigan spent his career teaching regular people to use complicated tools. Now he brings AI to Metro Detroit small businesses, in plain English, with no pretending to be a guru." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="About — Peninsulas AI" />
+  <meta property="og:description" content="No such thing as an AI expert yet. Here's the real story behind Peninsulas AI." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://peninsulasai.com/about/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
+    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
+    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
+    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+  .narrow{max-width:760px}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
+  .brand .wordmark span{color:var(--sky)}
+  .navlinks{display:flex;align-items:center;gap:34px}
+  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative}
+  .navlinks a:not(.btn)::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--sky);transition:width .3s}
+  .navlinks a:not(.btn):hover{color:var(--ink)}
+  .navlinks a:not(.btn):hover::after{width:100%}
+  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
+  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}.brand .wordmark{display:none}}
+
+  /* HERO */
+  .phero{padding:160px 0 70px;position:relative}
+  .phero-grid{display:grid;grid-template-columns:1.25fr 0.75fr;gap:60px;align-items:center}
+  .phero .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:30px}
+  .phero .eyebrow::before{content:'';width:44px;height:1px;background:var(--sky)}
+  .phero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,7vw,6rem);line-height:0.9;text-transform:uppercase;letter-spacing:-0.02em}
+  .phero h1 .accent{background:linear-gradient(100deg,var(--sky),var(--teal),var(--pink),var(--sky));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 7s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .phero .sub{color:var(--muted);font-size:1.1rem;margin-top:26px;max-width:42ch;line-height:1.75}
+  .phero .sub strong{color:var(--ink);font-weight:600}
+
+  /* PORTRAIT (swap for a real photo: replace .portrait block with <img src="/andrew.jpg" class="portrait-img" alt="Andrew Jernigan">) */
+  .portrait{aspect-ratio:4/5;border:1px solid var(--line2);border-radius:4px;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(14,165,233,0.16),rgba(20,184,166,0.07) 45%,var(--bg) 80%)}
+  .portrait::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+  .portrait .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:5rem;letter-spacing:0.04em;color:rgba(240,237,232,0.85)}
+  .portrait .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;font-family:var(--disp);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);background:linear-gradient(0deg,rgba(8,8,16,0.85),transparent)}
+  .portrait-img{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line2);border-radius:4px;display:block}
+  @media(max-width:860px){.phero-grid{grid-template-columns:1fr;gap:40px}.portrait{max-width:340px}}
+
+  /* STORY SECTIONS */
+  section{padding:80px 0;position:relative;z-index:1}
+  .kick{font-family:var(--disp);font-weight:600;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky);margin-bottom:16px}
+  .stitle{font-family:var(--disp);font-weight:800;font-size:clamp(1.9rem,4vw,3rem);line-height:1.02;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:26px}
+  .prose p{font-size:1.08rem;color:var(--muted);line-height:1.8;margin-bottom:20px;max-width:64ch}
+  .prose p strong{color:var(--ink);font-weight:600}
+  .prose .pop{color:var(--ink);font-weight:600}
+
+  .pull{border-left:2px solid var(--teal);padding:8px 0 8px 28px;margin:0 0 40px}
+  .pull q{font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.1;letter-spacing:0.005em;color:var(--ink);quotes:none;display:block}
+  .pull .by{display:block;margin-top:14px;font-family:var(--disp);font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+
+  .band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* PROMISES */
+  .promises{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .promise{padding:38px 30px;border-right:1px solid var(--line);transition:background .35s}
+  .promise:last-child{border-right:none}
+  .promise:hover{background:var(--bg2)}
+  .promise .pn{font-family:var(--disp);font-size:0.76rem;letter-spacing:0.2em;color:var(--muted);margin-bottom:20px}
+  .promise h3{font-family:var(--disp);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:0.01em;margin-bottom:12px}
+  .promise p{color:var(--muted);font-size:0.94rem;line-height:1.65}
+  @media(max-width:860px){.promises{grid-template-columns:1fr}.promise{border-right:none;border-bottom:1px solid var(--line)}.promise:last-child{border-bottom:none}}
+
+  /* CLOSE */
+  .close{text-align:center;padding:130px 0;position:relative;z-index:1}
+  .close .eyebrow{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:24px}
+  .close h2{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5vw,4rem);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em}
+  .close p{color:var(--muted);max-width:42ch;margin:22px auto 0;font-size:1.05rem}
+  .close-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(14,165,233,0.1),transparent 70%);pointer-events:none}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px}
+  .btn-solid{color:#08060f;background:var(--ink);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}
+  .btn-solid:hover{background:#fff;transform:translateY(-1px)}
+  .btn-line{color:var(--ink);border:1px solid var(--line2);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;background:transparent;transition:border-color .2s,color .2s}
+  .btn-line:hover{border-color:var(--sky);color:var(--sky)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:54px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-brand .brand{margin-bottom:14px}
+  .foot-brand p{color:var(--muted);font-size:0.9rem;max-width:32ch}
+  .foot-col h4{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--ink);opacity:0.75;text-decoration:none;font-size:0.92rem;margin-bottom:10px;transition:opacity .2s,color .2s}
+  .foot-col a:hover{opacity:1;color:var(--sky)}
+  .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:0.82rem;font-family:var(--disp);letter-spacing:0.08em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.phero h1 .accent{animation:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Peninsulas AI" />
+    <span class="wordmark">Peninsulas<span>AI</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="/what-i-do/">Work</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/website-grader/">Free Grader</a>
+    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap phero-grid">
+    <div>
+      <p class="eyebrow reveal">About</p>
+      <h1 class="reveal">Nobody is an<br><span class="accent">AI expert</span> yet.</h1>
+      <p class="sub reveal">Especially the ones who say they are. So instead of selling you a title, here's the honest story of how I got here, and why I'm the guy you actually want in your corner.</p>
+    </div>
+    <div class="reveal">
+      <img src="/andrew.jpg" class="portrait-img" alt="Andrew Jernigan, founder of Peninsulas AI, outdoors holding his child by a river" />
+    </div>
+  </div>
+</header>
+
+<!-- STORY 1 -->
+<section>
+  <div class="wrap narrow">
+    <div class="pull reveal">
+      <q>AI can't replace people. But it can replace people who don't use AI.</q>
+      <span class="by">My boss, right about the time everything changed</span>
+    </div>
+    <div class="prose reveal">
+      <p>That line stuck, and the timing is why. ChatGPT went mainstream the same month my first child was born. So there I was. Brand new dad. More responsibility on my shoulders than I'd ever carried in my life. And my boss is casually telling me the ground is shifting under everybody's feet.</p>
+      <p class="pop">My reaction was simple. You're not replacing me.</p>
+      <p>So I dug in. Every single day, a little deeper. Prompts, outcomes, tweaking the inputs until the thing did exactly what I wanted it to. Before long I was head and shoulders past the people around me. Not because I'm smarter than anybody. Because I flat refused to be the guy who got left behind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY 2 -->
+<section class="band">
+  <div class="wrap narrow">
+    <p class="kick reveal">Where I come from</p>
+    <h2 class="stitle reveal">Turns out, teaching was always the job</h2>
+    <div class="prose reveal">
+      <p>Here's the part that matters for you. I come from operations, and these days I work in Learning and Development for a nationwide company. Ops is where I learned to see exactly how a business runs. Where the time leaks, what's held together with duct tape, which step nobody actually needs. L and D is where I learned to take all that and make it dead simple for the next person to understand.</p>
+      <p>That's the whole skill, and it's still exactly what I do. <strong>See how the work really happens, then hand people a simpler way to do it.</strong> AI just turned out to be the most powerful tool I've ever had to do it with.</p>
+      <p>I genuinely believe AI is the biggest leap for compounding and democratizing knowledge since the printing press, and we are barely at the start of it. Most owners don't need a lecture. They need someone to show them the door and hand them the key. <span class="pop">That's the whole job. That's me.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY 3 -->
+<section>
+  <div class="wrap narrow">
+    <p class="kick reveal">A little honesty</p>
+    <h2 class="stitle reveal">What I'm not</h2>
+    <div class="prose reveal">
+      <p>You'll meet plenty of people calling themselves AI experts right now. Be a little careful with that.</p>
+      <p>The truth is there are no real AI experts. It's too new. And if there were, they sure aren't the type to walk into an HVAC shop and actually help.</p>
+      <p>What I am is a half step ahead, genuinely obsessed with this stuff, and pointed straight at your business instead of some lab. <span class="pop">That's worth more than a title that doesn't exist yet anyway.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISES -->
+<section class="band">
+  <div class="wrap">
+    <p class="kick reveal">How I work</p>
+    <h2 class="stitle reveal" style="margin-bottom:48px">No call centers. No mystery.</h2>
+    <div class="promises">
+      <div class="promise reveal">
+        <div class="pn">/ 01</div>
+        <h3>You get me</h3>
+        <p>Not a call center, not an account manager, not a support bot. You call, I answer. You work with the person doing the work.</p>
+      </div>
+      <div class="promise reveal">
+        <div class="pn">/ 02</div>
+        <h3>Plain English</h3>
+        <p>If I can't explain it so it actually makes sense to you, I haven't earned your money. No ten-dollar words to sound smart.</p>
+      </div>
+      <div class="promise reveal">
+        <div class="pn">/ 03</div>
+        <h3>Straight pricing</h3>
+        <p>No bundles built to confuse, no pressure, no hourly mystery. You see the line items and you decide. Based in Wyandotte, built for Metro Detroit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close">
+  <div class="close-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Your turn</p>
+    <h2 class="reveal">Let's get you<br>ahead of it.</h2>
+    <p class="reveal">Fifteen minutes. Tell me what's eating your time and I'll tell you, straight, whether AI can help. No pitch.</p>
+    <div class="cta-row reveal">
+      <a href="/contact/" class="btn-solid">Get in Touch</a>
+      <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn-line">Book a Free Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="brand">
+          <img src="/logo.png" alt="Peninsulas AI" />
+          <span class="wordmark">Peninsulas<span>AI</span></span>
+        </a>
+        <p>AI for Metro Detroit small businesses. Simple systems. Real results.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="/what-i-do/">What I Do</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/about/">About</a>
+        <a href="/website-grader/">Free Grader</a>
+        <a href="/contact/">Get in Touch</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a>
+        <a href="tel:3135499136">313 549 9136</a>
+        <a href="/contact/">Wyandotte, MI</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Peninsulas AI</span>
+      <span>Downriver Metro Detroit's AI Company</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);obs.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
