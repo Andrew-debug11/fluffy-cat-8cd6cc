@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- Homepage -->
   <url>
     <loc>https://peninsulasai.com/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
+  <!-- Core Pages -->
+  <url>
+    <loc>https://peninsulasai.com/what-i-do/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://peninsulasai.com/pricing/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://peninsulasai.com/about/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peninsulasai.com/contact/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- Trade Hub Pages -->
   <url>
     <loc>https://peninsulasai.com/ai-for-hvac-companies-michigan/</loc>
@@ -52,7 +75,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <!-- Service Hub Pages -->
   <url>
     <loc>https://peninsulasai.com/ai-consulting-downriver-mi/</loc>
@@ -78,7 +100,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Blog Index -->
   <url>
     <loc>https://peninsulasai.com/blog/</loc>
@@ -86,7 +107,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <!-- Blog Posts -->
   <url>
     <loc>https://peninsulasai.com/blog/ai-for-small-service-businesses/</loc>
@@ -118,5 +138,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
 </urlset>
