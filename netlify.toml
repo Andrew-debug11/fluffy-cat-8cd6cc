@@ -2,19 +2,19 @@
 publish = "."
 functions = "netlify/functions"
 
+[functions."grade"]
+timeout = 26
+
 [[headers]]
 for = "/*"
 [headers.values]
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
-
 [[redirects]]
 from = "/api/grade"
 to = "/.netlify/functions/grade"
 status = 200
-
 [[redirects]]
 from = "/api/send-report"
 to = "/.netlify/functions/send-report"
-status = 200
