@@ -116,7 +116,8 @@ async function fetchSiteContent(url) {
       throw err;
     }
     const html = await res.text();
-    return html.substring(0, 30000);
+    // EDIT 1 of 3: raised raw cap from 30000 so trimHtml sees the full body before trimming
+    return html.substring(0, 80000);
   } catch (err) {
     clearTimeout(timeout);
     throw err;
@@ -144,6 +145,20 @@ async function fetchSiteContentHeadless(url) {
     clearTimeout(timeout);
     throw err;
   }
+}
+
+// EDIT 2 of 3: new helper. Strips the heavy noise (scripts, styles, svg, comments)
+// before scoring. Keeps head meta, headings, alt text, and JSON-LD schema so the
+// score stays accurate. Cuts Claude input tokens, which cuts both latency and cost.
+function trimHtml(html) {
+  return html
+    .replace(/<script\b(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<svg[\s\S]*?<\/svg>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .substring(0, 15000);
 }
 
 const ANALYSIS_PROMPT = `You are a plain-talking website grader for small businesses. Analyze the HTML below and return a JSON report. No jargon. Write like you're talking to a plumber or HVAC tech who doesn't have time for tech speak.
@@ -289,8 +304,9 @@ exports.handler = async (event) => {
       body: JSON.stringify({ ...cached, cached: true }),
     };
   }
-console.log(`GRADE_REQUEST url=${url} ip=${ip}`);
-  
+
+  console.log(`GRADE_REQUEST url=${url} ip=${ip}`);
+
   // Fetch site HTML — raw fetch first (fast, no API cost)
   let siteHtml;
   try {
@@ -337,6 +353,9 @@ console.log(`GRADE_REQUEST url=${url} ip=${ip}`);
       };
     }
   }
+
+  // EDIT 3 of 3: trim noise before scoring (cuts tokens, latency, and cost)
+  siteHtml = trimHtml(siteHtml);
 
   // Build prompt
   const prompt = ANALYSIS_PROMPT.replace("SITE_URL_PLACEHOLDER", url).replace(
