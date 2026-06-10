@@ -1,59 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get in Touch — Peninsulas AI</title>
-  <meta name="description" content="Tell Peninsulas AI a bit about your business and how you'd rather be reached. No pressure, no calendar required. Andrew follows up your way." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://peninsulasai.com/contact/" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
-    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
-    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
-    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
-  }
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh}
-  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
-
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .brand img{height:34px;width:auto;display:block}
-  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
-  .brand .wordmark span{color:var(--sky)}
-  .navlinks{display:flex;align-items:center;gap:34px}
-  .nav-right{display:flex;align-items:center;gap:34px}
-  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;padding:0}
-  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s;margin:0 auto}
-  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .hamburger.open span:nth-child(2){opacity:0}
-  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
-  .navlinks a:not(.btn):hover{color:var(--ink)}
-  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
-  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
-  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
-  @media(max-width:760px){
-    .brand .wordmark{display:none}
-    .hamburger{display:flex}
-    .nav-right{gap:14px}
-    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(8,8,16,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:6px 0;display:none}
-    .navlinks.open{display:flex}
-    .navlinks a{padding:15px 32px;font-size:0.95rem;letter-spacing:0.12em}
-    .navlinks a:not(:first-child){border-top:1px solid var(--line)}
-    .navlinks a:not(.btn)::after{display:none}
-  }
-
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Get in Touch — Peninsulas AI" description="Tell Peninsulas AI a bit about your business and how you'd rather be reached. No pressure, no calendar required. Andrew follows up your way." canonical="https://peninsulasai.com/contact/" footer="minimal">
+  <style is:global slot="head">
   /* LAYOUT */
   .page{padding:150px 0 110px;position:relative;z-index:1}
   .form-glow{position:absolute;top:120px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,233,0.1),transparent 70%);pointer-events:none;z-index:0}
@@ -112,25 +61,7 @@
   .foot a:hover{color:var(--sky)}
 
   @media(max-width:860px){.grid{grid-template-columns:1fr;gap:44px}.card{padding:30px}}
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="/" class="brand">
-    <img src="/logo.png" alt="Peninsulas AI" />
-    <span class="wordmark">Peninsulas<span>AI</span></span>
-  </a>
-  <div class="nav-right">
-    <div class="navlinks" id="navlinks">
-      <a href="/what-i-do/">Work</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/website-grader/">Free Grader</a>
-    </div>
-    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav>
+  </style>
 
 <main class="page">
   <div class="form-glow"></div>
@@ -214,14 +145,8 @@
   </div>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <span>© 2026 Peninsulas AI</span>
-    <span><a href="/">peninsulasai.com</a> · Wyandotte, MI</span>
-  </div>
-</footer>
-
-<script>
+<Fragment slot="scripts">
+<script is:inline>
   const form=document.getElementById('leadForm');
   const success=document.getElementById('success');
   form.addEventListener('submit',async(e)=>{
@@ -236,17 +161,5 @@
     }catch{btn.textContent='Something went wrong. Try again.';btn.disabled=false;}
   });
 </script>
-<script>
-  (function(){
-    var h=document.getElementById('hamburger'),m=document.getElementById('navlinks');
-    if(!h||!m)return;
-    h.addEventListener('click',function(){
-      var open=m.classList.toggle('open');
-      h.classList.toggle('open',open);
-      h.setAttribute('aria-expanded',open?'true':'false');
-    });
-    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');});});
-  })();
-</script>
-</body>
-</html>
+</Fragment>
+</Base>

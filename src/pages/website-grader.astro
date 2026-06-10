@@ -1,0 +1,261 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Free Website Grader — Peninsulas AI"
+  description="Find out what your website is costing you. Get a free AI-powered score covering SEO, mobile, and conversion in 30 seconds."
+  canonical="https://peninsulasai.com/website-grader/"
+  ogTitle="Free Website Grader — Peninsulas AI"
+  ogDescription="Paste your URL. Get a real score. Find out exactly what's hurting you online."
+  active="grader"
+>
+  <style is:global slot="head">
+  /* alias tokens so JS-injected markup using old var names keeps resolving */
+  :root{
+    --font-display:var(--disp);
+    --font-body:var(--body);
+    --text:var(--ink);
+    --surface:var(--bg2);
+    --border:var(--line);
+    --radius:0px;
+  }
+
+  /* ---------- HERO ---------- */
+  .ghero{padding:160px 0 40px;text-align:center}
+  .ghero .eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:26px}
+  .ghero .eyebrow::before,.ghero .eyebrow::after{content:'';width:34px;height:1px;background:var(--sky)}
+  .ghero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,7vw,5.6rem);line-height:0.95;letter-spacing:-0.01em;text-transform:uppercase}
+  .ghero h1 .accent{background:linear-gradient(100deg,var(--sky),var(--teal),var(--pink),var(--sky));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 7s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .ghero .sub{color:var(--muted);max-width:46ch;margin:22px auto 0;font-size:1.05rem}
+  @media(prefers-reduced-motion:reduce){.ghero h1 .accent{animation:none}}
+
+  /* ---------- TOOL COLUMN ---------- */
+  .tool{max-width:720px;margin:0 auto;padding:30px 0 110px}
+
+  /* INPUT */
+  .input-card{border:1px solid var(--line2);background:var(--bg2);padding:34px 32px;position:relative}
+  .input-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .input-label{display:block;font-family:var(--disp);font-weight:700;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .url-row{display:flex;gap:12px}
+  .url-input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line2);padding:14px 16px;font-family:var(--body);font-size:0.95rem;color:var(--ink);outline:none;transition:border-color .2s}
+  .url-input::placeholder{color:rgba(136,153,170,0.5)}
+  .url-input:focus{border-color:rgba(14,165,233,0.5)}
+  .btn-grade{background:linear-gradient(135deg,var(--sky),var(--teal));border:none;padding:14px 26px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s,filter .2s,opacity .2s}
+  .btn-grade:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  .btn-grade:active{transform:scale(0.98)}
+  .btn-grade:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+  .input-note{font-size:0.78rem;color:var(--muted);margin-top:12px;text-align:center}
+  .error-msg{border:1px solid rgba(244,114,182,0.35);background:rgba(244,114,182,0.07);padding:12px 16px;font-size:0.88rem;color:var(--pink);margin-top:14px;display:none}
+  @media(max-width:520px){.url-row{flex-direction:column}}
+
+  /* LOADING */
+  .loading-state{text-align:center;padding:54px 20px;display:none}
+  .spinner-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px}
+  .spinner{width:22px;height:22px;border:2px solid var(--line2);border-top-color:var(--sky);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading-text{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase}
+  .loading-steps{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+
+  /* PREVIEW */
+  .preview-state{display:none}
+  .score-reveal{text-align:center;margin:40px 0 36px}
+  .score-label{font-family:var(--disp);font-size:0.78rem;font-weight:600;color:var(--muted);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:6px}
+  .score-circle{display:inline-flex;align-items:baseline;gap:8px}
+  .score-number{font-family:var(--disp);font-weight:800;font-size:clamp(5rem,14vw,8rem);line-height:1;letter-spacing:-0.02em}
+  .score-denom{font-family:var(--disp);font-weight:600;font-size:1.4rem;color:var(--muted)}
+  .score-summary{color:var(--muted);max-width:52ch;margin:14px auto 0;font-size:0.98rem}
+
+  .teaser-finding{border:1px solid var(--line2);border-left:2px solid var(--sky);background:var(--bg2);padding:22px 24px;margin-bottom:28px}
+  .teaser-label{font-family:var(--disp);font-weight:700;font-size:0.74rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sky);margin-bottom:8px}
+  .teaser-text{font-size:0.95rem;color:var(--ink)}
+
+  .wix-caveat{border:1px solid rgba(244,114,182,0.3);background:rgba(244,114,182,0.06);padding:16px 20px;font-size:0.88rem;color:var(--muted);margin-bottom:28px}
+  .wix-caveat a{color:var(--sky);text-decoration:none}
+  .wix-caveat a:hover{color:var(--teal)}
+
+  /* EMAIL GATE */
+  .gate-card{border:1px solid var(--line2);background:var(--bg2);padding:38px 34px;text-align:center;position:relative}
+  .gate-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .gate-icon{font-size:1.6rem;margin-bottom:10px}
+  .gate-title{font-family:var(--disp);font-weight:800;font-size:1.9rem;letter-spacing:0.01em;text-transform:uppercase;margin-bottom:10px}
+  .gate-sub{font-size:0.92rem;color:var(--muted);max-width:46ch;margin:0 auto 20px}
+  .gate-checklist{list-style:none;text-align:left;max-width:420px;margin:0 auto 24px}
+  .gate-checklist li{font-size:0.9rem;color:var(--muted);padding:7px 0;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--line)}
+  .gate-checklist li:last-child{border-bottom:none}
+  .gate-checklist li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+  .gate-form{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto}
+  .gate-input{background:var(--bg);border:1px solid var(--line2);padding:14px 16px;font-family:var(--body);font-size:0.95rem;color:var(--ink);outline:none;transition:border-color .2s;text-align:center}
+  .gate-input::placeholder{color:rgba(136,153,170,0.5)}
+  .gate-input:focus{border-color:rgba(14,165,233,0.5)}
+  .btn-unlock{background:linear-gradient(135deg,var(--sky),var(--teal));border:none;padding:16px;font-family:var(--disp);font-weight:800;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f;cursor:pointer;width:100%;transition:transform .2s,box-shadow .2s,filter .2s,opacity .2s}
+  .btn-unlock:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  .btn-unlock:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+  .gate-privacy{font-size:0.76rem;color:var(--muted);margin-top:10px}
+  .email-sent-msg{border:1px solid rgba(20,184,166,0.3);background:rgba(20,184,166,0.07);padding:12px 16px;font-size:0.88rem;color:var(--teal);text-align:center;margin-top:12px;display:none}
+
+  /* FULL REPORT */
+  .full-report{display:none}
+  .report-header{text-align:center;margin:44px 0 30px}
+  .report-url{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;word-break:break-all}
+  .report-title{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:0.01em;text-transform:uppercase}
+
+  .section-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:44px}
+  .section-card{border:1px solid var(--line2);background:var(--bg2);padding:24px}
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .section-name{font-family:var(--disp);font-weight:700;font-size:1.15rem;letter-spacing:0.04em;text-transform:uppercase}
+  .section-score-badge{display:flex;align-items:center;gap:6px}
+  .score-pill{font-family:var(--disp);font-weight:800;font-size:1.05rem;padding:4px 12px;border:1px solid var(--line2)}
+  .score-pill.high{color:var(--teal);border-color:rgba(20,184,166,0.4)}
+  .score-pill.mid{color:var(--sky);border-color:rgba(14,165,233,0.4)}
+  .score-pill.low{color:var(--pink);border-color:rgba(244,114,182,0.4)}
+  .score-bar-wrap{height:3px;background:var(--line);margin-bottom:16px;overflow:hidden}
+  .score-bar{height:100%;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .score-bar.high{background:linear-gradient(90deg,var(--teal),var(--sky))}
+  .score-bar.mid{background:linear-gradient(90deg,var(--sky),var(--pink))}
+  .score-bar.low{background:var(--pink)}
+  .findings-list{list-style:none;margin-bottom:16px}
+  .findings-list li{font-size:0.9rem;color:var(--muted);padding:6px 0 6px 18px;position:relative}
+  .findings-list li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--sky)}
+  .fix-block{border-top:1px solid var(--line);padding-top:14px}
+  .fix-label{font-family:var(--disp);font-weight:700;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+  .fix-text{font-size:0.9rem;color:var(--ink)}
+
+  /* CTA */
+  .cta-section{border:1px solid var(--line2);background:var(--bg2);padding:44px 36px;text-align:center;position:relative;margin-bottom:32px}
+  .cta-section::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .cta-title{font-family:var(--disp);font-weight:800;font-size:2rem;letter-spacing:0.01em;text-transform:uppercase;margin-bottom:10px}
+  .cta-sub{font-size:0.92rem;color:var(--muted);max-width:48ch;margin:0 auto 24px}
+  .cta-buttons{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
+  .btn-cta-primary{background:linear-gradient(135deg,var(--sky),var(--teal));padding:15px 24px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f;text-decoration:none;display:block;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-cta-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
+  .btn-cta-secondary{background:transparent;border:1px solid var(--line2);padding:15px 24px;font-family:var(--disp);font-weight:700;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:block;transition:border-color .2s,color .2s}
+  .btn-cta-secondary:hover{border-color:var(--sky);color:var(--sky)}
+  .cta-note{font-size:0.82rem;color:var(--muted);margin-top:18px;text-align:left;max-width:56ch;margin-left:auto;margin-right:auto}
+  .cta-note strong{color:var(--ink)}
+  @media(min-width:480px){.cta-buttons{flex-direction:row}.btn-cta-primary,.btn-cta-secondary{flex:1}}
+
+  .grade-another{text-align:center;margin-bottom:10px}
+  .btn-ghost{background:transparent;border:1px solid var(--line2);padding:12px 24px;font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s}
+  .btn-ghost:hover{border-color:var(--sky);color:var(--sky)}
+  </style>
+
+<main>
+  <header class="ghero">
+    <div class="wrap">
+      <p class="eyebrow">Free Website Grader</p>
+      <h1>Find out what your<br><span class="accent">website is costing you</span></h1>
+      <p class="sub">Paste your URL. Get a real score in about 30 seconds. No account, no credit card, no fluff.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+  <div class="tool">
+
+  <!-- URL INPUT -->
+  <div class="input-card" id="inputCard">
+    <label class="input-label" for="urlInput">Your Website URL</label>
+    <div class="url-row">
+      <input
+        type="url"
+        id="urlInput"
+        class="url-input"
+        placeholder="yourcompany.com"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <button class="btn-grade" id="gradeBtn" onclick="startGrading()">Grade It</button>
+    </div>
+    <p class="input-note">Works on any public website. Results are private to you.</p>
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading-state" id="loadingState">
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <span class="loading-text">Analyzing your site...</span>
+    </div>
+    <p class="loading-steps" id="loadingStep">Fetching page content</p>
+  </div>
+
+  <!-- PREVIEW (teaser + email gate) -->
+  <div class="preview-state" id="previewState">
+
+    <div class="score-reveal">
+      <p class="score-label">Overall Score</p>
+      <div class="score-circle">
+        <span class="score-number" id="previewScore">--</span>
+        <span class="score-denom">/10</span>
+      </div>
+      <p class="score-summary" id="previewSummary"></p>
+    </div>
+
+    <div class="teaser-finding">
+      <p class="teaser-label">Top Finding</p>
+      <p class="teaser-text" id="teaserText"></p>
+    </div>
+
+    <!-- WIX CAVEAT — shown by JS when report.isWix is true -->
+    <div class="wix-caveat" id="wixCaveat" style="display:none;">
+      ⚠️ <strong style="color:var(--text);">Wix site detected.</strong> Scores on Wix-built sites may run lower than expected. Our scanner has limited visibility into Wix content. If your score looks off, <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener">book a free call</a> and we'll review it manually.
+    </div>
+
+    <!-- EMAIL GATE -->
+    <div class="gate-card" id="gateCard">
+      <div class="gate-icon">📋</div>
+      <h2 class="gate-title">See the Full Report</h2>
+      <p class="gate-sub">Your breakdown covers 5 categories: SEO, mobile, AI readiness, conversion, and Google Business alignment. Enter your email and we'll send it too.</p>
+      <ul class="gate-checklist">
+        <li>Section-by-section scores with specific findings</li>
+        <li>Exact fixes for every weak spot</li>
+        <li>Report emailed to you for reference</li>
+      </ul>
+      <div class="gate-form">
+        <input type="email" id="gateEmail" class="gate-input" placeholder="your@email.com" />
+        <button class="btn-unlock" id="unlockBtn" onclick="unlockReport()">Unlock My Full Report →</button>
+      </div>
+      <p class="gate-privacy">No spam. Unsubscribe any time. We're not going to sell your email to anyone.</p>
+      <div class="email-sent-msg" id="emailSentMsg">✓ Report sent to your inbox.</div>
+    </div>
+
+  </div>
+
+  <!-- FULL REPORT -->
+  <div class="full-report" id="fullReport">
+
+    <div class="report-header">
+      <p class="report-url" id="reportUrl"></p>
+      <h2 class="report-title">Your Website Grade Report</h2>
+    </div>
+
+    <div class="section-grid" id="sectionGrid">
+      <!-- JS populates -->
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2 class="cta-title">Book a Free Call</h2>
+      <p class="cta-sub">30 minutes. We walk through your score together and tell you exactly what to fix first. No obligation. We work with trade and service businesses across Metro Detroit.</p>
+      <div class="cta-buttons">
+        <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn-cta-primary">Book My Free Call</a>
+        <a href="/contact/" class="btn-cta-secondary">Get the Full Roadmap: $300</a>
+      </div>
+      <p class="cta-note">Not ready to talk? The $300 audit goes deeper. You get a complete plain-English report covering every SEO issue on your site, a social media content plan built around your business, and a prioritized fix list you can hand to anyone. A local SEO agency charges $3,000 a month just to figure out what's wrong. This is $300 to skip straight to the answers.<br /><br /><strong>Here's how it works:</strong> Fill out the contact form and mention the full audit. The report takes 24 hours. Every line gets checked by hand, not just auto-generated and emailed. You pay when it's delivered. Included with every report: a 30-minute call where we walk through the findings together so you actually know what to do with it.</p>
+    </div>
+
+    <div class="grade-another">
+      <button class="btn-ghost" onclick="resetGrader()">← Grade Another Site</button>
+    </div>
+
+  </div>
+
+  </div>
+  </div>
+</main>
+
+<Fragment slot="scripts">
+<script is:inline src="/grader.js"></script>
+</Fragment>
+</Base>

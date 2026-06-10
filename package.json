@@ -1,8 +1,15 @@
 {
-  "name": "peninsulas-ai-grader",
-  "version": "1.0.0",
-  "description": "Website Grader lead gen tool for Peninsulas AI",
+  "name": "peninsulasai-site",
+  "version": "2.0.0",
+  "description": "Peninsulas AI website",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0"
+    "@anthropic-ai/sdk": "^0.39.0",
+    "astro": "^5.0.0"
   }
 }

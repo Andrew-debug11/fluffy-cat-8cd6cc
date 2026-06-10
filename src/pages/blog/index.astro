@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const posts = [
+  {
+    "url": "/blog/ai-for-small-service-businesses/",
+    "tag": "General AI",
+    "title": "What Can AI Actually Do for Small Service Businesses?",
+    "excerpt": "Real answers to the questions small business owners actually ask. No buzzwords. No hype. Just what works.",
+    "meta": "May 2026 \u00b7 5 min read"
+  },
+  {
+    "url": "/blog/why-i-built-free-website-grader/",
+    "tag": "Website Grader",
+    "title": "Why I Built a Free Website Grader (And Why SEO Agencies Should Be Nervous)",
+    "excerpt": "SEO agencies are charging small business owners thousands of dollars a month for information that now costs pennies to produce. Here's why the Grader is free.",
+    "meta": "May 2026 \u00b7 5 min read"
+  },
+  {
+    "url": "/blog/300-website-audit-vs-free-tool/",
+    "tag": "Website Grader",
+    "title": "What a $300 Website Audit Actually Tells You (That a Free Tool Can't)",
+    "excerpt": "The free scan shows you what's broken. The paid audit tells you what to fix first and why it matters for your specific business.",
+    "meta": "May 2026 \u00b7 5 min read"
+  },
+  {
+    "url": "/blog/employees-already-have-ai/",
+    "tag": "AI Training",
+    "title": "Your Employees Already Have AI. They Just Don't Know How to Use It.",
+    "excerpt": "Your crew is already using AI tools on their phones. The question is whether they're using them well, or whether you're leaving that to chance.",
+    "meta": "April 2026 \u00b7 5 min read"
+  },
+  {
+    "url": "/blog/hvac-metro-detroit-ai/",
+    "tag": "AI for HVAC",
+    "title": "How Metro Detroit HVAC Contractors Are Using AI to Win More Jobs",
+    "excerpt": "Follow-up automation, review management, and local SEO are changing how Downriver HVAC shops compete. Here's what the early movers are doing.",
+    "meta": "April 2026 \u00b7 5 min read"
+  },
+  {
+    "url": "/blog/downriver-small-business-ai-guide/",
+    "tag": "General AI",
+    "title": "The Downriver Small Business Guide to AI (Without the Buzzwords)",
+    "excerpt": "A plain-English walkthrough of what AI can actually do for a trade or service business right now. No hype. No tech degree required.",
+    "meta": "April 2026 \u00b7 6 min read"
+  }
+];
+---
+<Base
+  title="The Blog — Peninsulas AI"
+  description="AI tips, local SEO insights, and practical guides for Metro Detroit trade and service businesses. No buzzwords, no fluff."
+  canonical="https://peninsulasai.com/blog/"
+  active="blog"
+>
+  <style is:global slot="head">
+  .bhero{padding:160px 0 50px}
+  .bhero .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:26px}
+  .bhero .eyebrow::before{content:'';width:44px;height:1px;background:var(--sky)}
+  .bhero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,7vw,5.6rem);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em}
+  .bhero p{color:var(--muted);max-width:52ch;margin-top:20px;font-size:1.05rem}
+
+  .blog-list{max-width:860px;margin:0 auto;padding:10px 0 120px;display:flex;flex-direction:column}
+  .blog-list-item{display:block;text-decoration:none;padding:36px 6px;border-bottom:1px solid var(--line);transition:border-color .25s,padding-left .25s}
+  .blog-list-item:first-child{border-top:1px solid var(--line)}
+  .blog-list-item:hover{border-bottom-color:rgba(14,165,233,0.4);padding-left:14px}
+  .blog-list-tag{font-family:var(--disp);font-weight:700;font-size:0.72rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--sky);display:block;margin-bottom:10px}
+  .blog-list-item h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.05;text-transform:uppercase;letter-spacing:0.01em;color:var(--ink);margin-bottom:10px;transition:color .25s}
+  .blog-list-item:hover h2{color:var(--sky)}
+  .blog-list-item p{font-size:0.95rem;color:var(--muted);line-height:1.65;max-width:62ch;margin-bottom:14px}
+  .blog-list-meta{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+  </style>
+
+<header class="bhero">
+  <div class="wrap">
+    <p class="eyebrow reveal">The Blog</p>
+    <h1 class="reveal">Plain talk.<br>No buzzwords.</h1>
+    <p class="reveal">AI tips, local SEO insights, and practical guides for Metro Detroit trade and service businesses.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="blog-list">
+    {posts.map((post) => (
+      <a href={post.url} class="blog-list-item reveal">
+        <span class="blog-list-tag">{post.tag}</span>
+        <h2>{post.title}</h2>
+        <p>{post.excerpt}</p>
+        <div class="blog-list-meta">{post.meta}</div>
+      </a>
+    ))}
+  </div>
+</div>
+</Base>

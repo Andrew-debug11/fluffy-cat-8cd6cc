@@ -1,66 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What I Do — Peninsulas AI</title>
-  <meta name="description" content="Three things, done well. Peninsulas AI builds a content engine, practical automations, and AI training for Metro Detroit small businesses. No buzzword bingo, no forty-item menu." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="What I Do — Peninsulas AI" />
-  <meta property="og:description" content="A content engine, practical automations, and hands-on AI training for small businesses. Three things, done well." />
-  <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://peninsulasai.com/what-i-do/" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#080810;--bg2:#0b0b16;--ink:#F0EDE8;--muted:#8899AA;
-    --sky:#0EA5E9;--teal:#14B8A6;--pink:#F472B6;
-    --line:rgba(240,237,232,0.09);--line2:rgba(240,237,232,0.16);
-    --disp:'Barlow Condensed',sans-serif;--body:'Syne',sans-serif;
-  }
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
-
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,16,0.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .brand img{height:34px;width:auto;display:block}
-  .brand .wordmark{font-family:var(--disp);font-weight:800;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink)}
-  .brand .wordmark span{color:var(--sky)}
-  .navlinks{display:flex;align-items:center;gap:34px}
-  .nav-right{display:flex;align-items:center;gap:34px}
-  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;padding:0}
-  .hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s,opacity .3s;margin:0 auto}
-  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .hamburger.open span:nth-child(2){opacity:0}
-  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .navlinks a{font-family:var(--disp);font-weight:600;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s;position:relative}
-  .navlinks a.active{color:var(--ink)}
-  .navlinks a:not(.btn)::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--sky);transition:width .3s}
-  .navlinks a.active::after{width:100%}
-  .navlinks a:not(.btn):hover{color:var(--ink)}
-  .navlinks a:not(.btn):hover::after{width:100%}
-  .btn{font-family:var(--disp);font-weight:800;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,filter .2s}
-  .btn-grad{color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:13px 26px}
-  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06)}
-  @media(max-width:760px){
-    .brand .wordmark{display:none}
-    .hamburger{display:flex}
-    .nav-right{gap:14px}
-    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(8,8,16,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:6px 0;display:none}
-    .navlinks.open{display:flex}
-    .navlinks a{padding:15px 32px;font-size:0.95rem;letter-spacing:0.12em}
-    .navlinks a:not(:first-child){border-top:1px solid var(--line)}
-    .navlinks a:not(.btn)::after{display:none}
-  }
-
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="What I Do — Peninsulas AI" description="Three things, done well. Peninsulas AI builds a content engine, practical automations, and AI training for Metro Detroit small businesses. No buzzword bingo, no forty-item menu." canonical="https://peninsulasai.com/what-i-do/" ogDescription="A content engine, practical automations, and hands-on AI training for small businesses. Three things, done well." active="work">
+  <style is:global slot="head">
   /* HERO */
   .phero{padding:160px 0 30px;position:relative}
   .phero .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:30px}
@@ -120,39 +62,8 @@
   .btn-line{color:var(--ink);border:1px solid var(--line2);padding:16px 34px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;background:transparent;transition:border-color .2s,color .2s}
   .btn-line:hover{border-color:var(--sky);color:var(--sky)}
 
-  /* FOOTER */
-  footer{border-top:1px solid var(--line);padding:54px 0 40px}
-  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
-  .foot-brand .brand{margin-bottom:14px}
-  .foot-brand p{color:var(--muted);font-size:0.9rem;max-width:32ch}
-  .foot-col h4{font-family:var(--disp);font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-  .foot-col a{display:block;color:var(--ink);opacity:0.75;text-decoration:none;font-size:0.92rem;margin-bottom:10px;transition:opacity .2s,color .2s}
-  .foot-col a:hover{opacity:1;color:var(--sky)}
-  .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:0.82rem;font-family:var(--disp);letter-spacing:0.08em;text-transform:uppercase}
-
-  /* MOTION */
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
-  .reveal.in{opacity:1;transform:translateY(0)}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="/" class="brand">
-    <img src="/logo.png" alt="Peninsulas AI" />
-    <span class="wordmark">Peninsulas<span>AI</span></span>
-  </a>
-  <div class="nav-right">
-    <div class="navlinks" id="navlinks">
-      <a href="/what-i-do/" class="active">Work</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/website-grader/">Free Grader</a>
-    </div>
-    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn btn-grad">Book a Call</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</nav>
+  
+  </style>
 
 <!-- HERO -->
 <header class="phero">
@@ -278,56 +189,4 @@
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="/" class="brand">
-          <img src="/logo.png" alt="Peninsulas AI" />
-          <span class="wordmark">Peninsulas<span>AI</span></span>
-        </a>
-        <p>AI for Metro Detroit small businesses. Simple systems. Real results.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Navigate</h4>
-        <a href="/what-i-do/">What I Do</a>
-        <a href="/pricing/">Pricing</a>
-        <a href="/about/">About</a>
-        <a href="/website-grader/">Free Grader</a>
-        <a href="/blog/">Blog</a>
-        <a href="/contact/">Get in Touch</a>
-      </div>
-      <div class="foot-col">
-        <h4>Contact</h4>
-        <a href="mailto:info@peninsulasai.com">info@peninsulasai.com</a>
-        <a href="tel:3135499136">313 549 9136</a>
-        <a href="/contact/">Wyandotte, MI</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Peninsulas AI</span>
-      <span>Downriver Metro Detroit's AI Company</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);obs.unobserve(e.target)}})},{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
-<script>
-  (function(){
-    var h=document.getElementById('hamburger'),m=document.getElementById('navlinks');
-    if(!h||!m)return;
-    h.addEventListener('click',function(){
-      var open=m.classList.toggle('open');
-      h.classList.toggle('open',open);
-      h.setAttribute('aria-expanded',open?'true':'false');
-    });
-    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');});});
-  })();
-</script>
-</body>
-</html>
+</Base>

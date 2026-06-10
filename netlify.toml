@@ -1,5 +1,6 @@
 [build]
-publish = "."
+command = "npm run build"
+publish = "dist"
 functions = "netlify/functions"
 
 [functions."grade"]
@@ -11,10 +12,23 @@ for = "/*"
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
+
 [[redirects]]
 from = "/api/grade"
 to = "/.netlify/functions/grade"
 status = 200
+
 [[redirects]]
 from = "/api/send-report"
 to = "/.netlify/functions/send-report"
+status = 200
+
+[[redirects]]
+from = "/grader"
+to = "/website-grader/"
+status = 301
+
+[[redirects]]
+from = "/blog/what-a-300-website-audit-tells-you/"
+to = "/blog/300-website-audit-vs-free-tool/"
+status = 301

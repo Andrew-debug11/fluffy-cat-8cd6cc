@@ -1,0 +1,76 @@
+---
+// Blog post layout. Posts pass their article inner HTML as the default slot.
+// The .article-wrapper a rule explicitly excludes buttons — this kills the
+// recurring gray-button specificity bug from the old template for good.
+import Base from './Base.astro';
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  keywords?: string;
+}
+const { title, description, canonical, ogTitle, ogDescription, keywords } = Astro.props;
+---
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogType="article"
+  active="blog"
+>
+  {keywords && <meta name="keywords" content={keywords} slot="head" />}
+  <style is:global slot="head">
+  /* ---------- ARTICLE ---------- */
+  .article-wrapper{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:160px 32px 90px}
+
+  .breadcrumb{font-family:var(--disp);font-weight:600;font-size:0.78rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted);margin-bottom:30px}
+  .breadcrumb a{color:var(--sky);text-decoration:none;border:none;transition:color .2s}
+  .breadcrumb a:hover{color:var(--teal)}
+  .breadcrumb span{margin:0 8px;color:var(--line2)}
+
+  .article-wrapper h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:22px}
+
+  .article-meta{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:44px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+
+  .article-wrapper h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);line-height:1.1;text-transform:uppercase;letter-spacing:0.01em;margin:52px 0 18px;position:relative;padding-top:18px}
+  .article-wrapper h2::before{content:'';position:absolute;top:0;left:0;width:44px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal))}
+
+  .article-wrapper p{font-size:1rem;color:var(--ink);opacity:0.88;line-height:1.8;margin-bottom:20px}
+  .article-wrapper strong{color:var(--ink);opacity:1;font-weight:600}
+  .article-wrapper em{color:var(--ink)}
+
+  .article-wrapper ul{margin:0 0 20px 0;padding-left:0;list-style:none}
+  .article-wrapper ul li{font-size:1rem;color:var(--ink);opacity:0.88;line-height:1.8;padding:4px 0 4px 22px;position:relative}
+  .article-wrapper ul li::before{content:'';position:absolute;left:0;top:18px;width:10px;height:1px;background:var(--sky)}
+
+  /* links inside prose — buttons explicitly excluded so they never inherit this */
+  .article-wrapper a:not(.btn-primary):not(.btn-secondary){color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(14,165,233,0.35);transition:color .2s,border-color .2s}
+  .article-wrapper a:not(.btn-primary):not(.btn-secondary):hover{color:var(--teal);border-bottom-color:var(--teal)}
+
+  /* ---------- CTA BLOCK ---------- */
+  .article-cta{margin-top:64px;padding:46px 36px;background:var(--bg2);border:1px solid var(--line2);text-align:center;position:relative}
+  .article-cta::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .article-cta h2{margin-top:0;padding-top:0}
+  .article-cta h2::before{display:none}
+  .article-cta p{max-width:480px;margin:0 auto 28px}
+
+  .btn-primary{font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f !important;background:linear-gradient(135deg,var(--sky),var(--teal));padding:16px 34px;text-decoration:none;border:none;cursor:pointer;display:inline-block;transition:transform .2s,box-shadow .2s,filter .2s}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.32);filter:brightness(1.06);color:#08060f !important}
+
+  .btn-secondary{font-family:var(--disp);font-weight:700;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--line2);padding:15px 28px;text-decoration:none;display:inline-block;margin-left:12px;transition:border-color .2s,color .2s}
+  .btn-secondary:hover{border-color:var(--sky);color:var(--sky)}
+
+  @media(max-width:680px){
+    .article-wrapper{padding:130px 24px 70px}
+    .btn-secondary{margin-left:0;margin-top:12px}
+  }
+  </style>
+
+  <article class="article-wrapper">
+    <slot />
+  </article>
+</Base>

@@ -1,0 +1,52 @@
+---
+// TEMPLATE — Sunday content workflow.
+// Copy this file to src/pages/blog/<your-post-slug>.astro and fill in the blanks.
+// The slug (filename) becomes the URL: /blog/<your-post-slug>/
+// Underscore prefix means Astro ignores this file. Do not remove the underscore on the template itself.
+//
+// After creating the post, add one entry to the posts array in src/pages/blog/index.astro
+// and one <url> entry to public/sitemap.xml.
+//
+// All article styling (h1, h2, p, ul, links, CTA block, buttons) comes from
+// src/layouts/BlogPost.astro. Do not add <style> blocks to posts.
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+<BlogPost
+  title="POST TITLE HERE | Peninsulas AI"
+  description="Meta description, 150-160 characters, plain talk."
+  canonical="https://peninsulasai.com/blog/your-post-slug/"
+  ogTitle="POST TITLE HERE | Peninsulas AI"
+  ogDescription="Social share description. Can differ from meta description."
+  keywords="keyword one, keyword two, keyword three"
+>
+
+  <div class="breadcrumb reveal">
+    <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>Short Label
+  </div>
+
+  <h1 class="reveal">Post Title Goes Here</h1>
+
+  <div class="article-meta reveal">
+    Peninsulas AI &bull; Category &bull; Month 2026 &bull; X min read
+  </div>
+
+  <p class="reveal">Opening paragraph. Hook them in two sentences.</p>
+
+  <h2 class="reveal">First Section Heading</h2>
+
+  <p class="reveal">Body copy. Short punchy sentences. No buzzwords.</p>
+
+  <ul class="reveal">
+    <li>List item one</li>
+    <li>List item two</li>
+  </ul>
+
+  <!-- CTA BLOCK — keep at end of every post -->
+  <div class="article-cta reveal">
+    <h2>CTA Heading</h2>
+    <p>One or two sentences setting up the ask.</p>
+    <a href="https://calendly.com/andrew-peninsulasai/30min" target="_blank" rel="noopener" class="btn-primary">Book a Free Call</a>
+    <a href="/contact/" class="btn-secondary">Get in Touch</a>
+  </div>
+
+</BlogPost>
