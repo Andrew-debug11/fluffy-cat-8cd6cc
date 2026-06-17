@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Photo Lock Privacy Policy — Peninsulas AI"
+  description="Photo Lock collects nothing. Your photos never leave your device. No account, no analytics, no tracking, no server."
+  canonical="https://peninsulasai.com/privacy-policy/"
+  robots="index, follow"
+>
+  <style is:global slot="head">
+  .legal-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:160px 32px 90px}
+
+  .legal-eyebrow{font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--sky);margin-bottom:22px}
+  .legal-wrap h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:16px}
+  .legal-date{font-family:var(--disp);font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:44px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+
+  .legal-wrap h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.1;text-transform:uppercase;letter-spacing:0.01em;margin:48px 0 16px;position:relative;padding-top:18px}
+  .legal-wrap h2::before{content:'';position:absolute;top:0;left:0;width:44px;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal))}
+
+  .legal-wrap p{font-size:1rem;color:var(--ink);opacity:0.88;line-height:1.8;margin-bottom:18px}
+  .legal-wrap p strong{color:var(--ink);opacity:1;font-weight:600}
+  .legal-wrap a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(14,165,233,0.35);transition:color .2s,border-color .2s}
+  .legal-wrap a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+
+  .legal-contact{margin-top:14px;padding:24px 26px;border:1px solid var(--line2);background:var(--bg2)}
+  .legal-contact p{margin-bottom:4px;opacity:1}
+
+  @media(max-width:680px){.legal-wrap{padding:130px 24px 70px}}
+  </style>
+
+<main>
+  <article class="legal-wrap">
+    <p class="legal-eyebrow">Privacy Policy</p>
+    <h1>Photo Lock Privacy Policy</h1>
+    <p class="legal-date">Effective date: June 9, 2026</p>
+
+    <p>Photo Lock is built by Peninsulas AI, a DBA of Robert David LLC.</p>
+
+    <h2>The Short Version</h2>
+    <p>Photo Lock collects nothing. Your photos never leave your device. There is no account, no analytics, no tracking, and no server. We could not see your data if we wanted to, and we don't want to.</p>
+
+    <h2>What the App Accesses</h2>
+    <p><strong>Your photo library.</strong> Photo Lock reads your photos so you can pick a range to lock. Photos are displayed by reference only. The app never copies, uploads, or transmits them. If you use the Pro export feature, the app creates an album inside your own Photos app on your own device.</p>
+    <p><strong>Face ID / Touch ID.</strong> Used only to unlock a locked session. Biometric data is handled entirely by Apple's operating system. Photo Lock never sees, stores, or transmits biometric information.</p>
+    <p><strong>Your PIN.</strong> If you set an unlock PIN, the app stores a one-way cryptographic hash of it in your device's Keychain. The actual PIN is never saved anywhere. The hash never leaves your device.</p>
+
+    <h2>What We Collect</h2>
+    <p>Nothing. Photo Lock makes no network connections. There are no analytics SDKs, no advertising identifiers, no crash reporting services, and no third-party code that phones home.</p>
+
+    <h2>Purchases</h2>
+    <p>Pro subscriptions are processed entirely by Apple through the App Store. We receive no payment information. Apple's privacy policy governs that transaction.</p>
+
+    <h2>Children</h2>
+    <p>Photo Lock does not knowingly collect any information from anyone, including children, because it does not collect any information at all.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the updated version will be posted at this page with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <div class="legal-contact">
+      <p>Andrew Jernigan</p>
+      <p>Peninsulas AI (Robert David LLC)</p>
+      <p><a href="mailto:andrew@peninsulasai.com">andrew@peninsulasai.com</a></p>
+    </div>
+  </article>
+</main>
+</Base>
