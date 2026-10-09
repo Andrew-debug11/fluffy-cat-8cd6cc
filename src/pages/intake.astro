@@ -1,0 +1,389 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Client Intake | Peninsulas AI" description="New client intake for Peninsulas AI. Everything needed to build your site and run your marketing, collected once." canonical="https://peninsulasai.com/intake/" robots="noindex, nofollow" footer="minimal">
+  <style is:global slot="head">
+  .page{padding:150px 0 110px;position:relative;z-index:1}
+  .form-glow{position:absolute;top:120px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,233,0.1),transparent 70%);pointer-events:none;z-index:0}
+  .shell{max-width:820px;margin:0 auto}
+
+  .intro .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:600;font-size:0.8rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sky);margin-bottom:28px}
+  .intro .eyebrow::before{content:'';width:40px;height:1px;background:var(--sky)}
+  .intro h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,6vw,4.2rem);line-height:0.92;text-transform:uppercase;letter-spacing:-0.02em}
+  .intro p{color:var(--muted);font-size:1.02rem;margin-top:22px;max-width:60ch;line-height:1.75}
+  .intro p strong{color:var(--ink);font-weight:600}
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 44px}
+  .rules div{border:1px solid var(--line2);border-radius:3px;padding:16px;color:var(--muted);font-size:0.88rem;line-height:1.55}
+  .rules b{display:block;font-family:var(--disp);font-weight:700;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+  @media(max-width:700px){.rules{grid-template-columns:1fr}}
+
+  .card{border:1px solid var(--line2);background:var(--bg2);border-radius:3px;padding:36px 40px;position:relative;overflow:hidden;margin-bottom:22px}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--pink))}
+  .card h2{font-family:var(--disp);font-weight:800;font-size:1.7rem;text-transform:uppercase;letter-spacing:0.01em;display:flex;align-items:baseline;gap:14px}
+  .card h2 .n{font-size:0.9rem;color:var(--sky);letter-spacing:0.2em}
+  .card .why{color:var(--muted);font-size:0.9rem;margin:8px 0 26px;line-height:1.6}
+
+  .field{margin-bottom:22px}
+  .field > label,.field > .lab{display:block;font-family:var(--disp);font-weight:600;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .field .req{color:var(--sky)}
+  .field .hint{color:rgba(136,153,170,0.85);font-size:0.82rem;margin-top:7px;line-height:1.5}
+  .field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=url],.field input[type=number],.field select,.field textarea{
+    width:100%;background:var(--bg);border:1px solid var(--line2);color:var(--ink);
+    font-family:var(--body);font-size:0.98rem;padding:13px 15px;border-radius:2px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:rgba(136,153,170,0.6)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(14,165,233,0.12)}
+  .field textarea{resize:vertical;min-height:96px}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238899AA' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  @media(max-width:620px){.two,.three{grid-template-columns:1fr}}
+
+  .pills{display:flex;gap:10px;flex-wrap:wrap}
+  .pill{flex:1;min-width:110px;position:relative}
+  .pill input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .pill span{display:block;text-align:center;font-family:var(--disp);font-weight:600;font-size:0.84rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);padding:12px 8px;border-radius:2px;cursor:pointer;transition:all .2s;height:100%}
+  .pill input:checked + span{color:#08060f;background:linear-gradient(135deg,var(--sky),var(--teal));border-color:transparent}
+  .pill input:focus-visible + span{box-shadow:0 0 0 3px rgba(14,165,233,0.2)}
+
+  .submit{width:100%;margin-top:6px;font-family:var(--disp);font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:#08060f;background:var(--ink);border:none;padding:17px;border-radius:2px;cursor:pointer;transition:background .2s,transform .2s}
+  .submit:hover{background:#fff;transform:translateY(-1px)}
+  .submit:disabled{opacity:0.6;cursor:default;transform:none}
+  .formnote{color:var(--muted);font-size:0.84rem;text-align:center;margin-top:16px;line-height:1.6}
+  .saved{color:var(--teal);font-size:0.8rem;text-align:center;margin-top:10px;min-height:1.2em}
+
+  .hidden{display:none}
+  .success{text-align:center;padding:30px 10px}
+  .success h2{font-family:var(--disp);font-weight:800;font-size:2.2rem;text-transform:uppercase;margin-bottom:12px;justify-content:center}
+  .success p{color:var(--muted);line-height:1.7}
+
+  @media(max-width:620px){.card{padding:28px 22px}}
+  </style>
+
+<main class="page">
+  <div class="form-glow"></div>
+  <div class="wrap">
+    <div class="shell">
+      <div class="intro">
+        <p class="eyebrow">New client intake</p>
+        <h1>Tell me once.<br>I'll handle the rest.</h1>
+        <p>This is everything I need to build your site and run your marketing, in one place. <strong>Fill in what you know and skip what you don't.</strong> Blank spots are fine. I'll ask about them on a call.</p>
+      </div>
+
+      <div class="rules">
+        <div><b>Only true facts</b>Nothing goes on your site unless it's written here or you confirm it. No made-up numbers.</div>
+        <div><b>Takes 15 minutes</b>Your answers save on this device as you type, so you can come back and finish.</div>
+        <div><b>Stays private</b>This page isn't on Google. Only I see what you send.</div>
+      </div>
+
+      <form id="intakeForm" name="client-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="client-intake" />
+        <input type="hidden" name="sent_for" id="sentFor" value="" />
+        <p class="hidden"><label>Leave this empty: <input name="bot-field" /></label></p>
+
+        <!-- 1 -->
+        <section class="card">
+          <h2><span class="n">01</span>The basics</h2>
+          <p class="why">Who you are and how to reach you.</p>
+          <div class="two">
+            <div class="field"><label>Business name, as customers see it <span class="req">*</span></label><input type="text" name="business_name" id="businessName" required /></div>
+            <div class="field"><label>Legal name, if different</label><input type="text" name="legal_name" placeholder="LLC or Inc name" /></div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Your name <span class="req">*</span></label><input type="text" name="contact_name" required /></div>
+            <div class="field"><label>Your role</label><input type="text" name="contact_role" placeholder="Owner, office manager" /></div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Your email <span class="req">*</span></label><input type="email" name="contact_email" required /></div>
+            <div class="field"><label>Your cell <span class="req">*</span></label><input type="tel" name="contact_phone" required /></div>
+          </div>
+          <div class="field">
+            <span class="lab">Best way to reach you</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="preferred_contact" value="Text" /><span>Text</span></label>
+              <label class="pill"><input type="radio" name="preferred_contact" value="Call" /><span>Call</span></label>
+              <label class="pill"><input type="radio" name="preferred_contact" value="Email" /><span>Email</span></label>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Business phone customers call</label><input type="tel" name="public_phone" /></div>
+            <div class="field"><label>Business email customers use</label><input type="email" name="public_email" /></div>
+          </div>
+          <div class="field"><label>Business address</label><input type="text" name="address" /></div>
+          <div class="field">
+            <span class="lab">Show the full address on your site?</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="show_address" value="Yes, full address" /><span>Yes</span></label>
+              <label class="pill"><input type="radio" name="show_address" value="City only" /><span>City only</span></label>
+              <label class="pill"><input type="radio" name="show_address" value="Not sure" /><span>Not sure</span></label>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Current website</label><input type="text" name="current_website" placeholder="yourbusiness.com" /></div>
+            <div class="field"><label>Any other domains you own</label><input type="text" name="other_domains" /></div>
+          </div>
+        </section>
+
+        <!-- 2 -->
+        <section class="card">
+          <h2><span class="n">02</span>Your story</h2>
+          <p class="why">Years and numbers here go on your site exactly as written. Please double check them.</p>
+          <div class="three">
+            <div class="field"><label>Year business opened</label><input type="number" name="year_founded" min="1900" max="2100" placeholder="2014" /></div>
+            <div class="field"><label>Year you started in the trade</label><input type="number" name="year_started_trade" min="1900" max="2100" /></div>
+            <div class="field"><label>Crew size, including you</label><input type="number" name="crew_size" min="1" /></div>
+          </div>
+          <div class="field"><label>Started a second trade later? Which one, what year?</label><input type="text" name="second_trade" placeholder="Added HVAC in 2021" /></div>
+          <div class="field"><label>Why did you start the business? Your words.</label><textarea name="why_started"></textarea></div>
+          <div class="field">
+            <span class="lab">Family owned and operated?</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="family_owned" value="Yes" /><span>Yes</span></label>
+              <label class="pill"><input type="radio" name="family_owned" value="No" /><span>No</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="lab">Can your name appear on the site?</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="names_ok" value="Yes, anywhere" /><span>Anywhere</span></label>
+              <label class="pill"><input type="radio" name="names_ok" value="About page only" /><span>About page only</span></label>
+              <label class="pill"><input type="radio" name="names_ok" value="No names" /><span>No names</span></label>
+            </div>
+          </div>
+          <div class="field"><label>Anyone else who can be named? Spouse, partner, key staff.</label><input type="text" name="other_names" /><p class="hint">Kids are never named or pictured unless you say so separately.</p></div>
+        </section>
+
+        <!-- 3 -->
+        <section class="card">
+          <h2><span class="n">03</span>What you do, and don't</h2>
+          <p class="why">The "don't" list matters as much as the "do" list. It keeps the site from promising work you turn down.</p>
+          <div class="field"><label>Services you offer</label><textarea name="services" placeholder="One per line"></textarea></div>
+          <div class="field"><label>Services you do NOT offer</label><textarea name="services_not" placeholder="Example: we service boilers but don't install them"></textarea></div>
+          <div class="field">
+            <span class="lab">Who you work for</span>
+            <div class="pills">
+              <label class="pill"><input type="checkbox" name="customer_type" value="Residential" /><span>Residential</span></label>
+              <label class="pill"><input type="checkbox" name="customer_type" value="Commercial" /><span>Commercial</span></label>
+              <label class="pill"><input type="checkbox" name="customer_type" value="Multi-unit" /><span>Multi-unit</span></label>
+            </div>
+          </div>
+          <div class="field"><label>Brands you service</label><input type="text" name="brands_serviced" placeholder="All brands, or list them" /></div>
+          <div class="field"><label>Dealer status or brand partnerships</label><input type="text" name="dealer_status" placeholder="Only ones you can show proof of" /></div>
+          <div class="field">
+            <span class="lab">Hours</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="hours_type" value="24/7" /><span>24/7</span></label>
+              <label class="pill"><input type="radio" name="hours_type" value="Set hours plus emergency" /><span>Set hours + emergency</span></label>
+              <label class="pill"><input type="radio" name="hours_type" value="Set hours only" /><span>Set hours only</span></label>
+            </div>
+          </div>
+          <div class="field"><label>If set hours, what are they?</label><input type="text" name="hours_detail" /></div>
+          <div class="two">
+            <div class="field">
+              <span class="lab">Same-day service?</span>
+              <div class="pills">
+                <label class="pill"><input type="radio" name="same_day" value="Yes" /><span>Yes</span></label>
+                <label class="pill"><input type="radio" name="same_day" value="Usually" /><span>Usually</span></label>
+                <label class="pill"><input type="radio" name="same_day" value="No" /><span>No</span></label>
+              </div>
+            </div>
+            <div class="field"><label>Typical arrival time</label><input type="text" name="response_time" placeholder="Within an hour, most of the time" /></div>
+          </div>
+        </section>
+
+        <!-- 4 -->
+        <section class="card">
+          <h2><span class="n">04</span>Where you work</h2>
+          <div class="field"><label>Home base town</label><input type="text" name="home_base" /></div>
+          <div class="field"><label>Counties you cover</label><input type="text" name="counties" /></div>
+          <div class="field"><label>Towns you most want calls from</label><textarea name="priority_towns" placeholder="The ones that pay best or are closest"></textarea></div>
+          <div class="field"><label>Anywhere you won't go?</label><input type="text" name="excluded_areas" /></div>
+        </section>
+
+        <!-- 5 -->
+        <section class="card">
+          <h2><span class="n">05</span>Licenses and trust</h2>
+          <div class="field"><label>Licenses: type and number</label><textarea name="licenses" placeholder="Master Plumber, #12345"></textarea></div>
+          <div class="field">
+            <span class="lab">Check all that are true</span>
+            <div class="pills">
+              <label class="pill"><input type="checkbox" name="trust" value="Licensed" /><span>Licensed</span></label>
+              <label class="pill"><input type="checkbox" name="trust" value="Bonded" /><span>Bonded</span></label>
+              <label class="pill"><input type="checkbox" name="trust" value="Insured" /><span>Insured</span></label>
+            </div>
+          </div>
+          <div class="field"><label>Certifications, awards, memberships</label><input type="text" name="certifications" placeholder="Only current ones" /></div>
+          <div class="field"><label>Guarantees or warranties you offer</label><input type="text" name="guarantees" /></div>
+        </section>
+
+        <!-- 6 -->
+        <section class="card">
+          <h2><span class="n">06</span>Pricing, coupons, financing</h2>
+          <p class="why">Anything you want kept private, say so and it stays off the site.</p>
+          <div class="two">
+            <div class="field"><label>Trip or dispatch fee</label><input type="text" name="dispatch_fee" placeholder="$79, waived if we do the work" /></div>
+            <div class="field"><label>Free estimates? When?</label><input type="text" name="free_estimates" /></div>
+          </div>
+          <div class="field"><label>Current coupons and specials</label><textarea name="coupons" placeholder="Offer, amount, any rules (residential only, can't combine)"></textarea></div>
+          <div class="field"><label>Financing companies you use</label><input type="text" name="financing_lenders" /></div>
+          <div class="field"><label>Financing offer and required fine print</label><textarea name="financing_terms" placeholder="Example: 0% for 24 months with approved credit. Your lender rep can give you the exact wording."></textarea></div>
+          <div class="field"><label>Prices or fees to keep OFF the site</label><input type="text" name="private_pricing" /></div>
+        </section>
+
+        <!-- 7 -->
+        <section class="card">
+          <h2><span class="n">07</span>Accounts and access</h2>
+          <p class="why">These are the things that stall launches. Don't send passwords here. I'll walk you through adding me safely.</p>
+          <div class="two">
+            <div class="field">
+              <label>Where your domain is registered</label>
+              <select name="registrar"><option value="" selected>Pick one</option><option>GoDaddy</option><option>Namecheap</option><option>Squarespace / Google Domains</option><option>Network Solutions</option><option>My web guy handles it</option><option>Not sure</option><option>Other</option></select>
+            </div>
+            <div class="field">
+              <label>Your business email runs on</label>
+              <select name="email_host"><option value="" selected>Pick one</option><option>Personal Gmail</option><option>Google Workspace</option><option>Microsoft / Outlook</option><option>My web host</option><option>Not sure</option><option>Other</option></select>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Current web host or web person</label><input type="text" name="current_host" /></div>
+            <div class="field"><label>What you pay them now (optional)</label><input type="text" name="current_cost" /></div>
+          </div>
+          <div class="field">
+            <span class="lab">Google Business Profile</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="gbp_status" value="I have access" /><span>I have access</span></label>
+              <label class="pill"><input type="radio" name="gbp_status" value="Someone else manages it" /><span>Someone else has it</span></label>
+              <label class="pill"><input type="radio" name="gbp_status" value="No profile or not sure" /><span>None / not sure</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="lab">Paid ads running now</span>
+            <div class="pills">
+              <label class="pill"><input type="checkbox" name="ads" value="Google Ads" /><span>Google Ads</span></label>
+              <label class="pill"><input type="checkbox" name="ads" value="Local Services Ads" /><span>Local Services</span></label>
+              <label class="pill"><input type="checkbox" name="ads" value="Facebook ads" /><span>Facebook</span></label>
+              <label class="pill"><input type="checkbox" name="ads" value="None" /><span>None</span></label>
+            </div>
+          </div>
+          <div class="field"><label>Ad tracking phone numbers, if any</label><input type="text" name="tracking_numbers" /><p class="hint">These never go on your website. I just need to know they exist.</p></div>
+          <div class="field"><label>Social media links</label><textarea name="social_links" placeholder="Facebook, Instagram, Nextdoor, Yelp, anything"></textarea></div>
+          <div class="two">
+            <div class="field">
+              <label>Job software</label>
+              <select name="job_software"><option value="" selected>Pick one</option><option>Housecall Pro</option><option>ServiceTitan</option><option>Jobber</option><option>FieldEdge</option><option>Paper / none</option><option>Other</option></select>
+            </div>
+            <div class="field"><label>Where should website leads go?</label><input type="text" name="lead_inbox" placeholder="Email address or cell for texts" /></div>
+          </div>
+        </section>
+
+        <!-- 8 -->
+        <section class="card">
+          <h2><span class="n">08</span>Look and feel</h2>
+          <div class="field">
+            <span class="lab">Your logo</span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="logo" value="Have original design file" /><span>Original file</span></label>
+              <label class="pill"><input type="radio" name="logo" value="Only an image or screenshot" /><span>Just an image</span></label>
+              <label class="pill"><input type="radio" name="logo" value="No logo" /><span>No logo</span></label>
+            </div>
+            <p class="hint">An original file (AI, EPS, SVG, PDF) looks sharpest. Whoever made the logo usually has it.</p>
+          </div>
+          <div class="field"><label>Brand colors</label><input type="text" name="brand_colors" placeholder="Truck colors count" /></div>
+          <div class="field">
+            <span class="lab">Photos I can use</span>
+            <div class="pills">
+              <label class="pill"><input type="checkbox" name="photos" value="Job photos" /><span>Job photos</span></label>
+              <label class="pill"><input type="checkbox" name="photos" value="Crew and trucks" /><span>Crew + trucks</span></label>
+              <label class="pill"><input type="checkbox" name="photos" value="Family or owner" /><span>Family / owner</span></label>
+              <label class="pill"><input type="checkbox" name="photos" value="None yet" /><span>None yet</span></label>
+            </div>
+            <p class="hint">Send them by text or email after this. No customer faces or houses you could recognize.</p>
+          </div>
+          <div class="field"><label>Competitors you want to beat</label><input type="text" name="competitors" /></div>
+          <div class="field"><label>Sites you like the look of</label><input type="text" name="sites_liked" /></div>
+          <div class="field"><label>Anything we should never say or show?</label><textarea name="off_limits"></textarea></div>
+        </section>
+
+        <!-- 9 -->
+        <section class="card">
+          <h2><span class="n">09</span>Anything else</h2>
+          <div class="field"><label>What's the one thing you want this to fix?</label><textarea name="main_goal"></textarea></div>
+          <div class="field"><label>Anything I didn't ask?</label><textarea name="anything_else"></textarea></div>
+          <button type="submit" class="submit">Send It Over</button>
+          <p class="saved" id="savedNote"></p>
+          <p class="formnote">I'll read it, then text you with any questions. Usually within a day.</p>
+        </section>
+      </form>
+
+      <section class="card success hidden" id="success">
+        <h2>Got it.</h2>
+        <p>Thanks. That's the hard part. I'll go through it and reach out with anything I need. Send photos and your logo whenever you're ready.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<Fragment slot="scripts">
+<script is:inline>
+  (function(){
+    var form=document.getElementById('intakeForm');
+    var success=document.getElementById('success');
+    var note=document.getElementById('savedNote');
+    var KEY='pai-intake-draft';
+
+    // ?for=Business+Name prefills the business name and tags the submission
+    try{
+      var forName=new URLSearchParams(location.search).get('for');
+      if(forName){
+        document.getElementById('sentFor').value=forName;
+        var bn=document.getElementById('businessName');
+        if(!bn.value) bn.value=forName;
+      }
+    }catch(e){}
+
+    function save(){
+      try{
+        var out={};
+        Array.prototype.forEach.call(form.elements,function(el){
+          if(!el.name||el.type==='hidden'||el.name==='bot-field') return;
+          if(el.type==='checkbox'||el.type==='radio'){ if(el.checked){ (out[el.name]=out[el.name]||[]).push(el.value); } }
+          else if(el.value){ out[el.name]=el.value; }
+        });
+        localStorage.setItem(KEY,JSON.stringify(out));
+        note.textContent='Progress saved on this device.';
+      }catch(e){}
+    }
+    function restore(){
+      try{
+        var raw=localStorage.getItem(KEY); if(!raw) return;
+        var data=JSON.parse(raw);
+        Array.prototype.forEach.call(form.elements,function(el){
+          if(!el.name||!(el.name in data)||el.type==='hidden') return;
+          var v=data[el.name];
+          if(el.type==='checkbox'||el.type==='radio'){ el.checked=Array.isArray(v)&&v.indexOf(el.value)>-1; }
+          else { el.value=v; }
+        });
+        note.textContent='Picked up where you left off.';
+      }catch(e){}
+    }
+    restore();
+    var t; form.addEventListener('input',function(){ clearTimeout(t); t=setTimeout(save,600); });
+
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      var btn=form.querySelector('.submit');
+      btn.textContent='Sending...'; btn.disabled=true;
+      try{
+        var res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
+        if(res.ok){
+          try{ localStorage.removeItem(KEY); }catch(err){}
+          form.classList.add('hidden'); success.classList.remove('hidden');
+          window.scrollTo({top:0,behavior:'smooth'});
+        } else { btn.textContent='Something went wrong. Try again.'; btn.disabled=false; }
+      }catch(err){ btn.textContent='Something went wrong. Try again.'; btn.disabled=false; }
+    });
+  })();
+</script>
+</Fragment>
+</Base>
